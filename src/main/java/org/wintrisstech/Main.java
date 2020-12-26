@@ -3,6 +3,8 @@ package org.wintrisstech;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import javax.swing.*;
 import java.io.IOException;
 /*******************************************************************
  * Covers NFL Extraction Tool
@@ -22,6 +24,14 @@ public class Main
         System.out.println("3.  gameDates size => " + gameDates.size());
         System.out.println("Picks => " + gameDates.get(1).getElementsByIndexEquals(2).text());
         System.out.println("4.  Proper Finish...hooray!");
+    }
+    public void sportsReader()
+    {
+        String version = "DanPic 201206";
+        System.out.println("Version " + version + "\nCopyright 2020 Dan Farris\n");
+        int targetMonth = Integer.parseInt(JOptionPane.showInputDialog("DanPic NFL Analysis Program \n Copright 2020 Dan Farris"));
+        String followOnAnswer = JOptionPane.showInputDialog("Press Return to continue...");
+        SportsDataReader sportsDataReader = new SportsDataReader(targetMonth);
     }
 }
 
