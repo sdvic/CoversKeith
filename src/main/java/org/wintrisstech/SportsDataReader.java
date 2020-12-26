@@ -23,16 +23,17 @@ public class SportsDataReader
     private String errMsg;
     private int cellType;
     /*******************************************************************************************************************
-     * P&L Reader
-     * Copies entire QuickBooks P&L to Hash Map
+     * Covers Data Reader
+     * Copies entire CoversData.xlsx file to Hash Map
+     * version 201226B
      ******************************************************************************************************************/
-    public SportsDataReader(int targetMonth)
+    public SportsDataReader()
     {
         try
         {
             String inputFileName = "/Users/vicwintriss/Desktop/SportData2.xlsx";
             sportDataInputFile = new File(inputFileName);
-            System.out.println("(1) Started reading SportsData Excel file from: " + sportDataInputFile + " to sportData HashMap");
+            System.out.println("(2) Started reading SportsData Excel file from: " + sportDataInputFile + " to sportData HashMap");
             FileInputStream pandlInputFIS = new FileInputStream(sportDataInputFile);
             sportDataWorkBook = new XSSFWorkbook(pandlInputFIS);
             pandlInputFIS.close();
@@ -85,8 +86,8 @@ public class SportsDataReader
             getSportDataMap().put(keyValue, valueValue);
         }
         System.out.println("        ===========Sports Data Map======================");
-        getSportDataMap().forEach((K, V) -> System.out.println("             " +  K + " => " + V ));
-        System.out.println("(2) Finished reading SportData Excel file from: " + sportDataInputFile + " to: SportDataHashMap, HashMap size: " + getSportDataMap().size());
+        //getSportDataMap().forEach((K, V) -> System.out.println("             " +  K + " => " + V ));
+        System.out.println("(3) Finished reading SportData Excel file from: " + sportDataInputFile + " to: SportDataHashMap, HashMap size: " + getSportDataMap().size());
     }
     public HashMap<String, Double> getSportDataMap()
     {
