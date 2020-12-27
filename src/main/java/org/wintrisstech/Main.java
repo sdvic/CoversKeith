@@ -2,13 +2,14 @@ package org.wintrisstech;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import javax.swing.*;
 import java.io.IOException;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 201226B
+ * version 201226C
  *******************************************************************/
 public class Main
 {
@@ -25,11 +26,12 @@ public class Main
         gameNumber = "80920";
         new SportsDataReader();
         String event = "https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + gameNumber;
-        Document doc = Jsoup.connect(event).get();
-        System.out.println("(4))  Getting data for game number " + gameNumber + ", " + doc.title());
-        Elements gameDates = doc.getElementsByClass("covers-CoversConsensus-consensusTableContainer covers-CoversConsensusDetailsTable");
+        Document gamePage = Jsoup.connect(event).get();
+        System.out.println("(4))  Getting data for game number " + gameNumber + ", " + gamePage.title());
+        Elements gameDates = gamePage.getElementsByClass("covers-CoversConsensus-consensusTableContainer covers-CoversConsensusDetailsTable");
         System.out.println("(5))  Number of games for this week => " + gameDates.size());
-        System.out.println("Picks for this game => " + gameDates.get(1).getElementsByIndexEquals(2).text());
+        //String totalPicksHome = "https://contests.covers.com/Consensus";//Get picks for today!
+        System.out.println("====================================Picks for this game, home => " + gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft").get(0).getElementsByIndexEquals(0) + "\n Away " + gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).getElementsByIndexEquals(0));
         System.out.println("(6))  Proper Finish...hooray!");
     }
 }

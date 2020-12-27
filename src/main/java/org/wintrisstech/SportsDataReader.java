@@ -1,7 +1,7 @@
 package org.wintrisstech;
 //******************************************************************************************
-// * Application to extract Cash Flow data from Quick Books P&L and build Cash Projections
-// * version 201225A
+// * Application to extract Consensus data from Covers
+// * version 201226C
 // * copyright 2020 Dan Farris
 //*********************************************************************************
 import org.apache.poi.ss.usermodel.CellValue;
