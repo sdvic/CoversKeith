@@ -1,6 +1,6 @@
 package org.wintrisstech;
 //******************************************************************************************
-// * Application to extract Consensus data from Covers
+// * Application to extract Consensus xlsx data from Covers
 // * version 201226C
 // * copyright 2020 Dan Farris
 //*********************************************************************************
@@ -11,6 +11,11 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
+/*******************************************************************
+ * Covers NFL Extraction Tool
+ * Copyright 2020 Dan Farris
+ * version 201228A
+ *******************************************************************/
 public class SportsDataReader
 {
     private File sportDataInputFile;
@@ -22,25 +27,21 @@ public class SportsDataReader
     private final HashMap<String, Double> sportDataMap = new HashMap<>();
     private String errMsg;
     private int cellType;
-    /*******************************************************************************************************************
-     * Covers Data Reader
-     * Copies entire CoversData.xlsx file to Hash Map
-     * version 201226B
-     ******************************************************************************************************************/
-    public SportsDataReader()
+
+    public SportsDataReader(Main main)
     {
         try
         {
             String inputFileName = "/Users/vicwintriss/Desktop/SportData2.xlsx";
             sportDataInputFile = new File(inputFileName);
             System.out.println("(2) Started reading SportsData Excel file from: " + sportDataInputFile + " to sportData HashMap");
-            FileInputStream pandlInputFIS = new FileInputStream(sportDataInputFile);
-            sportDataWorkBook = new XSSFWorkbook(pandlInputFIS);
-            pandlInputFIS.close();
+            FileInputStream sportsDataFIS = new FileInputStream(sportDataInputFile);
+            sportDataWorkBook = new XSSFWorkbook(sportsDataFIS);
+            sportsDataFIS.close();
         }
         catch (Exception e)
         {
-            System.out.println("FileNotFoundException in readPandLtoHashMap()");
+            System.out.println("FileNotFoundException in read Sports Data toHashMap()");
             e.printStackTrace();
         }
         FormulaEvaluator evaluator = sportDataWorkBook.getCreationHelper().createFormulaEvaluator();
@@ -67,7 +68,7 @@ public class SportsDataReader
             }
             catch (Exception e)
             {
-                System.out.println("Can't get key String value at line 65 while reading P & L");
+                System.out.println("Can't get key String value at line 65 while reading Sports Data");
                 continue;
             }
             XSSFCell valueCell = row.getCell(1); //Value cell
@@ -85,6 +86,7 @@ public class SportsDataReader
             }
             getSportDataMap().put(keyValue, valueValue);
         }
+        main.setSportDataWorkBook(sportDataWorkBook);
         System.out.println("        ===========Sports Data Map======================");
         //getSportDataMap().forEach((K, V) -> System.out.println("             " +  K + " => " + V ));
         System.out.println("(3) Finished reading SportData Excel file from: " + sportDataInputFile + " to: SportDataHashMap, HashMap size: " + getSportDataMap().size());
