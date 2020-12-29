@@ -14,7 +14,7 @@ import java.util.HashMap;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 201228A
+ * version 201228B
  *******************************************************************/
 public class SportsDataReader
 {
@@ -28,7 +28,7 @@ public class SportsDataReader
     private String errMsg;
     private int cellType;
 
-    public SportsDataReader(Main main)
+    public SportsDataReader()
     {
         try
         {
@@ -44,8 +44,8 @@ public class SportsDataReader
             System.out.println("FileNotFoundException in read Sports Data toHashMap()");
             e.printStackTrace();
         }
-        FormulaEvaluator evaluator = sportDataWorkBook.getCreationHelper().createFormulaEvaluator();
-        XSSFSheet pandlSheet = sportDataWorkBook.getSheetAt(0);
+        FormulaEvaluator evaluator = getSportDataWorkBook().getCreationHelper().createFormulaEvaluator();
+        XSSFSheet pandlSheet = getSportDataWorkBook().getSheetAt(0);
         for (int rowIndex = 0; rowIndex < pandlSheet.getLastRowNum(); rowIndex++)
         {
             XSSFRow row = pandlSheet.getRow(rowIndex);
@@ -86,7 +86,6 @@ public class SportsDataReader
             }
             getSportDataMap().put(keyValue, valueValue);
         }
-        main.setSportDataWorkBook(sportDataWorkBook);
         System.out.println("        ===========Sports Data Map======================");
         //getSportDataMap().forEach((K, V) -> System.out.println("             " +  K + " => " + V ));
         System.out.println("(3) Finished reading SportData Excel file from: " + sportDataInputFile + " to: SportDataHashMap, HashMap size: " + getSportDataMap().size());
@@ -94,5 +93,9 @@ public class SportsDataReader
     public HashMap<String, Double> getSportDataMap()
     {
         return sportDataMap;
+    }
+    public XSSFWorkbook getSportDataWorkBook()
+    {
+        return sportDataWorkBook;
     }
 }

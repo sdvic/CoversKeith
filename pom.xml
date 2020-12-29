@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>groupId</groupId>
     <artifactId>Covers</artifactId>
-    <version>version 201228A</version>
+    <version>version 201228B</version>
     <build>
         <plugins>
             <plugin>

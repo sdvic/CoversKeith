@@ -1,16 +1,16 @@
 package org.wintrisstech;
-
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import javax.swing.*;
 import java.io.IOException;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 201228A
+ * version 201228B
  *******************************************************************/
 public class Main
 {
@@ -19,8 +19,8 @@ public class Main
     private XSSFWorkbook sportDataWorkBook;
     public static void main(String[] args) throws IOException
     {
-        String version = "201228A";
-        System.out.println("1.  Hello Covers World Version => " + version );
+        String version = "201228B";
+        System.out.println("1.  Hello Covers World Version => " + version);
         System.out.println("Copyright 2020 Dan Farris");
         main = new Main();
         SportsDataAdder sportsDataAdder;
@@ -30,9 +30,11 @@ public class Main
     {
         String gameNumber = JOptionPane.showInputDialog("DanPic NFL Analysis Program\nEnter game number\nCopyright 2020 Dan Farris");
         gameNumber = "80920";
-        new SportsDataReader(main);
-        //new SportsDataWriter();
-        //new SportsDataAdder(main);
+        SportsDataReader sportsDataReader = new SportsDataReader();//Reads sports data xlsx file
+        sportDataWorkBook = sportsDataReader.getSportDataWorkBook();
+        SportsDataWriter sportsDataWriter = new SportsDataWriter();
+        sportsDataWriter.setCoversUpdatedWorkbook(sportDataWorkBook);
+        sportsDataWriter.writeSportsUpdatedWorkbook();
         String event = "https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + gameNumber;
         Document gamePage = Jsoup.connect(event).get();
         String gameNo = gameNumber;
@@ -46,11 +48,10 @@ public class Main
         String totalAwayPicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).text();
         System.out.println("(7) Total Home Picks => " + totalHomePicks);
         System.out.println("(8) Total Away Picks => " + totalAwayPicks);
-        //System.out.println("\nTotal Away Picks => " + gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).text());
         System.out.println("(9)  Proper Finish...hooray!");
         Document nflMatchUps = Jsoup.connect("https://www.covers.com/sports/nfl/matchups").get();
         Elements elements = nflMatchUps.getElementsContainingText("Week ");
-          }
+    }
     public void setSportDataWorkBook(XSSFWorkbook sportDataWorkBook)
     {
         this.sportDataWorkBook = sportDataWorkBook;

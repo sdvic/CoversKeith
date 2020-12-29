@@ -3,7 +3,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 201228A
+ * version 201228B
  *******************************************************************/
 public class SportsDataAdder
 {
