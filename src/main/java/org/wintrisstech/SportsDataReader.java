@@ -1,7 +1,7 @@
 package org.wintrisstech;
 //******************************************************************************************
 // * Application to extract Consensus xlsx data from Covers
-// * version 201226C
+// * version 2012229A
 // * copyright 2020 Dan Farris
 //*********************************************************************************
 import org.apache.poi.ss.usermodel.CellValue;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 201228B
+ * version 201229A
  *******************************************************************/
 public class SportsDataReader
 {
@@ -24,7 +24,7 @@ public class SportsDataReader
     private XSSFCell keyCell;
     private String keyValue;
     private double valueValue;
-    private final HashMap<String, Double> sportDataMap = new HashMap<>();
+    private final HashMap<String, Double> sportDataMap = new HashMap<String, Double>();
     private String errMsg;
     private int cellType;
 
@@ -86,7 +86,7 @@ public class SportsDataReader
             }
             getSportDataMap().put(keyValue, valueValue);
         }
-        System.out.println("        ===========Sports Data Map======================");
+        //System.out.println("        ===========Sports Data Map======================");
         //getSportDataMap().forEach((K, V) -> System.out.println("             " +  K + " => " + V ));
         System.out.println("(3) Finished reading SportData Excel file from: " + sportDataInputFile + " to: SportDataHashMap, HashMap size: " + getSportDataMap().size());
     }

@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 201228B
+ // * version 201229A
  *******************************************************************/
 public class SportsDataWriter
 {
@@ -14,8 +14,8 @@ public class SportsDataWriter
     public void writeSportsUpdatedWorkbook()
     {
         coversUpdatedWorkbook.getSheetAt(0).getRow(3).getCell(0).setCellValue("Boo");
-        System.out.println("00000000000000000000000 " + coversUpdatedWorkbook.getSheetAt(0).getRow(3).getCell(0).getStringCellValue());
-            System.out.println("(9) Writing covers workbook to File: " + coversUpdatedOutputFile);
+        System.out.println("======================Added: " + coversUpdatedWorkbook.getSheetAt(0).getRow(3).getCell(0).getStringCellValue() + " to updated Sprots Data file.");
+            System.out.println("(4) Writing covers workbook to File: " + coversUpdatedOutputFile);
             try
             {
                 FileOutputStream budgetOutputFOS = new FileOutputStream(coversUpdatedOutputFile);
@@ -27,7 +27,7 @@ public class SportsDataWriter
                 System.out.println("Sports Data xlsx file writing problem");
                 e.printStackTrace();
             }
-            System.out.println("(10) Finished writing budget workbook to File: " + coversUpdatedOutputFile);
+            System.out.println("(5) Finished writing updated SportData.xlsx workbook to File: " + coversUpdatedOutputFile);
     }
     public void setCoversUpdatedWorkbook(XSSFWorkbook coversUpdatedWorkbook)
     {
