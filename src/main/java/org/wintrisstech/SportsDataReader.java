@@ -1,7 +1,7 @@
 package org.wintrisstech;
 //******************************************************************************************
 // * Application to extract Consensus xlsx data from Covers
-// * version 2012229A
+// * version 210101
 // * copyright 2020 Dan Farris
 //*********************************************************************************
 import org.apache.poi.ss.usermodel.CellValue;

@@ -3,8 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>groupId</groupId>
   <artifactId>Covers</artifactId>
-  <version>version 201228B</version>
+  <version>210101</version>
   <build>
+    <defaultGoal>package</defaultGoal>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
@@ -18,7 +19,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>org.sonatype.haven.HavenCli</mainClass>
+                  <mainClass>org.wintrisstech.Main</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -28,7 +29,7 @@
     </plugins>
   </build>
   <properties>
-    <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 </project>

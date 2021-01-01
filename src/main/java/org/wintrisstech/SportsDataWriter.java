@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 201229A
+ // * version 210101
  *******************************************************************/
 public class SportsDataWriter
 {
