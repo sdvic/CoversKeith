@@ -27,7 +27,8 @@ public class SportsDataReader
     {
         try
         {
-            String inputFileName = "src/main/java/org/wintrisstech/SportData.xlsx";
+            String desktopPath = System.getProperty("user.home") + "/Desktop";
+            String inputFileName = desktopPath + "/SportData.xlsx";
             sportDataInputFile = new File(inputFileName);
             System.out.println("(2) Started reading SportsData Excel file from: " + sportDataInputFile + " to sportData HashMap");
             FileInputStream sportsDataFIS = new FileInputStream(sportDataInputFile);

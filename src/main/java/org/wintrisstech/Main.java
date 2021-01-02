@@ -10,7 +10,7 @@ import java.io.IOException;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210101A
+ // * version 210102
  *******************************************************************/
 public class Main
 {
@@ -19,7 +19,7 @@ public class Main
     private XSSFWorkbook sportDataWorkBook;
     public static void main(String[] args) throws IOException
     {
-        String version = "210101A";
+        String version = "210102";
         System.out.println("(1) Hello Covers World Version => " + version);
         System.out.println("Copyright 2021 Dan Farris");
         main = new Main();
