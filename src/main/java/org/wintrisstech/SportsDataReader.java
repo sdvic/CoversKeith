@@ -1,9 +1,9 @@
 package org.wintrisstech;
-//******************************************************************************************
-// * Application to extract Consensus xlsx data from Covers
-// * version 210101
-// * copyright 2020 Dan Farris
-//*********************************************************************************
+/*******************************************************************
+ * Covers NFL Extraction Tool
+ * Copyright 2020 Dan Farris
+ * version 210101A
+ *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.xssf.usermodel.*;
@@ -11,11 +11,6 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
-/*******************************************************************
- * Covers NFL Extraction Tool
- * Copyright 2020 Dan Farris
- * version 201229A
- *******************************************************************/
 public class SportsDataReader
 {
     private File sportDataInputFile;
@@ -32,7 +27,7 @@ public class SportsDataReader
     {
         try
         {
-            String inputFileName = "/Users/vicwintriss/Desktop/SportData2.xlsx";
+            String inputFileName = "src/main/java/org/wintrisstech/SportData.xlsx";
             sportDataInputFile = new File(inputFileName);
             System.out.println("(2) Started reading SportsData Excel file from: " + sportDataInputFile + " to sportData HashMap");
             FileInputStream sportsDataFIS = new FileInputStream(sportDataInputFile);
