@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210101A
+ * version 210102A
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -20,8 +20,6 @@ public class SportsDataReader
     private String keyValue;
     private double valueValue;
     private final HashMap<String, Double> sportDataMap = new HashMap<String, Double>();
-    private String errMsg;
-    private int cellType;
 
     public SportsDataReader()
     {

@@ -7,16 +7,20 @@ import org.jsoup.select.Elements;
 
 import javax.swing.*;
 import java.io.IOException;
+
+import static java.lang.Integer.parseInt;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210102
+ // * version 210102A
  *******************************************************************/
 public class Main
 {
     private static Main main;
     private static SportsDataAdder sportsDataAdder;
     private XSSFWorkbook sportDataWorkBook;
+    private String totalHomePicks;
+    private String totalAwayPicks;
     public static void main(String[] args) throws IOException
     {
         String version = "210102";
@@ -33,8 +37,7 @@ public class Main
         SportsDataReader sportsDataReader = new SportsDataReader();//Reads sports data xlsx file
         sportDataWorkBook = sportsDataReader.getSportDataWorkBook();
         SportsDataWriter sportsDataWriter = new SportsDataWriter();
-        sportsDataWriter.setCoversUpdatedWorkbook(sportDataWorkBook);
-        sportsDataWriter.writeSportsUpdatedWorkbook();
+
         String event = "https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + gameNumber;
         Document gamePage = Jsoup.connect(event).get();
         String gameNo = gameNumber;
@@ -44,10 +47,17 @@ public class Main
         Elements gameDates = gamePage.getElementsByClass("covers-CoversConsensus-consensusTableContainer covers-CoversConsensusDetailsTable");
         System.out.println("(8) Number of games for this week => " + gameDates.size());
         Element home = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft").get(0);
-        String totalHomePicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft").get(0).text();
-        String totalAwayPicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).text();
-        System.out.println("(9) Total Home Picks => " + totalHomePicks + " for " + teams);
-        System.out.println("(10) Total Away Picks => " + totalAwayPicks + " for " + teams);
+        totalHomePicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft").get(0).text();
+        totalAwayPicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).text();
+        System.out.print("(9) Total Home Picks => " + getTotalHomePicks() + " for " + teams);
+        System.out.println(" = " + getTotalHomePicks());
+        sportsDataWriter.setTotalHomePicks(parseInt(totalHomePicks));
+        System.out.print("(10) Total Away Picks => " + getTotalAwayPicks() + " for " + teams);
+        System.out.println(" = " + getTotalAwayPicks());
+        sportsDataWriter.setTotalHomePicks(parseInt(totalHomePicks));
+        sportsDataWriter.setTotalAwayPicks(parseInt(totalAwayPicks));
+        sportsDataWriter.setCoversUpdatedWorkbook(sportDataWorkBook);
+        sportsDataWriter.writeSportsUpdatedWorkbook();
         System.out.println("(11)  Proper Finish...hooray!");
         Document nflMatchUps = Jsoup.connect("https://www.covers.com/sports/nfl/matchups").get();
         Elements elements = nflMatchUps.getElementsContainingText("Week ");
@@ -55,6 +65,14 @@ public class Main
     public void setSportDataWorkBook(XSSFWorkbook sportDataWorkBook)
     {
         this.sportDataWorkBook = sportDataWorkBook;
+    }
+    public String getTotalHomePicks()
+    {
+        return totalHomePicks;
+    }
+    public String getTotalAwayPicks()
+    {
+        return totalAwayPicks;
     }
 }
 
