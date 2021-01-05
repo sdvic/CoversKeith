@@ -6,17 +6,15 @@ import java.io.FileOutputStream;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210104
+ * version 210104A
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 public class SportsDataWriter
 {
-    String desktopPath = System.getProperty("user.home") + "/Desktop";
-    private File coversUpdatedOutputFile = new File(desktopPath + "/UpdatedSportData.xlsx");
-    private XSSFWorkbook updatedSportWorkbook = new XSSFWorkbook();
-    public SportsDataWriter(XSSFWorkbook sportDataWorkbook, String totalHomePicks, String totalAwayPicks)
+    public SportsDataWriter(String desktopPath, XSSFWorkbook sportDataWorkbook, String totalHomePicks, String totalAwayPicks)
     {
-        updatedSportWorkbook = sportDataWorkbook;
+        XSSFWorkbook updatedSportWorkbook = sportDataWorkbook;
+        File coversUpdatedOutputFile = new File(desktopPath + "/UpdatedSportData.xlsx");
         updatedSportWorkbook.getSheetAt(0).getRow(3).getCell(0).setCellValue(totalHomePicks);
         XSSFSheet coversSheet = updatedSportWorkbook.getSheetAt(0);
         coversSheet.getRow(3).getCell(0).setCellValue("Buffalo at Denver");

@@ -11,13 +11,15 @@ import static java.lang.Integer.parseInt;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210104
+ // * version 210104A
  *******************************************************************/
 public class SportsDataAggregator
 {
     private Main main;
     private Document gamePage;
     private Workbook sportDataWorkbook;
+    private String totalHomePicks;
+    private String totalAwayPicks;
     public SportsDataAggregator(Document gamePage, Workbook sportDataWorkbook)
     {
         this.gamePage = gamePage;
@@ -27,9 +29,17 @@ public class SportsDataAggregator
         System.out.println("(5) Matchup => " + teams);
         Elements gameDates = gamePage.getElementsByClass("covers-CoversConsensus-consensusTableContainer covers-CoversConsensusDetailsTable");
         System.out.println("(6) Number of games for this week => " + gameDates.size());
-        String totalHomePicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft").get(0).text();
-        String totalAwayPicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).text();
+        totalHomePicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft").get(0).text();
+        totalAwayPicks = gamePage.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright").get(0).text();
         System.out.println("(7) Total Home Picks => for " + teams + " = " + totalHomePicks);
         System.out.println("(8) Total Away Picks => for " + teams + " = " + totalAwayPicks);
+    }
+    public String getTotalHomePicks()
+    {
+        return  totalHomePicks;
+    }
+    public String getTotalAwayPicks()
+    {
+        return  totalAwayPicks;
     }
 }
