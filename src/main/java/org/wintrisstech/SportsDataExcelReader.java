@@ -2,7 +2,8 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210102A
+ * version 210104
+ * Read large SportData excel work sheet into sportData hashmap
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
@@ -11,17 +12,15 @@ import org.apache.poi.xssf.usermodel.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
-public class SportsDataReader
+public class SportsDataExcelReader
 {
     private File sportDataInputFile;
     private XSSFWorkbook sportDataWorkBook;
-    private XSSFCell valueCell;
-    private XSSFCell keyCell;
     private String keyValue;
     private double valueValue;
     private final HashMap<String, Double> sportDataMap = new HashMap<String, Double>();
 
-    public SportsDataReader()
+    public SportsDataExcelReader()
     {
         try
         {
@@ -62,7 +61,7 @@ public class SportsDataReader
             }
             catch (Exception e)
             {
-                System.out.println("Can't get key String value at line 65 while reading Sports Data");
+                //System.out.println("Can't get key String value at line 65 while reading Sports Data");
                 continue;
             }
             XSSFCell valueCell = row.getCell(1); //Value cell
@@ -76,7 +75,7 @@ public class SportsDataReader
             }
             catch(Exception e)
             {
-                System.out.println("Can't get numeric value at line 80");
+                //System.out.println("Can't get numeric value at line 80");
             }
             getSportDataMap().put(keyValue, valueValue);
         }

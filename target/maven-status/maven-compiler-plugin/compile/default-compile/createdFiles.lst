@@ -1,4 +1,4 @@
-org/wintrisstech/SportsDataReader.class
 org/wintrisstech/SportsDataWriter.class
-org/wintrisstech/SportsDataAdder.class
+org/wintrisstech/SportsDataAggregator.class
 org/wintrisstech/Main.class
+org/wintrisstech/SportsDataExcelReader.class
