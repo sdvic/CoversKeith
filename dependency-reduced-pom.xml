@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>groupId</groupId>
   <artifactId>Covers</artifactId>
-  <version>210122</version>
+  <version>210123</version>
   <build>
     <defaultGoal>package</defaultGoal>
     <plugins>
