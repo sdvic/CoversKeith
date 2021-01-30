@@ -1,18 +1,21 @@
 package org.wintrisstech;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import javax.swing.*;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashMap;
 
 import static java.lang.Integer.parseInt;
 import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210129
+ // * version 210129A
  *******************************************************************/
 public class Main
 {
@@ -32,14 +35,16 @@ public class Main
         Document week = connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + matchupsDate).get();
         System.out.println("week => "+ weekNumberString);
         System.out.println("matchupsDate => " + matchupsDate);
-        //SportDataExcelReader sportDataExcelReader = new SportDataExcelReader(deskTopPath);//Reads sports data xlsx file to hash map
-        //HashMap sportDataMap = sportDataExcelReader.getSportDataMap();
-        //XSSFWorkbook sportDataWorkBook = sportDataExcelReader.getSportDataWorkBook();
+        SportDataExcelReader sportDataExcelReader = new SportDataExcelReader(deskTopPath);//Reads sports data xlsx file to hash map
+        HashMap sportDataMap = sportDataExcelReader.getSportDataMap();
+        XSSFWorkbook sportDataWorkBook = sportDataExcelReader.getSportDataWorkBook();
         SportsDataAggregator sportsDataAggregator = new SportsDataAggregator(week);
-        JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\nDate " + matchupsDate +"\nTotal Away ATS Picks => " + sportsDataAggregator.getTotalHomeATSPicks() + "\nTotal Away O/U Picks => " + sportsDataAggregator.getTotalHomeOUPicks());
+        String homeTeam = sportsDataAggregator.getHomeTeam();
+        String awayTeam = sportsDataAggregator.getAwayTeam();
         String totalHomePicks = sportsDataAggregator.getTotalHomeOUPicks();
         String totalAwayPicks = sportsDataAggregator.getTotalHomeATSPicks();
-        //new SportsDataWriter(deskTopPath, sportDataWorkBook, totalHomePicks, totalAwayPicks);
+        new SportsDataWriter(deskTopPath, sportDataWorkBook, totalHomePicks, totalAwayPicks, homeTeam, awayTeam, matchupsDate);
+        JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\nDate " + matchupsDate +"\nTotal Away ATS Picks => " + sportsDataAggregator.getTotalHomeATSPicks() + "\nTotal Away O/U Picks => " + sportsDataAggregator.getTotalHomeOUPicks());
         System.out.print("(11)  Proper Finish...hooray!");
     }
 }
