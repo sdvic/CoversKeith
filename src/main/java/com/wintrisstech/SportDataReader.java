@@ -1,8 +1,8 @@
-package org.wintrisstech;
+package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210129A
+ // * version 210208A
  * Read large SportData excel work sheet into sportData hashmap
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
@@ -15,22 +15,22 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.text.ParseException;
 import java.util.HashMap;
-public class SportDataExcelReader
+public class SportDataReader
 {
     private File sportDataInputFile;
     private XSSFWorkbook sportDataWorkBook;
     private String keyValue;
     private double valueValue;
     private final HashMap<String, Double> sportDataMap = new HashMap<String, Double>();
-    public SportDataExcelReader(String deskTopPath) throws ParseException
+    public SportDataReader(String deskTopPath) throws ParseException
     {
         try
         {
             sportDataInputFile = new File(deskTopPath + "/SportData.xlsx");/* End user's desktop */
+            FileInputStream sportDataFIS = new FileInputStream(sportDataInputFile);
             System.out.println("(2) Reading SportsData Excel file from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
-            FileInputStream sportsDataFIS = new FileInputStream(sportDataInputFile);
-            sportDataWorkBook = new XSSFWorkbook(sportsDataFIS);
-            sportsDataFIS.close();
+            sportDataWorkBook = new XSSFWorkbook(sportDataFIS);
+            sportDataFIS.close();
         }
         catch (Exception e)
         {

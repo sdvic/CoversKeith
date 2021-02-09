@@ -1,4 +1,4 @@
-package org.wintrisstech;
+package com.wintrisstech;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CodeStyleManager">
-    <option name="USE_DEFAULT_CODE_STYLE_SCHEME" value="true" />
-    <option name="CODE_STYLE_SCHEME" value="" />
-  </component>
   <component name="CompilerConfiguration">
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
@@ -20,71 +16,146 @@
       <module name="Covers" target="1.8" />
     </bytecodeTargetLevel>
   </component>
-  <component name="EntryPointsManager">
-    <entry_points />
-  </component>
-  <component name="ExportToHTMLSettings">
-    <option name="PRINT_LINE_NUMBERS" value="false" />
-    <option name="OPEN_IN_BROWSER" value="false" />
-    <option name="OUTPUT_DIRECTORY" />
-  </component>
-  <component name="ImportConfiguration">
-    <option name="VENDOR" />
-    <option name="RELEASE_TAG" />
-    <option name="LOG_MESSAGE" />
-    <option name="CHECKOUT_AFTER_IMPORT" value="true" />
-  </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />
     </profile>
     <version value="1.0" />
   </component>
-  <component name="JUnitProjectSettings">
-    <option name="TEST_RUNNER" value="UI" />
-  </component>
-  <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" />
-    <option name="OPTION_SCOPE" value="protected" />
-    <option name="OPTION_HIERARCHY" value="false" />
-    <option name="OPTION_NAVIGATOR" value="false" />
-    <option name="OPTION_INDEX" value="false" />
-    <option name="OPTION_SEPARATE_INDEX" value="false" />
-    <option name="OPTION_USE_1_1" value="false" />
-    <option name="OPTION_DOCUMENT_TAG_USE" value="false" />
-    <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="false" />
-    <option name="OPTION_DOCUMENT_TAG_VERSION" value="false" />
-    <option name="OPTION_DOCUMENT_TAG_DEPRECATED" value="false" />
-    <option name="OPTION_DEPRECATED_LIST" value="false" />
-    <option name="OTHER_OPTIONS" />
-    <option name="HEAP_SIZE" />
-    <option name="OPEN_IN_BROWSER" value="false" />
-  </component>
-  <component name="JikesSettings">
-    <option name="DEBUGGING_INFO" value="true" />
-    <option name="DEPRECATION" value="true" />
-    <option name="GENERATE_NO_WARNINGS" value="false" />
-    <option name="GENERATE_MAKE_FILE_DEPENDENCIES" value="false" />
-    <option name="DO_FULL_DEPENDENCE_CHECK" value="false" />
-    <option name="IS_INCREMENTAL_MODE" value="false" />
-    <option name="IS_EMACS_ERRORS_MODE" value="true" />
-    <option name="ADDITIONAL_OPTIONS_STRING" value="" />
-    <option name="MAXIMUM_HEAP_SIZE" value="128" />
-  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/dependency-reduced-pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+  </component>
+  <component name="Palette2">
+    <group name="Swing">
+      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+      </item>
+      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+      </item>
+      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+      </item>
+      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.png" removable="false" auto-create-binding="false" can-attach-label="true">
+        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+      </item>
+      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+        <initial-values>
+          <property name="text" value="Button" />
+        </initial-values>
+      </item>
+      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+        <initial-values>
+          <property name="text" value="RadioButton" />
+        </initial-values>
+      </item>
+      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+        <initial-values>
+          <property name="text" value="CheckBox" />
+        </initial-values>
+      </item>
+      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+        <initial-values>
+          <property name="text" value="Label" />
+        </initial-values>
+      </item>
+      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+          <preferred-size width="150" height="-1" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+          <preferred-size width="150" height="-1" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+          <preferred-size width="150" height="-1" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+          <preferred-size width="150" height="50" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+          <preferred-size width="150" height="50" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+          <preferred-size width="150" height="50" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+      </item>
+      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+          <preferred-size width="150" height="50" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+          <preferred-size width="150" height="50" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+          <preferred-size width="150" height="50" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+          <preferred-size width="200" height="200" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+          <preferred-size width="200" height="200" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.png" removable="false" auto-create-binding="true" can-attach-label="true">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+      </item>
+      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+      </item>
+      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+      </item>
+      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+      </item>
+      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+          <preferred-size width="-1" height="20" />
+        </default-constraints>
+      </item>
+      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.png" removable="false" auto-create-binding="false" can-attach-label="false">
+        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+      </item>
+      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
+        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+      </item>
+    </group>
   </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Covers.iml" filepath="$PROJECT_DIR$/Covers.iml" />
-      <module fileurl="file://$PROJECT_DIR$/my-project-name.iml" filepath="$PROJECT_DIR$/my-project-name.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="13." />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="openjdk-15" project-jdk-type="JavaSDK" />
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
       <option name="id" value="central" />
@@ -104,5 +175,667 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+  </component>
+  <component name="libraryTable">
+    <library name="Maven: com.fasterxml.woodstox:woodstox-core:5.2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/woodstox/woodstox-core/5.2.1/woodstox-core-5.2.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.github.virtuald:curvesapi:1.06">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: com.zaxxer:SparseBitSet:1.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/com/zaxxer/SparseBitSet/1.2/SparseBitSet-1.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: commons-codec:commons-codec:1.15">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: commons-io:commons-io:1.3.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/1.3.1/commons-io-1.3.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/1.3.1/commons-io-1.3.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/1.3.1/commons-io-1.3.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: de.rototor.pdfbox:graphics2d:0.30">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/de/rototor/pdfbox/graphics2d/0.30/graphics2d-0.30-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: jakarta.activation:jakarta.activation-api:1.2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.1/jakarta.activation-api-1.2.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.2/jakarta.xml.bind-api-2.3.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.commons:commons-collections4:4.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.commons:commons-compress:1.20">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.20/commons-compress-1.20.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.20/commons-compress-1.20-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-compress/1.20/commons-compress-1.20-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.commons:commons-math3:3.6.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.pdfbox:fontbox:2.0.22">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/fontbox/2.0.22/fontbox-2.0.22-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.pdfbox:pdfbox:2.0.22">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/pdfbox/pdfbox/2.0.22/pdfbox-2.0.22-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.poi:poi-ooxml-lite:5.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml-lite/5.0.0/poi-ooxml-lite-5.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.poi:poi-ooxml:5.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/5.0.0/poi-ooxml-5.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.poi:poi:5.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/5.0.0/poi-5.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/5.0.0/poi-5.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi/5.0.0/poi-5.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.santuario:xmlsec:2.2.1">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/santuario/xmlsec/2.2.1/xmlsec-2.2.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlbeans:xmlbeans:4.0.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlbeans/xmlbeans/4.0.0/xmlbeans-4.0.0-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-all:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-all/1.13/batik-all-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-anim:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-anim/1.13/batik-anim-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-awt-util:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-awt-util/1.13/batik-awt-util-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-bridge:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-bridge/1.13/batik-bridge-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-codec:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-codec/1.13/batik-codec-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-constants:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-constants/1.13/batik-constants-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-css:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-css/1.13/batik-css-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-dom:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-dom/1.13/batik-dom-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-ext:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-ext/1.13/batik-ext-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-extension:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-extension/1.13/batik-extension-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-gui-util:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-gui-util/1.13/batik-gui-util-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-gvt:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-gvt/1.13/batik-gvt-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-i18n:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-i18n/1.13/batik-i18n-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-parser:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-parser/1.13/batik-parser-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-rasterizer-ext:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-rasterizer-ext/1.13/batik-rasterizer-ext-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-rasterizer:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-rasterizer/1.13/batik-rasterizer-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-script:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-script/1.13/batik-script-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-shared-resources:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-shared-resources/1.13/batik-shared-resources-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-slideshow:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-slideshow/1.13/batik-slideshow-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-squiggle-ext:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-squiggle-ext/1.13/batik-squiggle-ext-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-squiggle:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-squiggle/1.13/batik-squiggle-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-svg-dom:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svg-dom/1.13/batik-svg-dom-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-svgbrowser:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgbrowser/1.13/batik-svgbrowser-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-svggen:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svggen/1.13/batik-svggen-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-svgpp:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgpp/1.13/batik-svgpp-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-svgrasterizer:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-svgrasterizer/1.13/batik-svgrasterizer-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-swing:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-swing/1.13/batik-swing-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-transcoder:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-transcoder/1.13/batik-transcoder-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-ttf2svg:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-ttf2svg/1.13/batik-ttf2svg-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-util:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-util/1.13/batik-util-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:batik-xml:1.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/batik-xml/1.13/batik-xml-1.13-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.apache.xmlgraphics:xmlgraphics-commons:2.4">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/apache/xmlgraphics/xmlgraphics-commons/2.4/xmlgraphics-commons-2.4-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.bouncycastle:bcpkix-jdk15on:1.68">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcpkix-jdk15on/1.68/bcpkix-jdk15on-1.68-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.bouncycastle:bcprov-jdk15on:1.68">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcprov-jdk15on/1.68/bcprov-jdk15on-1.68-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.codehaus.woodstox:stax2-api:4.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/woodstox/stax2-api/4.2/stax2-api-4.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.jsoup:jsoup:1.11.3">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.11.3/jsoup-1.11.3.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.11.3/jsoup-1.11.3-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/jsoup/jsoup/1.11.3/jsoup-1.11.3-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.slf4j:jcl-over-slf4j:1.7.30">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.slf4j:slf4j-api:1.7.30">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: xalan:serializer:2.7.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/xalan/serializer/2.7.2/serializer-2.7.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/xalan/serializer/2.7.2/serializer-2.7.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/xalan/serializer/2.7.2/serializer-2.7.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: xalan:xalan:2.7.2">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/xalan/xalan/2.7.2/xalan-2.7.2.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/xalan/xalan/2.7.2/xalan-2.7.2-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/xalan/xalan/2.7.2/xalan-2.7.2-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: xml-apis:xml-apis-ext:1.3.04">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis-ext/1.3.04/xml-apis-ext-1.3.04-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: xml-apis:xml-apis:1.4.01">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01-sources.jar!/" />
+      </SOURCES>
+    </library>
   </component>
 </project>

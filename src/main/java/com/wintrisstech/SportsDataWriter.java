@@ -1,13 +1,15 @@
-package org.wintrisstech;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+package com.wintrisstech;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
+import org.apache.poi.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210129A
+ // * version 210208A
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 public class SportsDataWriter

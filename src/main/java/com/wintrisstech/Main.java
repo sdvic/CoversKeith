@@ -1,4 +1,4 @@
-package org.wintrisstech;
+package com.wintrisstech;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +15,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210129A
+ // * version 210208A
  *******************************************************************/
 public class Main
 {
@@ -25,7 +25,7 @@ public class Main
     }
     private void getGoing() throws IOException, ParseException
     {
-        String version = "210129";
+        String version = "210208A";
         String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
         String weekNumberString = JOptionPane.showInputDialog(null, "Enter Matchups Week Number", "DanPic ver" + version + ", Copyright 2021 Dan Farris", JOptionPane.INFORMATION_MESSAGE);
         System.out.println("(1) Hello DanPick, version " + version + ", Copyright 2021 Dan Farris");
@@ -35,9 +35,10 @@ public class Main
         Document week = connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + matchupsDate).get();
         System.out.println("week => "+ weekNumberString);
         System.out.println("matchupsDate => " + matchupsDate);
-        SportDataExcelReader sportDataExcelReader = new SportDataExcelReader(deskTopPath);//Reads sports data xlsx file to hash map
-        HashMap sportDataMap = sportDataExcelReader.getSportDataMap();
-        XSSFWorkbook sportDataWorkBook = sportDataExcelReader.getSportDataWorkBook();
+        SportDataReader sportDataReader = new SportDataReader(deskTopPath);//Reads sports data xlsx file to hash map
+        XSSFWorkbook sportDataWorkBook = sportDataReader.getSportDataWorkBook();
+        System.out.println(sportDataWorkBook);
+        HashMap sportDataMap = sportDataReader.getSportDataMap();
         SportsDataAggregator sportsDataAggregator = new SportsDataAggregator(week);
         String homeTeam = sportsDataAggregator.getHomeTeam();
         String awayTeam = sportsDataAggregator.getAwayTeam();
