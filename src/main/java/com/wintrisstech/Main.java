@@ -42,10 +42,10 @@ public class Main
         SportsDataAggregator sportsDataAggregator = new SportsDataAggregator(week);
         String homeTeam = sportsDataAggregator.getHomeTeam();
         String awayTeam = sportsDataAggregator.getAwayTeam();
-        String totalHomePicks = sportsDataAggregator.getTotalHomeOUPicks();
+        String totalHomePicks = sportsDataAggregator.getTotalAwayOUPicks();
         String totalAwayPicks = sportsDataAggregator.getTotalHomeATSPicks();
         new SportsDataWriter(deskTopPath, sportDataWorkBook, totalHomePicks, totalAwayPicks, homeTeam, awayTeam, matchupsDate);
-        JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\nDate " + matchupsDate +"\nTotal Away ATS Picks => " + sportsDataAggregator.getTotalHomeATSPicks() + "\nTotal Away O/U Picks => " + sportsDataAggregator.getTotalHomeOUPicks());
+        JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + matchupsDate + "\n" + "Data Event ID " + sportsDataAggregator.getDataEventID() + "\n" + "Data Link ID " + sportsDataAggregator.getDataLinkID() + "\n" + awayTeam + " at " + homeTeam + "\nTotal Home ATS Picks => " + sportsDataAggregator.getTotalHomeATSPicks() + "\nTotal Away O/U Picks => " + sportsDataAggregator.getTotalAwayOUPicks(), "DanPick version 200209A", JOptionPane.INFORMATION_MESSAGE);
         System.out.print("(11)  Proper Finish...hooray!");
     }
 }
