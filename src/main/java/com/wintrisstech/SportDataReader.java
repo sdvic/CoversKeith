@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210208A
+ // * version 2102012A
  * Read large SportData excel work sheet into sportData hashmap
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
@@ -26,7 +26,7 @@ public class SportDataReader
     {
         try
         {
-            sportDataInputFile = new File(deskTopPath + "/SportData.xlsx");/* End user's desktop */
+            sportDataInputFile = new File(deskTopPath + "/UpdatedSportData.xlsx");/* End user's desktop */
             FileInputStream sportDataFIS = new FileInputStream(sportDataInputFile);
             System.out.println("(2) Reading SportsData Excel file from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
             sportDataWorkBook = new XSSFWorkbook(sportDataFIS);
