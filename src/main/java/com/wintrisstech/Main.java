@@ -13,11 +13,11 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102012A
+ // * version 2102014
  *******************************************************************/
 public class Main
 {
-    int i = 3;
+    int i = 0;
     String weekNumberString;
     public static void main(String[] args) throws IOException, ParseException
     {
@@ -25,9 +25,9 @@ public class Main
     }
     private void getGoing() throws IOException, ParseException
     {
-        while(i++ < 10)
+        while(i++ < 2)
         {
-            String version = "210208A";
+            String version = "210214";
             String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
             //String weekNumberString = JOptionPane.showInputDialog(null, "Enter Matchups Week Number", "DanPic ver" + version + ", Copyright 2021 Dan Farris", JOptionPane.INFORMATION_MESSAGE);
             weekNumberString = Integer.toString(i);
@@ -45,11 +45,11 @@ public class Main
             SportsDataAggregator sportsDataAggregator = new SportsDataAggregator(week);
             String homeTeam = sportsDataAggregator.getHomeTeam();
             String awayTeam = sportsDataAggregator.getAwayTeam();
-            String totalHomePicks = sportsDataAggregator.getAwayOU();
-            String totalAwayPicks = sportsDataAggregator.getHomeATS();
+            String totalHomePicks = sportsDataAggregator.getLeftOver2OU();
+            String totalAwayPicks = sportsDataAggregator.getLeftAway2ATS();
             SportsDataWriter sportsDataWriter = new SportsDataWriter(deskTopPath, sportDataWorkBook, totalHomePicks, totalAwayPicks, homeTeam, awayTeam, matchupsDate,i);
             sportsDataWriter.setI(i);
-            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + matchupsDate + "\n" + "Data Event ID " + sportsDataAggregator.getDataEventID() + "\n" + "Data Link ID " + sportsDataAggregator.getDataLinkID() + "\n" + awayTeam + " at " + homeTeam + "\nHome OU => " + sportsDataAggregator.getAwayOU() + "\nAway ATS => " + sportsDataAggregator.getHomeATS(), "DanPick version 200209A", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + matchupsDate + "\n" + "Data Event ID " + sportsDataAggregator.getDataEventID() + "\n" + "Data Link ID " + sportsDataAggregator.getDataLinkID() + "\n" + awayTeam + " at " + homeTeam + "\nHome OU => " + sportsDataAggregator.getLeftOver2OU() + "\nAway ATS => " + sportsDataAggregator.getLeftAway2ATS(), "DanPick version 200209A", JOptionPane.INFORMATION_MESSAGE);
             System.out.print("(11)  Proper Finish...time " + i + " hooray!");
         }
     }
