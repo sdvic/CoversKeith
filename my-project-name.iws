@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" afterDir="false" />
@@ -98,7 +99,15 @@
       <workItem from="1613171802744" duration="13853000" />
       <workItem from="1613235752810" duration="8051000" />
       <workItem from="1613356443158" duration="71000" />
-      <workItem from="1613356525130" duration="7869000" />
+      <workItem from="1613356525130" duration="8657000" />
+      <workItem from="1613431595326" duration="5501000" />
+      <workItem from="1613502854455" duration="3699000" />
+      <workItem from="1613518604560" duration="62000" />
+      <workItem from="1613520662521" duration="52000" />
+      <workItem from="1613672622621" duration="1601000" />
+      <workItem from="1613680132977" duration="11109000" />
+      <workItem from="1613695941121" duration="378000" />
+      <workItem from="1613707447139" duration="4494000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -121,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613193278460</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Filling small xlsx columns 60 &amp; 62&#10;version 2102014">
+      <created>1613368736049</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613368736049</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +147,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Keith fix version 210208A" />
     <MESSAGE value="Filling small xlsx&#10;version 2102012A" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filling small xlsx&#10;version 2102012A" />
+    <MESSAGE value="Filling small xlsx columns 60 &amp; 62&#10;version 2102014" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filling small xlsx columns 60 &amp; 62&#10;version 2102014" />
   </component>
 </project>

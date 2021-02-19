@@ -8,14 +8,14 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102014
+ // * version 2102018
  *******************************************************************/
 public class SportsDataAggregator
 {
-    private String leftOver2OU;
-    private String rightHome2ATS;
-    private String rightUnder2OU;
-    private String leftAway2ATS;
+    private String under;
+    private String home;
+    private String away;
+    private String over;
     private String dataEventID;
     private String dataLinkID;
     private String homeTeam;
@@ -35,26 +35,22 @@ public class SportsDataAggregator
         System.out.println("dataLinkID => " + dataLinkID);
         Elements rightConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright");
         Elements leftConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft");
-        System.out.println("hc[0] left2 ATS Away (BJ62) => " + leftConsensus.get(0).text());
-        System.out.println("hc[1] left-over2 (BO65) => " + leftConsensus.get(1).text());
-        System.out.println("ac[0] right2 ATS Home (BH60) => " + rightConsensus.get(0).text());
-        System.out.println("ac[1] right-under2 (BO67) => " + rightConsensus.get(1).text());
-        rightUnder2OU = leftConsensus.get(1).text();
-        leftAway2ATS = leftConsensus.get(0).text();
-        rightHome2ATS = rightConsensus.get(0).text();
-        leftOver2OU = rightConsensus.get(1).text();
-        System.out.println("(5) Left Away2 ATS  (BJ62) => " + leftAway2ATS);
-        System.out.println("(5) Right Home2 ATS (BH60) => " + rightHome2ATS);
-        System.out.println("(6) left-over2 OU (BM65) => " + leftOver2OU);
-        System.out.println("(6) right-under2 OU (BO67) => " + rightUnder2OU);
+        away = leftConsensus.get(0).text();
+        over = leftConsensus.get(1).text();
+        under = rightConsensus.get(1).text();
+        home = rightConsensus.get(0).text();
+        System.out.println("(5) Away  (BJ62) => " + away);
+        System.out.println("(5) Home (BH60) => " + home);
+        System.out.println("(6) Over (BM65) => " + over);
+        System.out.println("(7) Under (BO67) => " + under);
     }
-    public String getLeftOver2OU()
+    public String getUnder()
     {
-        return leftOver2OU;
+        return under;
     }
-    public String getLeftAway2ATS()
+    public String getOver()
     {
-        return leftAway2ATS;
+        return over;
     }
     public String getHomeTeam()
     {
@@ -71,5 +67,13 @@ public class SportsDataAggregator
     public String getDataEventID()
     {
         return dataEventID;
+    }
+    public String getAway()
+    {
+        return away;
+    }
+    public String getHome()
+    {
+        return home;
     }
 }

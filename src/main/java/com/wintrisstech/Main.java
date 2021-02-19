@@ -13,12 +13,14 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102014
+ // * version 2102018
  *******************************************************************/
 public class Main
 {
     int i = 0;
     String weekNumberString;
+    String version = "210214";
+    String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     public static void main(String[] args) throws IOException, ParseException
     {
         new Main().getGoing();
@@ -27,8 +29,6 @@ public class Main
     {
         while(i++ < 2)
         {
-            String version = "210214";
-            String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
             //String weekNumberString = JOptionPane.showInputDialog(null, "Enter Matchups Week Number", "DanPic ver" + version + ", Copyright 2021 Dan Farris", JOptionPane.INFORMATION_MESSAGE);
             weekNumberString = Integer.toString(i);
             System.out.println("(1) Hello DanPick, version " + version + ", Copyright 2021 Dan Farris");
@@ -45,11 +45,11 @@ public class Main
             SportsDataAggregator sportsDataAggregator = new SportsDataAggregator(week);
             String homeTeam = sportsDataAggregator.getHomeTeam();
             String awayTeam = sportsDataAggregator.getAwayTeam();
-            String totalHomePicks = sportsDataAggregator.getLeftOver2OU();
-            String totalAwayPicks = sportsDataAggregator.getLeftAway2ATS();
-            SportsDataWriter sportsDataWriter = new SportsDataWriter(deskTopPath, sportDataWorkBook, totalHomePicks, totalAwayPicks, homeTeam, awayTeam, matchupsDate,i);
+            String totalHomePicks = sportsDataAggregator.getUnder();
+            String totalAwayPicks = sportsDataAggregator.getOver();
+            SportsDataWriter sportsDataWriter = new SportsDataWriter(deskTopPath, sportDataWorkBook, weekNumberString, sportsDataAggregator.getHomeTeam(), sportsDataAggregator.getAwayTeam(), sportsDataAggregator.getHome(), sportsDataAggregator.getAway(), i, sportsDataAggregator.getUnder(), sportsDataAggregator.getOver());
             sportsDataWriter.setI(i);
-            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + matchupsDate + "\n" + "Data Event ID " + sportsDataAggregator.getDataEventID() + "\n" + "Data Link ID " + sportsDataAggregator.getDataLinkID() + "\n" + awayTeam + " at " + homeTeam + "\nHome OU => " + sportsDataAggregator.getLeftOver2OU() + "\nAway ATS => " + sportsDataAggregator.getLeftAway2ATS(), "DanPick version 200209A", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + matchupsDate + "\n" + "Data Event ID " + sportsDataAggregator.getDataEventID() + "\n" + "Data Link ID " + sportsDataAggregator.getDataLinkID() + "\n" + awayTeam + " at " + homeTeam + "\nOver " + sportsDataAggregator.getOver() + "\nUnder "  + sportsDataAggregator.getUnder() + "\nHome " + sportsDataAggregator.getHome() + "\nAway " + sportsDataAggregator.getAway(), "DanPick version 200209A", JOptionPane.INFORMATION_MESSAGE);
             System.out.print("(11)  Proper Finish...time " + i + " hooray!");
         }
     }
