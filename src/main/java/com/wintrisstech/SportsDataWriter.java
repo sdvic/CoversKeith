@@ -13,13 +13,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102018
+ // * version 2102020
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 public class SportsDataWriter
 {
     private int i;
-    public SportsDataWriter(String desktopPath, XSSFWorkbook sportDataWorkbook, String weekNumberString, String homeTeam, String awayTeam, String homePicks, String awayPicks, int i, String underPicks, String overPicks)
+    public SportsDataWriter(String desktopPath, XSSFWorkbook sportDataWorkbook, String weekNumberString, String homeTeam, String awayTeam, String homePicks, String awayPicks, String underPicks, String overPicks)
     {
         XSSFWorkbook updatedSportWorkbook = sportDataWorkbook;
         File coversUpdatedOutputFile = new File(desktopPath + "/UpdatedSportData.xlsx");
@@ -32,7 +32,6 @@ public class SportsDataWriter
         coversSheet.getRow(i + 2).getCell(62 - 1).setCellValue(awayPicks);//BJ62
         coversSheet.getRow(i + 2).getCell(65 - 1).setCellValue(overPicks);//BM65
         coversSheet.getRow(i + 2).getCell(67 - 1).setCellValue(underPicks);//BO67
-        System.out.println("home " + homePicks + " away " + awayPicks + " over " + overPicks + " under " + underPicks);
         System.out.println("(9) Writing covers workbook xlsx");// to File: " + coversUpdatedOutputFile);
         try
         {
