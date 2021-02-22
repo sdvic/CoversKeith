@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataAggregator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataWriter.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +64,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -111,7 +110,14 @@
       <workItem from="1613707447139" duration="4852000" />
       <workItem from="1613750614502" duration="5680000" />
       <workItem from="1613767725199" duration="9777000" />
-      <workItem from="1613848816860" duration="14580000" />
+      <workItem from="1613848816860" duration="14654000" />
+      <workItem from="1613883800950" duration="3784000" />
+      <workItem from="1613928509530" duration="1743000" />
+      <workItem from="1613935992226" duration="2567000" />
+      <workItem from="1613941342546" duration="3783000" />
+      <workItem from="1613948973793" duration="52000" />
+      <workItem from="1613949073855" duration="145000" />
+      <workItem from="1613951720890" duration="7813000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -148,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613712261778</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Processing multiple weeks/games&#10;version 2102020">
+      <created>1613872649613</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1613872649613</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +173,7 @@
     <MESSAGE value="Filling small xlsx&#10;version 2102012A" />
     <MESSAGE value="Filling small xlsx columns 60 &amp; 62&#10;version 2102014" />
     <MESSAGE value="Filling columns 60, 62, 65 and 67&#10;version 2102018" />
-    <option name="LAST_COMMIT_MESSAGE" value="Filling columns 60, 62, 65 and 67&#10;version 2102018" />
+    <MESSAGE value="Processing multiple weeks/games&#10;version 2102020" />
+    <option name="LAST_COMMIT_MESSAGE" value="Processing multiple weeks/games&#10;version 2102020" />
   </component>
 </project>

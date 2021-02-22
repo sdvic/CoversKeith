@@ -13,26 +13,21 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102020
+ // * version 2102021
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 public class SportsDataWriter
 {
-    private int i;
-    public SportsDataWriter(String desktopPath, XSSFWorkbook sportDataWorkbook, String weekNumberString, String homeTeam, String awayTeam, String homePicks, String awayPicks, String underPicks, String overPicks)
+    private int i;//week counter
+    private int j;//game counter
+    private int rowOffset;
+    public SportsDataWriter(String desktopPath, XSSFWorkbook sportDataWorkbook, String weekNumberString, String homeTeam, String awayTeam, String homePicks, String awayPicks, String underPicks, String overPicks, int i, int j)
     {
         XSSFWorkbook updatedSportWorkbook = sportDataWorkbook;
-        File coversUpdatedOutputFile = new File(desktopPath + "/UpdatedSportData.xlsx");
+        File coversUpdatedOutputFile = new File(desktopPath + "/SportData.xlsx");
         System.out.println("(8) Writing " + coversUpdatedOutputFile);
-        XSSFSheet coversSheet = updatedSportWorkbook.getSheetAt(0);
-        coversSheet.getRow(0).getCell(0).setCellValue(new Date().getTime());
-        coversSheet.getRow(i + 2).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
-        coversSheet.getRow(i + 2).getCell(4 - 1).setCellValue("week" + weekNumberString);
-        coversSheet.getRow(i + 2).getCell(60 - 1).setCellValue(homePicks);//BH60
-        coversSheet.getRow(i + 2).getCell(62 - 1).setCellValue(awayPicks);//BJ62
-        coversSheet.getRow(i + 2).getCell(65 - 1).setCellValue(overPicks);//BM65
-        coversSheet.getRow(i + 2).getCell(67 - 1).setCellValue(underPicks);//BO67
-        System.out.println("(9) Writing covers workbook xlsx");// to File: " + coversUpdatedOutputFile);
+
+        System.out.println("(9) Writing covers workbook xlsx");// to File: " + coversOutputFile);
         try
         {
             FileOutputStream coversUpdatedFOS = new FileOutputStream(coversUpdatedOutputFile);

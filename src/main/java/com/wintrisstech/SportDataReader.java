@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102020
+ // * version 2102021
  * Read large SportData excel work sheet into sportData hashmap
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
@@ -21,16 +21,18 @@ public class SportDataReader
     private XSSFWorkbook sportDataWorkBook;
     private String keyValue;
     private double valueValue;
+    private XSSFSheet sportDataSheet;
     private final HashMap<String, Double> sportDataMap = new HashMap<String, Double>();
     public SportDataReader(String deskTopPath) throws ParseException
     {
         try
         {
-            sportDataInputFile = new File(deskTopPath + "/UpdatedSportData.xlsx");/* End user's desktop */
+            sportDataInputFile = new File(deskTopPath + "/SportData.xlsx");/* End user's desktop */
             FileInputStream sportDataFIS = new FileInputStream(sportDataInputFile);
             System.out.println("(2) Reading SportsData Excel file");// from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
             sportDataWorkBook = new XSSFWorkbook(sportDataFIS);
             sportDataFIS.close();
+            sportDataSheet = sportDataWorkBook.getSheetAt(0);
         }
         catch (Exception e)
         {
@@ -38,7 +40,7 @@ public class SportDataReader
             e.printStackTrace();
         }
         FormulaEvaluator evaluator = sportDataWorkBook.getCreationHelper().createFormulaEvaluator();
-        XSSFSheet sportDataSheet = sportDataWorkBook.getSheetAt(0);
+        sportDataSheet = sportDataWorkBook.getSheetAt(0);
         for (int rowIndex = 0; rowIndex < sportDataSheet.getLastRowNum(); rowIndex++)
         {
             XSSFRow row = sportDataSheet.getRow(rowIndex);
@@ -98,5 +100,9 @@ public class SportDataReader
     public HashMap<String, Double> getSportDataMap()
     {
         return sportDataMap;
+    }
+    public XSSFSheet getSportDataSheet()
+    {
+        return sportDataSheet;
     }
 }
