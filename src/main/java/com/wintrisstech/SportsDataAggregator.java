@@ -1,18 +1,15 @@
 package com.wintrisstech;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
-import java.io.IOException;
-import java.util.Date;
-
-import static org.jsoup.Jsoup.connect;
-import static org.jsoup.Jsoup.parse;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102021
+ // * version 210304
  *******************************************************************/
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+import java.io.IOException;
+import java.util.Date;
+import static org.jsoup.Jsoup.connect;
 public class SportsDataAggregator
 {
     private String under;

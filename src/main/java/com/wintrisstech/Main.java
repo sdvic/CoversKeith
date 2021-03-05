@@ -1,4 +1,9 @@
 package com.wintrisstech;
+/*******************************************************************
+ * Covers NFL Extraction Tool
+ * Copyright 2020 Dan Farris
+ // * version 21020304
+ *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.Jsoup;
@@ -10,27 +15,26 @@ import java.io.IOException;
 import java.text.ParseException;
 import static java.lang.Integer.parseInt;
 import static org.jsoup.Jsoup.connect;
-/*******************************************************************
- * Covers NFL Extraction Tool
- * Copyright 2020 Dan Farris
- // * version 2102021
- *******************************************************************/
 public class Main
 {
     String weekNumberString;
-    String version = "210221";
+    String version = "210304";
     int numberOfWeeks = 4;
     private int j;//game counter
     String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     String dataEventID;
     private XSSFSheet coversSheet;
     private int gameTotal;
+    private Elements thisWeeksGames;
     public static void main(String[] args) throws IOException, ParseException
     {
         new Main().getGoing();
+//        new Main().jspoupTester();
     }
     private void getGoing() throws IOException, ParseException
     {
+        WebSiteReader webSiteReader = new WebSiteReader();
+        thisWeeksGames = webSiteReader.readCleanWebsite();
         SportDataReader sportDataReader = new SportDataReader(deskTopPath);//Reads sports data xlsx file to hash map
         SportsDataAggregator sportsDataAggregator = new SportsDataAggregator();
         for (int i = 1; i < numberOfWeeks; i++)//week number 1 based
@@ -58,6 +62,58 @@ public class Main
         }
         System.out.print("(11)  Proper Finish...hooray!");
     }
+    public void jspoupTester()
+    {
+        String html = "<html><head><title>Sample Title</title></head>"
+                + "<body>"
+                + "<p>Sample Content</p>"
+                + "<div id='sampleDiv'><a href='www.google.com'>Google</a>"
+                + "<h3><a>Sample</a><h3>"
+                + "</div>"
+                + "<div id='imageDiv' class='header'><img name='google' src='google.png' />"
+                + "<img name='yahoo' src='yahoo.jpg' />"
+                + "</div>"
+                + "<option value='2020-09-10'>Week 1</option>"
+                + "<option value='2020-09-17'>Week 2</option>"
+                + "</body></html>";
+        Document document = Jsoup.parse(html);
+
+        //a with href
+        Elements links = document.select("a[href]");
+        for (Element link : links)
+        {
+            System.out.println("Href: " + link.attr("href"));
+            System.out.println("Text: " + link.text());
+        }
+
+        // img with src ending .png
+        Elements pngs = document.select("img[src$=.png]");
+
+        for (Element png : pngs)
+        {
+            System.out.println("(1) Name: " + png.attr("name"));
+        }
+
+        // div with class=header
+        Element headerDiv = document.select("div.header").first();
+        System.out.println("(2) Id: " + headerDiv.id());
+
+        // get Week
+        Element optionDiv = document.select("option").get(1);
+        System.out.println("(3) Week: " + optionDiv.text());
+
+        // get date
+        Element optionVal = document.select("option").get(1);
+        System.out.println("(4) Date: " + optionVal.val());
+
+        // direct a after h3
+        Elements sampleLinks = document.select("h3 > a");
+        for (Element link : sampleLinks)
+        {
+            System.out.println("(5...)Text: " + link.text());
+        }
+    }
+
 }
 
 

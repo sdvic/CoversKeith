@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 2102021
+ // * version 210304
  * Read large SportData excel work sheet into sportData hashmap
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellValue;
@@ -33,6 +33,7 @@ public class SportDataReader
             sportDataWorkBook = new XSSFWorkbook(sportDataFIS);
             sportDataFIS.close();
             sportDataSheet = sportDataWorkBook.getSheetAt(0);
+            System.out.println();
         }
         catch (Exception e)
         {
