@@ -125,6 +125,7 @@
       <workItem from="1615138274893" duration="1194000" />
       <workItem from="1615145725263" duration="2751000" />
       <workItem from="1615151847834" duration="2639000" />
+      <workItem from="1615158675602" duration="384000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -175,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614903816204</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="version 210307...Trying to get executable jar working.">
+      <created>1615159018595</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615159018595</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +197,7 @@
     <MESSAGE value="Filling columns 60, 62, 65 and 67&#10;version 2102018" />
     <MESSAGE value="Processing multiple weeks/games&#10;version 2102020" />
     <MESSAGE value="version 210304...Jsoup test attached" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210304...Jsoup test attached" />
+    <MESSAGE value="version 210307...Trying to get executable jar working." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210307...Trying to get executable jar working." />
   </component>
 </project>
