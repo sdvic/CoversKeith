@@ -12,7 +12,7 @@ public class SportsDataWriter
 {
     private int i;//week counter
     private int j;//game counter
-    private int rowOffset;
+    private int rowOffset = 2;
     public SportsDataWriter(String desktopPath, XSSFWorkbook sportDataWorkbook, String weekNumberString, String homeTeam, String awayTeam, String homePicks, String awayPicks, String underPicks, String overPicks, int i, int j)
     {
         XSSFWorkbook updatedSportWorkbook = sportDataWorkbook;

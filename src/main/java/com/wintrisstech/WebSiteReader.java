@@ -14,11 +14,11 @@ import static org.jsoup.Jsoup.connect;
 public class WebSiteReader
 {
     private String calendarWeekDate = "2020-10-18";
-    private String dirtyURL = "https://www.covers.com/sports/nfl/matchups?selectedDate=" + calendarWeekDate;
+    private String dirtyURL;
     private Document nflMatchupsDoc;
-    private Elements nflMatchups;
-    public Elements readCleanWebsite() throws IOException
+    public Document readCleanWebsite(String dirtyURL) throws IOException
     {
+        this.dirtyURL = dirtyURL;
         System.out.println("(4) Reading and cleaning " + dirtyURL);//https://www.covers.com/sports/nfl/matchups?selectedDate=2020-10-18");
         String dirtyString = connect(dirtyURL).get().html();
         boolean valid = Jsoup.isValid(dirtyString, Whitelist.basic());
@@ -31,12 +31,12 @@ public class WebSiteReader
             System.out.println("\t\t\tThe document is not valid, Cleaning document");
             Document dirtyDoc = Jsoup.parse(dirtyString);
             nflMatchupsDoc = new Cleaner(Whitelist.basic()).clean(dirtyDoc);
-            nflMatchups = nflMatchupsDoc.getAllElements();
-            System.out.println("\t\t\tThe document is now clean...hooray...its length is " + nflMatchups.html().length());
+//            nflMatchupsDoc = dirtyDoc;
+            System.out.println("\t\t\tThe document is now clean...hooray...its length is " + nflMatchupsDoc.html().length());
         }
         System.out.println("(5) Finished reading and cleaning website");
         System.out.println("******************************************************************************************************************************");
-        return nflMatchups;
+        return nflMatchupsDoc;
         }
     }
 
