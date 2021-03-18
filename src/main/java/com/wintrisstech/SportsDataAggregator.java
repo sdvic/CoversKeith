@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210304
+ // * version 210318
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import javax.swing.*;
 import java.io.IOException;
 import java.util.Date;
 import static org.jsoup.Jsoup.connect;
@@ -25,12 +26,13 @@ public class SportsDataAggregator
     private String homeTeam;
     private String awayTeam;
     private int gameIndex;
-    private int gameTotal;
+    private int gameCount;
     private int rowOffset = 3;
-    private String matchupsDate;
+    private String dataGameDate;
     private XSSFWorkbook sportDataWorkBook;
+    private String version;
 
-    public int aggregateSportsData(Elements thisWeekGamesElements, Document thisWeekGamesDoc, XSSFSheet sportDataSheet, String weekNumberString, String matchupsDate) throws IOException
+    public int aggregateSportsData(Elements thisWeekGamesElements, XSSFSheet sportDataSheet, String weekNumberString, String matchupsDate) throws IOException
     {
         for (gameIndex = 0; gameIndex < 4 ; gameIndex++)//game counter zero based
         {
@@ -51,8 +53,6 @@ public class SportsDataAggregator
             System.out.println("(5) Home (BH60) => " + home);
             System.out.println("(6) Over (BM65) => " + over);
             System.out.println("(7) Under (BO67) => " + under);
-            System.out.println("game total " + gameTotal);
-
             byte[] rgb = new byte[]{(byte)255, (byte)0, (byte)0};
             CellStyle myStyle = sportDataWorkBook.createCellStyle();
             Font myFont = sportDataWorkBook.createFont();
@@ -62,25 +62,26 @@ public class SportsDataAggregator
             xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
             sportDataSheet.getRow(0).getCell(0).setCellStyle(myStyle);
             sportDataSheet.getRow(0).getCell(0).setCellValue("Updated " + new Date().toString());
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(0).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(1).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(1).setCellValue(matchupsDate);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(2).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(2).setCellValue(matchupsDate.substring(0, 4));//Pick year only out of date
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(3).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(3).setCellValue("week" + weekNumberString);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(59).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(59).setCellValue(home);//BH60
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(61).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(61).setCellValue(away);//BJ62
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(64).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(64).setCellValue(over);//BM65
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(66).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameTotal).getCell(66).setCellValue(under);//BO67
-            gameTotal++;
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellValue(dataGameDate);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(matchupsDate.substring(0, 4));//Pick year only out of date
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellValue("week" + weekNumberString);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(59).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(59).setCellValue(home);//BH60
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(61).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(61).setCellValue(away);//BJ62
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(64).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(64).setCellValue(over);//BM65
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellStyle(myStyle);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellValue(under);//BO67
+            gameCount++;
+            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsDate + "\n" + "Game Date " + dataGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
         }
-        return gameTotal;
+        return gameCount;
     }
     public String getUnder()
     {
@@ -110,12 +111,11 @@ public class SportsDataAggregator
     {
         return home;
     }
-    public void setGameTotal(int gameTotal)
-    {
-        this.gameTotal = gameTotal;
-    }
     public void setSportDataWorkBook(XSSFWorkbook sportDataWorkBook)
     {
         this.sportDataWorkBook = sportDataWorkBook;
     }
+    public void setDataGameDate(String dataGameDate)
+    {this.dataGameDate = dataGameDate; }
+    public void setVerson(String version) {this.version = version; }
 }
