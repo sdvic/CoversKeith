@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 21020319
+ // * version 21020320
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -18,6 +18,7 @@ import static java.lang.System.out;
 import static org.jsoup.Jsoup.connect;
 public class Main
 {
+    private String version = "210320";
     String weekNumberString;
     private int j;//game counter
     String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -28,7 +29,6 @@ public class Main
     private String dirtyURL = "https://www.covers.com/sports/nfl/matchups?selectedDate=2020-09-10";
     private Document randomGamesDoc;
     private XSSFWorkbook sportsDataWorkBook;
-    private String version = "210319";
     public static void main(String[] args) throws IOException, ParseException
     {
         out.println("(1) Hello SharpMarkets, version 210318, Copyright 2021 Dan Farris");
@@ -36,10 +36,10 @@ public class Main
     }
     private void getGoing() throws IOException, ParseException
     {
-        WebSiteReader webSiteReader = new WebSiteReader();//Read Covers.com...any week, to get game week dates
+        src.main.java.com.wintrisstech.WebSiteReader webSiteReader = new src.main.java.com.wintrisstech.WebSiteReader();//Read Covers.com...any week, to get game week dates
         randomGamesDoc = webSiteReader.readCleanWebsite(dirtyURL);
         randomGamesElements = randomGamesDoc.getAllElements();
-        SportDataReader sportDataReader = new SportDataReader(deskTopPath);//Reads sports data xlsx file to hash map
+        src.main.java.com.wintrisstech.SportDataReader sportDataReader = new src.main.java.com.wintrisstech.SportDataReader(deskTopPath);//Reads sports data xlsx file to hash map
         sportsDataWorkBook = sportDataReader.getSportDataWorkBook();
         SportsDataAggregator sportsDataAggregator = new SportsDataAggregator();
         sportsDataAggregator.setSportDataWorkBook(sportsDataWorkBook);
@@ -57,7 +57,7 @@ public class Main
             sportsDataAggregator.aggregateSportsData(thisWeekGameElements, coversSheet, weekNumberString, nflWeekDate);
             String homeTeam = sportsDataAggregator.getHomeTeam();
             String awayTeam = sportsDataAggregator.getAwayTeam();
-            SportsDataWriter sportsDataWriter = new SportsDataWriter(deskTopPath, sportDataReader.getSportDataWorkBook(), weekNumberString, sportsDataAggregator.getHomeTeam(), sportsDataAggregator.getAwayTeam(), sportsDataAggregator.getHome(), sportsDataAggregator.getAway(), sportsDataAggregator.getUnder(), sportsDataAggregator.getOver(), i, j);
+            src.main.java.com.wintrisstech.SportsDataWriter sportsDataWriter = new src.main.java.com.wintrisstech.SportsDataWriter(deskTopPath, sportDataReader.getSportDataWorkBook(), weekNumberString, sportsDataAggregator.getHomeTeam(), sportsDataAggregator.getAwayTeam(), sportsDataAggregator.getHome(), sportsDataAggregator.getAway(), sportsDataAggregator.getUnder(), sportsDataAggregator.getOver(), i, j);
             sportsDataWriter.setI(i);
             JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + nflWeekDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + sportsDataAggregator.getOver() + "\nUnder " + sportsDataAggregator.getUnder() + "\nHome " + sportsDataAggregator.getHome() + "\nAway " + sportsDataAggregator.getAway(), "SharpMarkets version " + version, JOptionPane.INFORMATION_MESSAGE);
         }

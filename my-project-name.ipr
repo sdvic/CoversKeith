@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactManager">
+    <artifact type="javafx" name="Covers">
+      <output-path>$PROJECT_DIR$/out/artifacts/Covers</output-path>
+      <root id="root">
+        <element id="archive" name="Covers.jar">
+          <element id="module-output" name="Covers" />
+        </element>
+      </root>
+    </artifact>
+  </component>
   <component name="CompilerConfiguration">
     <wildcardResourcePatterns>
       <entry name="!?*.java" />

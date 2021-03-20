@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210319
+ // * version 210320
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -16,7 +16,6 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.Date;
 
-import static java.lang.System.out;
 import static org.jsoup.Jsoup.connect;
 public class SportsDataAggregator
 {
@@ -34,11 +33,11 @@ public class SportsDataAggregator
     private XSSFWorkbook sportDataWorkBook;
     private String version;
     private int numberOfGamesThisWeek;
-    private String nflSeason;
+    private String nflSeasonYear;
     public int aggregateSportsData(Elements thisWeekGameElements, XSSFSheet sportDataSheet, String weekNumberString, String matchupsCalendarDate) throws IOException
     {
         numberOfGamesThisWeek = thisWeekGameElements.size();
-        for (gameIndex = 0; gameIndex < numberOfGamesThisWeek ; gameIndex++)//game counter zero based
+        for (gameIndex = 0; gameIndex < 3 ; gameIndex++)//game counter zero based
         {
             System.out.println("(4) Start aggregating Covers info, game " + (gameIndex + 1));//game number this week counter...int j is zero based
             thisGameDate = thisWeekGameElements.get(gameIndex).attr("data-game-date").substring(0, 10);//This game date
@@ -54,10 +53,6 @@ public class SportsDataAggregator
             over = leftConsensus.get(1).text();
             under = rightConsensus.get(1).text();
             home = rightConsensus.get(0).text();
-            System.out.println("(5) Away  (BJ62) => " + away);
-            System.out.println("(5) Home (BH60) => " + home);
-            System.out.println("(6) Over (BM65) => " + over);
-            System.out.println("(7) Under (BO67) => " + under);
             byte[] rgb = new byte[]{(byte)255, (byte)0, (byte)0};
             CellStyle myStyle = sportDataWorkBook.createCellStyle();
             Font myFont = sportDataWorkBook.createFont();
@@ -72,9 +67,8 @@ public class SportsDataAggregator
             sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellStyle(myStyle);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellValue(thisGameDate);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellStyle(myStyle);
-            nflSeason= matchupsCalendarDate.substring(0,4);
-            sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(nflSeason);
-            System.out.println("22222222222222222222222222222222222-nflSeason: " + nflSeason);
+            nflSeasonYear = matchupsCalendarDate.substring(0,4);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(nflSeasonYear);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellStyle(myStyle);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellValue("week" + weekNumberString);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(59).setCellStyle(myStyle);
@@ -87,7 +81,6 @@ public class SportsDataAggregator
             sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellValue(under);//BO67
             JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsCalendarDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
             gameCount++;
-            System.out.println("-----------------------------------thisGameDate" + thisGameDate);
         }
         return gameCount;
     }
