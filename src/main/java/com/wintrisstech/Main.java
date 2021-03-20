@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 21020318
+ // * version 21020319
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -22,14 +22,13 @@ public class Main
     private int j;//game counter
     String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     String dataEventID;
-    String dataGameDate;
+    String thisGameDate;
     private XSSFSheet coversSheet;
     private Elements randomGamesElements;
     private String dirtyURL = "https://www.covers.com/sports/nfl/matchups?selectedDate=2020-09-10";
     private Document randomGamesDoc;
     private XSSFWorkbook sportsDataWorkBook;
-    private String version = "210318";
-    Elements e;
+    private String version = "210319";
     public static void main(String[] args) throws IOException, ParseException
     {
         out.println("(1) Hello SharpMarkets, version 210318, Copyright 2021 Dan Farris");
@@ -45,26 +44,22 @@ public class Main
         SportsDataAggregator sportsDataAggregator = new SportsDataAggregator();
         sportsDataAggregator.setSportDataWorkBook(sportsDataWorkBook);
         sportsDataAggregator.setVerson(version);
-        for (int i = 1; i < 4; i++)//week number 1 based
+        for (int i = 1; i < 3; i++)//week number 1 based
         {
             //String weekNumberString = JOptionPane.showInputDialog(null, "Enter Matchups Week Number", "SharpMarkets ver" + version + ", Copyright 2021 Dan Farris", JOptionPane.INFORMATION_MESSAGE);
             weekNumberString = Integer.toString(i);
             Elements matchupWeekDates = Jsoup.connect("https://www.covers.com/sports/nfl/matchups").get().select(".covers-MatchupFilters-footballDate, value");
             Element weekNumber = matchupWeekDates.select("option[value]").get(parseInt(weekNumberString));
-            String matchupsCalendarDate = weekNumber.getElementsByAttribute("value").val();
-            Document week = connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + matchupsCalendarDate).get();
-            Elements thisWeekGamesElements = week.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
-            dataEventID = thisWeekGamesElements.get(i).attr("data-event-id");//two team event number on particular date
-            dataGameDate = thisWeekGamesElements.get(i).attr("data-game-date").substring(0, 10);
-            sportsDataAggregator.setDataGameDate(dataGameDate);
-            XSSFWorkbook sportDataWorkBook = sportDataReader.getSportDataWorkBook();
+            String nflWeekDate = weekNumber.getElementsByAttribute("value").val();
+            Document week = connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + nflWeekDate).get();
+            Elements thisWeekGameElements = week.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
             coversSheet = sportDataReader.getSportDataSheet();
-            sportsDataAggregator.aggregateSportsData(thisWeekGamesElements, coversSheet, weekNumberString, matchupsCalendarDate);
+            sportsDataAggregator.aggregateSportsData(thisWeekGameElements, coversSheet, weekNumberString, nflWeekDate);
             String homeTeam = sportsDataAggregator.getHomeTeam();
             String awayTeam = sportsDataAggregator.getAwayTeam();
             SportsDataWriter sportsDataWriter = new SportsDataWriter(deskTopPath, sportDataReader.getSportDataWorkBook(), weekNumberString, sportsDataAggregator.getHomeTeam(), sportsDataAggregator.getAwayTeam(), sportsDataAggregator.getHome(), sportsDataAggregator.getAway(), sportsDataAggregator.getUnder(), sportsDataAggregator.getOver(), i, j);
             sportsDataWriter.setI(i);
-            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + matchupsCalendarDate + "\n" + "Game Date " + dataGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + sportsDataAggregator.getOver() + "\nUnder " + sportsDataAggregator.getUnder() + "\nHome " + sportsDataAggregator.getHome() + "\nAway " + sportsDataAggregator.getAway(), "SharpMarkets version " + version, JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + nflWeekDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + sportsDataAggregator.getOver() + "\nUnder " + sportsDataAggregator.getUnder() + "\nHome " + sportsDataAggregator.getHome() + "\nAway " + sportsDataAggregator.getAway(), "SharpMarkets version " + version, JOptionPane.INFORMATION_MESSAGE);
         }
         out.print("\n(11)  Proper Finish...hooray!");
     }

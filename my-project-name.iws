@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Covers-210307.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportDataReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportDataReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataAggregator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/WebSiteReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/WebSiteReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +52,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RunAnythingCache">
@@ -70,19 +72,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,7 +147,13 @@
       <workItem from="1615776895399" duration="3876000" />
       <workItem from="1615847695223" duration="7018000" />
       <workItem from="1616039356919" duration="4231000" />
-      <workItem from="1616082663201" duration="11052000" />
+      <workItem from="1616082663201" duration="15021000" />
+      <workItem from="1616110211664" duration="1284000" />
+      <workItem from="1616122318632" duration="827000" />
+      <workItem from="1616166621333" duration="1070000" />
+      <workItem from="1616171934543" duration="5113000" />
+      <workItem from="1616194752202" duration="2125000" />
+      <workItem from="1616202680463" duration="263000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -223,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615159272798</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="version 210318...CleanUp working...no executable jar">
+      <created>1616095044123</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616095044124</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +240,7 @@
     <MESSAGE value="Processing multiple weeks/games&#10;version 2102020" />
     <MESSAGE value="version 210304...Jsoup test attached" />
     <MESSAGE value="version 210307...Trying to get executable jar working." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210307...Trying to get executable jar working." />
+    <MESSAGE value="version 210318...CleanUp working...no executable jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210318...CleanUp working...no executable jar" />
   </component>
 </project>

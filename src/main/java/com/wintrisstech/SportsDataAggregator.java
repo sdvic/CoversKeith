@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210318
+ // * version 210319
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -15,6 +15,8 @@ import org.jsoup.select.Elements;
 import javax.swing.*;
 import java.io.IOException;
 import java.util.Date;
+
+import static java.lang.System.out;
 import static org.jsoup.Jsoup.connect;
 public class SportsDataAggregator
 {
@@ -28,18 +30,21 @@ public class SportsDataAggregator
     private int gameIndex;
     private int gameCount;
     private int rowOffset = 3;
-    private String dataGameDate;
+    private String thisGameDate;
     private XSSFWorkbook sportDataWorkBook;
     private String version;
-
-    public int aggregateSportsData(Elements thisWeekGamesElements, XSSFSheet sportDataSheet, String weekNumberString, String matchupsDate) throws IOException
+    private int numberOfGamesThisWeek;
+    private String nflSeason;
+    public int aggregateSportsData(Elements thisWeekGameElements, XSSFSheet sportDataSheet, String weekNumberString, String matchupsCalendarDate) throws IOException
     {
-        for (gameIndex = 0; gameIndex < 4 ; gameIndex++)//game counter zero based
+        numberOfGamesThisWeek = thisWeekGameElements.size();
+        for (gameIndex = 0; gameIndex < numberOfGamesThisWeek ; gameIndex++)//game counter zero based
         {
             System.out.println("(4) Start aggregating Covers info, game " + (gameIndex + 1));//game number this week counter...int j is zero based
-            dataEventID = thisWeekGamesElements.get(gameIndex).attr("data-event-id");//two team event number on particular date...int i is 1 based
-            homeTeam = thisWeekGamesElements.get(gameIndex).attr("data-home-team-fullname-search");
-            awayTeam = thisWeekGamesElements.get(gameIndex).attr("data-away-team-fullname-search");
+            thisGameDate = thisWeekGameElements.get(gameIndex).attr("data-game-date").substring(0, 10);//This game date
+            dataEventID = thisWeekGameElements.get(gameIndex).attr("data-event-id");//two team event number on particular date...int i is 1 based
+            homeTeam = thisWeekGameElements.get(gameIndex).attr("data-home-team-fullname-search");
+            awayTeam = thisWeekGameElements.get(gameIndex).attr("data-away-team-fullname-search");
             System.out.println("home-team => " + homeTeam);
             System.out.println("away-team => " + awayTeam);
             Document silver = connect("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventID).get();
@@ -65,9 +70,11 @@ public class SportsDataAggregator
             sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellStyle(myStyle);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellValue(dataGameDate);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellValue(thisGameDate);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellStyle(myStyle);
-            sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(matchupsDate.substring(0, 4));//Pick year only out of date
+            nflSeason= matchupsCalendarDate.substring(0,4);
+            sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(nflSeason);
+            System.out.println("22222222222222222222222222222222222-nflSeason: " + nflSeason);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellStyle(myStyle);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellValue("week" + weekNumberString);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(59).setCellStyle(myStyle);
@@ -78,8 +85,9 @@ public class SportsDataAggregator
             sportDataSheet.getRow(rowOffset + gameCount).getCell(64).setCellValue(over);//BM65
             sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellStyle(myStyle);
             sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellValue(under);//BO67
+            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsCalendarDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
             gameCount++;
-            JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsDate + "\n" + "Game Date " + dataGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("-----------------------------------thisGameDate" + thisGameDate);
         }
         return gameCount;
     }
@@ -115,7 +123,6 @@ public class SportsDataAggregator
     {
         this.sportDataWorkBook = sportDataWorkBook;
     }
-    public void setDataGameDate(String dataGameDate)
-    {this.dataGameDate = dataGameDate; }
+    public void setThisGameDate(String thisGameDate) {this.thisGameDate = thisGameDate; }
     public void setVerson(String version) {this.version = version; }
 }
