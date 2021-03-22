@@ -2,7 +2,8 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 21020320
+ * version 21020322
+ * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -18,7 +19,7 @@ import static java.lang.System.out;
 import static org.jsoup.Jsoup.connect;
 public class Main
 {
-    private String version = "210320";
+    private String version = "210322";
     String weekNumberString;
     private int j;//game counter
     String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -36,7 +37,7 @@ public class Main
     }
     private void getGoing() throws IOException, ParseException
     {
-        src.main.java.com.wintrisstech.WebSiteReader webSiteReader = new src.main.java.com.wintrisstech.WebSiteReader();//Read Covers.com...any week, to get game week dates
+        WebSiteReader webSiteReader = new WebSiteReader();//Read Covers.com...any week, to get game week dates
         randomGamesDoc = webSiteReader.readCleanWebsite(dirtyURL);
         randomGamesElements = randomGamesDoc.getAllElements();
         src.main.java.com.wintrisstech.SportDataReader sportDataReader = new src.main.java.com.wintrisstech.SportDataReader(deskTopPath);//Reads sports data xlsx file to hash map

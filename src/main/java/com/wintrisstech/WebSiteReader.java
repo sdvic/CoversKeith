@@ -1,4 +1,4 @@
-package src.main.java.com.wintrisstech;
+package com.wintrisstech;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.safety.Cleaner;
@@ -9,7 +9,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210320
+ // * version 210322
  *******************************************************************/
 public class WebSiteReader
 {
