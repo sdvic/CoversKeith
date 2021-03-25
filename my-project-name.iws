@@ -10,25 +10,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Covers.command" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/artifacts/Covers/Covers.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Covers.command" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Covers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Covers.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.bluej" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/package.bluej" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataAggregator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportsDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/coversUpdatedOutputFile.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/package.bluej" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/package.bluej" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/package.bluej" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/package.bluej" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/SportsDataAggregator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,10 +78,10 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.72988504" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -87,6 +99,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -184,7 +209,16 @@
       <workItem from="1616370349661" duration="1435000" />
       <workItem from="1616371864052" duration="914000" />
       <workItem from="1616373837988" duration="2500000" />
-      <workItem from="1616381811016" duration="2697000" />
+      <workItem from="1616381811016" duration="3004000" />
+      <workItem from="1616456375257" duration="1149000" />
+      <workItem from="1616526264390" duration="269000" />
+      <workItem from="1616529947011" duration="80000" />
+      <workItem from="1616535821118" duration="3993000" />
+      <workItem from="1616540950154" duration="885000" />
+      <workItem from="1616549875347" duration="1218000" />
+      <workItem from="1616553885281" duration="5051000" />
+      <workItem from="1616619557721" duration="2921000" />
+      <workItem from="1616622553230" duration="4308000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -270,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616283625562</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="version 210322...Launch with Covers.command">
+      <created>1616385983744</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1616385983744</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,6 +329,7 @@
     <MESSAGE value="version 210318...CleanUp working...no executable jar" />
     <MESSAGE value="version 210319...Adding date info correctly...no executable jar" />
     <MESSAGE value="version 210320...CleanUp...no executable jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210320...CleanUp...no executable jar" />
+    <MESSAGE value="version 210322...Launch with Covers.command" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210322...Launch with Covers.command" />
   </component>
 </project>

@@ -1,5 +1,5 @@
 com/wintrisstech/WebSiteReader.class
-com/wintrisstech/SportsDataAggregator.class
-src/main/java/com/wintrisstech/SportsDataWriter.class
+com/wintrisstech/SportDataReader.class
 com/wintrisstech/Main.class
-src/main/java/com/wintrisstech/SportDataReader.class
+com/wintrisstech/SportDataAggregator.class
+src/main/java/com/wintrisstech/SportDataWriter.class

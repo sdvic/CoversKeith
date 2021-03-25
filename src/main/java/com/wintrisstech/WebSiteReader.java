@@ -9,7 +9,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210322
+ // * version 210324
  *******************************************************************/
 public class WebSiteReader
 {

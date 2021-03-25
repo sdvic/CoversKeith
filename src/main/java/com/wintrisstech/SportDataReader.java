@@ -1,106 +1,44 @@
-package src.main.java.com.wintrisstech;
+package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210322
+ // * version 210324
  * Read large SportData excel work sheet into sportData hashmap
  *******************************************************************/
-import org.apache.poi.ss.usermodel.CellValue;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
-import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
-import java.text.ParseException;
-import java.util.HashMap;
 public class SportDataReader
 {
-    private File sportDataInputFile;
     private XSSFWorkbook sportDataWorkBook;
-    private String keyValue;
-    private double valueValue;
     private XSSFSheet sportDataSheet;
-    private final HashMap<String, Double> sportDataMap = new HashMap<String, Double>();
-    public SportDataReader(String deskTopPath) throws ParseException
+    private File sportDataInputFile;
+    public  XSSFSheet readSportData(String deskTopPath)
     {
         try
         {
+            System.out.println("(2) Reading SportsData Excel file");// from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
             sportDataInputFile = new File(deskTopPath + "/SportData.xlsx");/* End user's desktop */
             FileInputStream sportDataFIS = new FileInputStream(sportDataInputFile);
             System.out.println("(2) Reading SportsData Excel file");// from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
             sportDataWorkBook = new XSSFWorkbook(sportDataFIS);
             sportDataFIS.close();
             sportDataSheet = sportDataWorkBook.getSheetAt(0);
+            for (Row r : sportDataSheet)
+            {
+
+                System.out.println("row[" + r.getRowNum() + "] = " + r.getCell(2));
+            }
+            System.out.println(sportDataSheet);
         }
         catch (Exception e)
         {
-            System.out.println("FileNotFoundException in read Sports Data toHashMap()");
+            System.out.println("FileNotFoundException in read Sports Data");
             e.printStackTrace();
         }
-        FormulaEvaluator evaluator = sportDataWorkBook.getCreationHelper().createFormulaEvaluator();
-        sportDataSheet = sportDataWorkBook.getSheetAt(0);
-        for (int rowIndex = 0; rowIndex < sportDataSheet.getLastRowNum(); rowIndex++)
-        {
-            XSSFRow row = sportDataSheet.getRow(rowIndex);
-            if (row == null)
-            {
-                continue;
-            }
-            XSSFCell keyCell = row.getCell(0); //Key cell
-            if (keyCell == null)
-            {
-                continue;
-            }
-            try
-            {
-                keyValue = keyCell.getStringCellValue();
-                CellValue keyCellValue = evaluator.evaluate(keyCell);
-                String keyStringRaw = ((CellValue) keyCellValue).formatAsString().trim();//Found Key String
-                keyValue = keyStringRaw.replaceAll("^\"+|\"+$", "").trim();//Strip off quote signs
-                keyValue.trim();
-            }
-            catch (Exception e)
-            {
-                continue;
-            }
-            XSSFCell valueCell = row.getCell(1); //Value cell
-            if (valueCell == null)
-            {
-                continue;
-            }
-            try
-            {
-                valueValue = valueCell.getNumericCellValue();
-            }
-            catch(Exception e)
-            {
-            }
-
-
-            getSportDataMap().put(keyValue, valueValue);
-        }
         System.out.println("(3) Finished reading SportsData Excel file");// from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
-//        for (Map.Entry<String, Double> entry : getSportDataMap().entrySet())
-//        {
-//            String K = entry.getKey();
-//            Double V = entry.getValue();
-//            System.out.println("             " + K + " => " + V);
-//            System.out.println("____________________V=>" + V);
-//            double x = V;
-//            System.out.println("____________________x=>" + x);
-//            String s = String.format("%f", x);
-//            System.out.println("____________________s=>" + s);
-//        }
-    }
-    public XSSFWorkbook getSportDataWorkBook()
-    {
-        return sportDataWorkBook;
-    }
-    public HashMap<String, Double> getSportDataMap()
-    {
-        return sportDataMap;
-    }
-    public XSSFSheet getSportDataSheet()
-    {
         return sportDataSheet;
     }
 }
