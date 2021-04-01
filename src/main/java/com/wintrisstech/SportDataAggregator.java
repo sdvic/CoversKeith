@@ -2,21 +2,23 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210324
+ // * version 210401
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 
-import static org.jsoup.Jsoup.connect;
+import static org.jsoup.helper.HttpConnection.connect;
 public class SportDataAggregator
 {
     private String under;
@@ -28,37 +30,48 @@ public class SportDataAggregator
     private String awayTeam;
     private int gameIndex;
     private int gameCount;
-    private int rowOffset = 3;
+    private final int rowOffset = 3;
     private String thisGameDate;
     private XSSFWorkbook sportDataWorkBook;
-    private String version;
+    public String version;
     private int numberOfGamesThisWeek;
     private String nflSeasonYear;
-    public int aggregateSportsData(XSSFSheet sportDataSheet, Elements thisWeekGameElements) throws IOException
+    Document thisWeekGameDoc;
+    Elements nflRandomElements;
+    Document nflRandomDoc;
+    String gameWeek;
+    String gameDate;
+    private final HashMap<String, String> weekList = new HashMap<>();
+    private Sheet sportDataSheet;
+    public void aggregateSportsData(Object[] nflDocsAndElements, Workbook sportDataWorkBook, HashMap weekList) throws IOException//nflDocsAndElements has both nflDocument[0] and nflElements[1]
     {
-        numberOfGamesThisWeek = thisWeekGameElements.size();
-        for (gameIndex = 0; gameIndex < 3 ; gameIndex++)//game counter zero based
+        sportDataSheet = sportDataWorkBook.getSheetAt(0);
+        nflRandomDoc = (Document) nflDocsAndElements[0];
+        nflRandomElements = (Elements) nflDocsAndElements[1];
+        numberOfGamesThisWeek = weekList.size();
+        for (gameIndex = 0; gameIndex < 3; gameIndex++)
         {
-            System.out.println("(4) Start aggregating Covers info, game " + (gameIndex + 1));//game number this week counter...int j is zero based
-            thisGameDate = thisWeekGameElements.get(gameIndex).attr("data-game-date").substring(0, 10);//This game date
-            dataEventID = thisWeekGameElements.get(gameIndex).attr("data-event-id");//two team event number on particular date...int i is 1 based
-            homeTeam = thisWeekGameElements.get(gameIndex).attr("data-home-team-fullname-search");
-            awayTeam = thisWeekGameElements.get(gameIndex).attr("data-away-team-fullname-search");
+            System.out.println("(4) Start aggregating Covers info, game " + (gameIndex) + " of " + numberOfGamesThisWeek);//game number this week counter...int j is zero based
+            thisGameDate = gameDate;//This game date
+            dataEventID = nflRandomElements.get(gameIndex).attr("data-event-id");//two team event number on particular date...int i is 1 based TODO get data event ID
+            System.out.println("dataEventID => " + dataEventID);
+            homeTeam = nflRandomElements.get(gameIndex).attr("data-home-team-fullname-search");
+            awayTeam = nflRandomElements.get(gameIndex).attr("data-away-team-fullname-search");
             System.out.println("home-team => " + homeTeam);
             System.out.println("away-team => " + awayTeam);
-            Document silver = connect("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventID).get();
+            Document silver = connect("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a80950").get();
             Elements rightConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright");
             Elements leftConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft");
             away = leftConsensus.get(0).text();
             over = leftConsensus.get(1).text();
             under = rightConsensus.get(1).text();
             home = rightConsensus.get(0).text();
-            byte[] rgb = new byte[]{(byte)255, (byte)0, (byte)0};
+            byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
             CellStyle myStyle = sportDataWorkBook.createCellStyle();
             Font myFont = sportDataWorkBook.createFont();
             myFont.setBold(true);
             myStyle.setFont(myFont);
-            XSSFFont xssfFont = (XSSFFont)myFont;
+            XSSFFont xssfFont = (XSSFFont) myFont;
             xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
             sportDataSheet.getRow(0).getCell(0).setCellStyle(myStyle);
             sportDataSheet.getRow(0).getCell(0).setCellValue("Updated " + new Date().toString());
@@ -82,7 +95,6 @@ public class SportDataAggregator
             //JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsCalendarDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
             gameCount++;
         }
-        return gameCount;
     }
     public String getUnder()
     {
@@ -100,10 +112,7 @@ public class SportDataAggregator
     {
         return awayTeam;
     }
-    public String getDataEventID()
-    {
-        return dataEventID;
-    }
+    public String getDataEventID() {return dataEventID; }
     public String getAway()
     {
         return away;
@@ -112,10 +121,10 @@ public class SportDataAggregator
     {
         return home;
     }
-    public void setSportDataWorkBook(XSSFWorkbook sportDataWorkBook)
+    public void setSportDataWorkBook(XSSFWorkbook sportDataWorkBook) {this.sportDataWorkBook = sportDataWorkBook;}
+    public void setThisGameDate(String thisGameDate)
     {
-        this.sportDataWorkBook = sportDataWorkBook;
+        this.thisGameDate = thisGameDate;
     }
-    public void setThisGameDate(String thisGameDate) {this.thisGameDate = thisGameDate; }
-    public void setVerson(String version) {this.version = version; }
+    public void setVersion(String version) {this.version = this.version;}
 }
