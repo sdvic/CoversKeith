@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SeasonDataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
@@ -18,9 +19,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +27,13 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -213,7 +218,18 @@
       <workItem from="1616955442620" duration="20000" />
       <workItem from="1617125168137" duration="4163000" />
       <workItem from="1617243262721" duration="5525000" />
-      <workItem from="1617289743332" duration="18215000" />
+      <workItem from="1617289743332" duration="18381000" />
+      <workItem from="1617326893575" duration="5303000" />
+      <workItem from="1617385902023" duration="1245000" />
+      <workItem from="1617400189448" duration="4738000" />
+      <workItem from="1617417974750" duration="5242000" />
+      <workItem from="1617478695892" duration="2250000" />
+      <workItem from="1617487902785" duration="4937000" />
+      <workItem from="1617507443516" duration="3547000" />
+      <workItem from="1617561427557" duration="4166000" />
+      <workItem from="1617573845627" duration="1204000" />
+      <workItem from="1617581340717" duration="6817000" />
+      <workItem from="1617638259927" duration="6033000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -313,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616631518977</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="version 210401&#10;Major refactor...have GameWeek and GameDate HashMap&#10;Working on getting eventID">
+      <created>1617312120805</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1617312120805</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,6 +356,7 @@
     <MESSAGE value="version 210320...CleanUp...no executable jar" />
     <MESSAGE value="version 210322...Launch with Covers.command" />
     <MESSAGE value="version 210324&#10;Major refactor...remove ArrayList...read Excel working" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210324&#10;Major refactor...remove ArrayList...read Excel working" />
+    <MESSAGE value="version 210401&#10;Major refactor...have GameWeek and GameDate HashMap&#10;Working on getting eventID" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210401&#10;Major refactor...have GameWeek and GameDate HashMap&#10;Working on getting eventID" />
   </component>
 </project>
