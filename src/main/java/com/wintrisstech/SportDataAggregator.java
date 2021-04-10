@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210405
+ // * version 210409
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -50,16 +50,13 @@ public class SportDataAggregator
         sportDataSheet = sportDataWorkBook.getSheetAt(0);
         nflRandomDoc = (Document) thisWeekDocumentsAndElements[0];
         nflRandomElements = (Elements) thisWeekDocumentsAndElements[1];
-        Elements deids = nflRandomElements.select(".cmg_follow_link");
-        String[] dataEventIDs = new String[deids.size()];
-        for (int i = 0; i < deids.size(); i++)
-        {
-            dataEventIDs[i] = deids.get(i).attr("data-event-id");
-        }
-        for (int i = 0; i < deids.size(); i++)
-        {
-            out.println("Game [" + i + "] "  + dataEventIDs[i]);
-        }
+//        Elements deids = nflRandomElements.select(".cmg_follow_link");
+//        String[] dataEventIDs = new String[deids.size()];
+//        for (int i = 0; i < deids.size(); i++)
+//        {
+//            dataEventIDs[i] = deids.get(i).attr("data-event-id");
+//            out.println("Game [" + i + "] "  + dataEventIDs[i]);
+//        }
         numberOfGamesThisWeek = weekList.size();
         for (gameIndex = 0; gameIndex < 2; gameIndex++)
         {

@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210405
+ // * version 210409
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 public class SportDataWriter

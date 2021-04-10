@@ -2,26 +2,24 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210405
+ * version 210409
  * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
-
 import static java.lang.System.out;
 public class Main
 {
-    private static String version= "210405";;
+    private static String version= "210409";;
     String weekNumberString;
     String dataEventID;
     String thisGameDate;
     private Elements randomGamesElements;
-    private String coversNFLurl = "https://www.covers.com/sports/nfl/matchups";
+    private String coversNFLmatchupsURL = "https://www.covers.com/sports/nfl/matchups";
     private Document randomGamesDoc;
     private XSSFWorkbook sportDataWorkBook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -31,27 +29,30 @@ public class Main
     private Elements nflRandomElements;
     private String gameWeek;
     private String gameDate;
-    private Object[] thisWeekDocumentsAndElements;
     private Document thisWeekDocument;
     private Elements thisWeekElements;
+    SeasonAndEventDataCollector seasonAndEventDataCollector = new SeasonAndEventDataCollector();
+    WebSiteReader webSiteReader = new WebSiteReader();
+    SportDataReader sportDataReader = new SportDataReader();
+    SportDataAggregator sportDataAggregator = new SportDataAggregator();
+    SportDataWriter sportDataWriter = new SportDataWriter();
     public static void main(String[] args) throws IOException, ParseException
     {
         System.out.println("(1) Hello SharpMarkets, version " + version + ", Copyright 2021 Dan Farris");
         new Main().getGoing();
     }
-    private void getGoing() throws IOException, ParseException
+    private void getGoing() throws IOException
     {
-        SeasonDataCollector seasonDataCollector = new SeasonDataCollector();
-        WebSiteReader webSiteReader = new WebSiteReader();
-        SportDataReader sportDataReader = new SportDataReader();
-        SportDataAggregator sportDataAggregator = new SportDataAggregator();
-        SportDataWriter sportDataWriter = new SportDataWriter();
-        sportDataAggregator.setSportDataWorkBook(sportDataReader.readSportData(deskTopPath));
-        seasonDataCollector.collectSeasonData(webSiteReader.readCleanWebsite(coversNFLurl));//passes nfl season week dates  to WebsiteReader
+        sportDataWorkBook = sportDataReader.readSportData(deskTopPath);//Read in SportData.xlsx, the main SharpMarkets database, from user's desktop
+        sportDataAggregator.setSportDataWorkBook(sportDataWorkBook);//Send SportData.xlsx to sportDataAggregator() for aggregation with Covers.com website data
+        nflRandomDocumentsAndElements = webSiteReader.readCleanWebsite(coversNFLmatchupsURL);//Get all Elements and Document from a random week at https://www.covers.com/sports/nfl/matchups
+        seasonAndEventDataCollector.collectSeasonData(nflRandomDocumentsAndElements);//passes season info to WebsiteReader for a random NFL week in order to extract NFL week dates
         for (int i = 0; i < 1; i++)//Substitute 2 for "numberOfWeeksThisSeason" for test only
         {
-            thisWeekDocumentsAndElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + seasonDataCollector.getSeasonWeekDate(i));
-            sportDataAggregator.aggregateSportsData(thisWeekDocumentsAndElements);
+            String nflWeekCalendarDate = seasonAndEventDataCollector.getSeasonWeekDate(i);
+            webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + nflWeekCalendarDate);
+            seasonAndEventDataCollector.collectDataEventIDs(webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + nflWeekCalendarDate));//passes nfl game week info in order to collect event ID's
+            //sportDataAggregator.aggregateSportsData(thisWeekDocumentsAndElements);
 //            for (int j = 1; j < 2; j++)//iterate through 2 games this week for test only
 //            {
 //                weekNumberString = Integer.toString(j);
