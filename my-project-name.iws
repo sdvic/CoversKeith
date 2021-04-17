@@ -10,13 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Covers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Covers.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-project-name.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SeasonAndEventDataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SeasonAndEventDataCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataAggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,9 +72,9 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.72988504" />
+    <property name="project.structure.side.proportion" value="0.1605325" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RunAnythingCache">
@@ -249,7 +250,25 @@
       <workItem from="1618025193742" duration="468000" />
       <workItem from="1618025704778" duration="1473000" />
       <workItem from="1618027350607" duration="409000" />
-      <workItem from="1618027772375" duration="221000" />
+      <workItem from="1618027772375" duration="1874000" />
+      <workItem from="1618030390055" duration="401000" />
+      <workItem from="1618081431976" duration="1849000" />
+      <workItem from="1618098308580" duration="1651000" />
+      <workItem from="1618100306255" duration="406000" />
+      <workItem from="1618157965036" duration="1402000" />
+      <workItem from="1618164328293" duration="758000" />
+      <workItem from="1618197922531" duration="2794000" />
+      <workItem from="1618244084072" duration="1411000" />
+      <workItem from="1618268299746" duration="4819000" />
+      <workItem from="1618278620031" duration="1372000" />
+      <workItem from="1618285122766" duration="4404000" />
+      <workItem from="1618338528946" duration="382000" />
+      <workItem from="1618357807464" duration="1373000" />
+      <workItem from="1618372343308" duration="2716000" />
+      <workItem from="1618433415175" duration="2701000" />
+      <workItem from="1618443711298" duration="6322000" />
+      <workItem from="1618451528331" duration="4407000" />
+      <workItem from="1618612862904" duration="5043000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -370,7 +389,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618024438897</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Array...">
+      <created>1618028148193</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1618028148193</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,6 +425,7 @@
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Arrays" />
     <MESSAGE value="version 210409&#10;Succssfully building both NFL Week Array/Data Event ID Arrays" />
     <MESSAGE value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Arrays" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Arrays" />
+    <MESSAGE value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Array..." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Array..." />
   </component>
 </project>

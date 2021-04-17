@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210409
+ // * version 210416
  * Read large SportData excel work book (SportData.xlsx) on user's desktop and return workBook
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -19,7 +19,7 @@ public class SportDataReader
     {
         try
         {
-            System.out.println("(4) Reading SportsData.xlsx on user's desktop: " + userDeskTopPath);
+            System.out.println("(2) Reading SportsData.xlsx on user's desktop.");
             sportDataInputFile = new File(userDeskTopPath + "/SportData.xlsx");/* End user's desktop */
             FileInputStream sportDataFIS = new FileInputStream(sportDataInputFile);
             sportDataWorkBook = new XSSFWorkbook(sportDataFIS);
@@ -30,7 +30,7 @@ public class SportDataReader
             System.out.println("FileNotFoundException in read Sports Data");
             e.printStackTrace();
         }
-        System.out.println("(5) Finished reading SportsData Excel file");// from: " + sportDataInputFile + " to: " + getSportDataMap().getClass().getName());
+        System.out.println("(3) Finished reading SportsData Excel file, size => TODO get file size" );
         return sportDataWorkBook;
     }
 }
