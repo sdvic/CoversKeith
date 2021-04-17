@@ -2,10 +2,11 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210416
+ * version 210417
  * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
@@ -61,29 +62,23 @@ public class Main
             out.print(s + "  ");
         }
         out.println();
-
         out.println("Iterating through NFL season weeks");
         for (int i = 0; i < 2; i++)//Working all NFL season weeks
         {
-            //Document matchupWeekDates = Jsoup.connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate).get();
+            String dataEventID = "80767";
+            Document week = Jsoup.connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + seasonAndEventDataCollector.getSeasonWeekDate(i)).get();
 //                Element weekNumber = matchupWeekDates.select("option[value]").get(parseInt(weekNumberString));
 //                String nflWeekDate = weekNumber.getElementsByAttribute("value").val();
-//                Document week = connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + nflWeekDate).get();
-//                Elements thisWeekGameElements = week.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
-//                out.println("Number of Games this week => " + thisWeekGameElements.size());
-//                String homeTeam = sportDataAggregator.getHomeTeam();
-//
-//                String awayTeam = sportDataAggregator.getAwayTeam();
-            String thisNFLweekCalendarDate = seasonAndEventDataCollector.getSeasonWeekDate(i);
-            out.println("........................Working on NFL week date " + thisNFLweekCalendarDate);
-            Object[] thisNFLweekDocumentsAndElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisNFLweekCalendarDate);//"www.covers.com/sports/nfl/matchups?selectedDate=" + thisNFLweekCalendarDate);
-            //Elements thisWeekGameElements = week.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
-            thisWeekGameElements = (Elements)thisNFLweekDocumentsAndElements[1];
-            Elements e = thisWeekGameElements.select("[cmg_game_data cmg_matchup_game_box]");//this is good...all games in "week"
+            Elements thisWeekGameElements = week.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
             out.println("Number of Games this week => " + thisWeekGameElements.size());
+            sportDataAggregator.aggregateSportsData(thisWeekGameElements, dataEventID);
             String homeTeam = sportDataAggregator.getHomeTeam();
             String awayTeam = sportDataAggregator.getAwayTeam();
-            out.println("home " + homeTeam +"/" + "away " + awayTeam);
+            String thisNFLweekCalendarDate = seasonAndEventDataCollector.getSeasonWeekDate(i);
+            Object[] thisNFLweekDocumentsAndElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisNFLweekCalendarDate);//"www.covers.com/sports/nfl/matchups?selectedDate=" + thisNFLweekCalendarDate);
+            //Elements thisWeekGameElements = week.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
+            thisWeekGameElements = (Elements) thisNFLweekDocumentsAndElements[1];
+            Elements e = thisWeekGameElements.select("[cmg_game_data cmg_matchup_game_box]");//this is good...all games in "week"
 //                //sportDataWriter.setI(j);
 //                JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + nflWeekDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + sportDataAggregator.getOver() + "\nUnder " + sportDataAggregator.getUnder() + "\nHome " + sportDataAggregator.getHome() + "\nAway " + sportDataAggregator.getAway(), "SharpMarkets version " + version, JOptionPane.INFORMATION_MESSAGE);
 

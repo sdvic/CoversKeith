@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210416
+ // * version 210417
  *******************************************************************/
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -35,13 +35,10 @@ public class SportDataAggregator
     private final HashMap<String, String> weekList = new HashMap<>();
     private Sheet sportDataSheet;
     private Workbook sportDataWorkBook = new XSSFWorkbook();
-    public void aggregateSportsData(Object[] thisWeekDocumentAndElements, String dataEventID) throws IOException//nflDocsAndElements has both nflDocument[0] and nflElements[1]
+    public void aggregateSportsData(Elements thisWeekElements, String dataEventID) throws IOException//nflDocsAndElements has both nflDocument[0] and nflElements[1]
     {
         this.sportDataWorkBook = sportDataWorkBook;
         //sportDataSheet = sportDataWorkBook.getSheetAt(0);
-        nflRandomDoc = (Document) thisWeekDocumentAndElements[0];
-        thisWeekElements = (Elements) thisWeekDocumentAndElements[1];
-        out.println(thisWeekElements);
         out.println("(4) Aggregating Covers info");
         out.println("dataEventID => " + dataEventID);
         homeTeam = thisWeekElements.attr("data-home-team-fullname-search");
@@ -93,24 +90,10 @@ public class SportDataAggregator
         return over;
     }
     public String getHomeTeam()
-    {
-        return homeTeam;
-    }
+    {return homeTeam; }
     public String getAwayTeam()
     {
         return awayTeam;
-    }
-    public String getDataEventID()
-    {
-        return dataEventID;
-    }
-    public String getAway()
-    {
-        return away;
-    }
-    public String getHome()
-    {
-        return home;
     }
     public void setThisGameDate(String thisGameDate)
     {

@@ -10,14 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Covers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Covers.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SeasonAndEventDataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SeasonAndEventDataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataAggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataAggregator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wintrisstech/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,13 +94,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -268,7 +267,8 @@
       <workItem from="1618433415175" duration="2701000" />
       <workItem from="1618443711298" duration="6322000" />
       <workItem from="1618451528331" duration="4407000" />
-      <workItem from="1618612862904" duration="5043000" />
+      <workItem from="1618612862904" duration="5565000" />
+      <workItem from="1618687668208" duration="2923000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -396,7 +396,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618028148193</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="version 210416&#10;Reclaim Event ID's">
+      <created>1618631580623</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1618631580623</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,6 +433,7 @@
     <MESSAGE value="version 210409&#10;Succssfully building both NFL Week Array/Data Event ID Arrays" />
     <MESSAGE value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Arrays" />
     <MESSAGE value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Array..." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210409&#10;Succsessfully building both NFL Week Array/Data Event ID Array..." />
+    <MESSAGE value="version 210416&#10;Reclaim Event ID's" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210416&#10;Reclaim Event ID's" />
   </component>
 </project>

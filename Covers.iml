@@ -88,7 +88,7 @@
     <orderEntry type="library" name="Maven: de.rototor.pdfbox:graphics2d:0.30" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.22" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.22" level="project" />
-    <orderEntry type="library" exported="" name="Maven: org.apache.poi:poi:5.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.poi:poi:5.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
