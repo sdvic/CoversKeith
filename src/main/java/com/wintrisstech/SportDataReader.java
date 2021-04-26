@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210417
+ // * version 210426
  * Read large SportData excel work book (SportData.xlsx) on user's desktop and return workBook
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -30,7 +30,6 @@ public class SportDataReader
             System.out.println("FileNotFoundException in read Sports Data");
             e.printStackTrace();
         }
-        System.out.println("(3) Finished reading SportsData Excel file, size => TODO get file size" );
         return sportDataWorkBook;
     }
 }

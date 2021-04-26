@@ -11,7 +11,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210417
+ * version 210426
  * Reads/cleans input URL and returns all Elements and Document
  *******************************************************************/
 public class WebSiteReader
@@ -34,7 +34,6 @@ public class WebSiteReader
         }
         nflRandomMatchupsDoc = dirtyDoc;//invalidate cleaning!!!!!//Not cleaning dirty doc...overrides nflRandomMatchupsDoc ***************
         nflRandomMatchupsElements = dirtyDoc.getAllElements();//invalidate cleaning!!!!!//Not cleaning dirty doc...overrides nflRandomMatchupsElements ***************
-        System.out.println("(3) Finished reading but not cleaning!!TODO fix clean");
         documentsAndElements = new Object[]{nflRandomMatchupsDoc, nflRandomMatchupsElements};
         return documentsAndElements;
         }
