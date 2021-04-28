@@ -2,20 +2,19 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210426
+ * version 210427
  * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
 public class Main
 {
-    private static String version = "210424";
+    private static String version = "210427";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkBook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -35,68 +34,42 @@ public class Main
     {
         nflRandomDocumentsAndElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=");//Get all Elements and Document from a random week at https://www.covers.com/sports/nfl/matchups
         dataCollector.collectSeasonDates(nflRandomDocumentsAndElements);
-        nflDataPrinter();
+        System.out.println("Reading " + dataCollector.getSeasonDates().length + " NFL season week dates");
+        infoPrinter("%-11s", "Week ", dataCollector.getSeasonDates().length);
+        infoPrinter("%-11s", dataCollector.getSeasonDates());
         System.out.println("(2) Read sportDataWorkbook");
         sportDataWorkBook = sportDataReader.readSportData(deskTopPath);//Read in SportData.xlsx, the main SharpMarkets database, from user's desktop
         System.out.println("(3) Send sportDataWorkbook to aggregator()");
         sportDataAggregator.setSportDataWorkBook(sportDataWorkBook);//Send SportData.xlsx to sportDataAggregator() for aggregation with Covers.com website data
-        System.out.println("Iterating through NFL season weeks");
-        for (int i = 0; i < 2; i++)//Working all NFL season weeks
+        for (int i = 0; i < 2; i++)//Iterate through all NFL season weeks
         {
             Document weekDoc = Jsoup.connect("https://www.covers.com/sports/nfl/matchups?selectedDate=" + dataCollector.getSeasonDates()[i]).get();
             Elements weekElements = weekDoc.getAllElements();
-            dataCollector.collectWeekDates(weekElements);
-            System.out.println("(6) Get this week data so that we can find matchup dates with this week, which is => " + dataCollector.getWeekDates()[i]);
-            System.out.println("Working on NFL season week # " + (i+1) + " which starts on " + dataCollector.getSeasonDates()[i]);
-//                Element weekNumber = matchupWeekDates.select("option[value]").get(parseInt(weekNumberString));
-//                String nflWeekDate = weekNumber.getElementsByAttribute("value").val();
-            Elements thisWeekGameElements = weekElements.select("cmg_game_data cmg_matchup_game_box");//this is good...all games in "week"
-            System.out.println("Number of Games this week => " + thisWeekGameElements.size());
-            weekDataPrinter();
+            dataCollector.collectWeekEventIDs(weekElements);
+            System.out.println("Iterating through " + dataCollector.getWeekEventIDs().length + " games this week");
+            System.out.println("Working on NFL season week #" + (i + 1) + ", game #" + (i + 1));
+            infoPrinter("%-8s", "Game ", dataCollector.getSeasonDates().length);
+            infoPrinter("%-8s", dataCollector.getWeekEventIDs());
             String homeTeam = sportDataAggregator.getHomeTeam();
             String awayTeam = sportDataAggregator.getAwayTeam();
             String thisNFLweekCalendarDate = dataCollector.getSeasonDates()[i];
-            Object[] thisNFLweekDocAndElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisNFLweekCalendarDate);//"www.covers.com/sports/nfl/matchups?selectedDate=" + thisNFLweekCalendarDate);
-            //Elements nflWeekElements = nflWeekDoc.getElementsByClass("cmg_game_data cmg_matchup_game_box");//this is good...all games in "nflWeekDoc"
-            weekElements = (Elements) thisNFLweekDocAndElements[1];
-            Elements e = weekElements.select("[cmg_game_data cmg_matchup_game_box]");//this is good...all games in "nflWeekDoc"
-//                //sportDataWriter.setI(j);
-//                JOptionPane.showMessageDialog(null, "Week " + weekNumberString + " " + nflWeekDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + sportDataAggregator.getOver() + "\nUnder " + sportDataAggregator.getUnder() + "\nHome " + sportDataAggregator.getHome() + "\nAway " + sportDataAggregator.getAway(), "SharpMarkets version " + version, JOptionPane.INFORMATION_MESSAGE);
         }
         System.out.print("(11)  Proper Finish...hooray!");
     }
-    private void weekDataPrinter()
-    {
-        //=========================================================================
-//        for (String s : dataCollector.getWeekDates())//Collecting  week calendar dates and data event IDs
-//        {
-//            System.out.print("Week " + (weekIndex++) + "      ");
-//        }
-//        System.out.println();
-//        for (String s : dataCollector.getWeekEventIDs())
-//        {
-//            System.out.print(s + "       ");
-//        }
-//        System.out.println();
-//        for (String s : dataCollector.getWeekDates())
-//        {
-//            System.out.print(s + "  ");
-//        }
-//        System.out.println();
-        //=============================================================================
-    }
-    private void nflDataPrinter()
+    public void infoPrinter(String format, String[] infoToPrint)
     {
         int weekIndex = 0;
-        for (String s : dataCollector.getSeasonDates())//Print out NFL season week numbers
+        for (String s : infoToPrint)
         {
-            System.out.print("Week " + (1 + weekIndex++) + "        ");
+            System.out.printf(format, infoToPrint[weekIndex++]);
         }
         System.out.println();
-        weekIndex = 0;
-        for (String s : dataCollector.getSeasonDates())//Print out NFL season dates
+    }
+    public void infoPrinter(String format, String textToPrint, int numberOfTimesToPrint)
+    {
+        for (int i = 0; i < numberOfTimesToPrint; i++)
         {
-            System.out.print(dataCollector.getSeasonDates()[weekIndex++] + "    ");
+            System.out.printf(format, textToPrint + (i + 1));
         }
         System.out.println();
     }

@@ -11,7 +11,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210426
+ * version 210427
  * Reads/cleans input URL and returns all Elements and Document
  *******************************************************************/
 public class WebSiteReader
@@ -21,7 +21,7 @@ public class WebSiteReader
     private Object[] documentsAndElements;
     public Object[] readCleanWebsite(String urlToRead) throws IOException
     {
-        System.out.println("(2) Reading and cleaning " + urlToRead);
+        System.out.println("(2) Reading " + urlToRead);
         Document dirtyDoc = Jsoup.parse(String.valueOf(connect("https://www.covers.com/sports/nfl/matchups?selectedDate=2020-09-10").get()));
         boolean isValidDocument = Jsoup.isValid(String.valueOf(dirtyDoc), Whitelist.basic());
         if (isValidDocument)
