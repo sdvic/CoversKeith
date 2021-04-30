@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210427
+ * version 210430
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -15,34 +15,49 @@ public class DataCollector
     private String gameWeek;
     private String seasonDate;
     private String[] seasonDates;
-    private String[] weekDates;
-    private String gameID;
-    private String[] weekDataEventIDs;
-    public void collectSeasonDates(Object[] nflRandomDocumentsAndElements)
+    private String matchUpID;
+    private InfoPrinter infoPrinter;
+    private String[] matchUpIDsString;
+    public DataCollector(InfoPrinter infoPrinter)
     {
-        nflRandomElements = (Elements) nflRandomDocumentsAndElements[1];
+        this.infoPrinter = infoPrinter;
+    }
+    public void collectSeasonDates(Elements nflRandomElements)
+    {
         optionElements = nflRandomElements.select("option");
         numberOfWeeksThisSeason = optionElements.select("option:contains(Week )").size();
         seasonDates = new String[numberOfWeeksThisSeason];
         for (int i = 0; i < numberOfWeeksThisSeason; i++)
         {
             seasonDate = optionElements.select("option:contains(Week )").get(i).val();//Season date
-            getSeasonDates()[i] = seasonDate;
+            seasonDates[i] = seasonDate;
         }
+        infoPrinter.printInfo("%-12s", "Week ", seasonDates.length);//Print season week dates
+        infoPrinter.printInfo("%-12s", seasonDates);
     }
-    public void collectWeekEventIDs(Elements weekDocument)
+    public void collectMatchupIDs(Elements thisWeekElements)
     {
-        Elements did = weekDocument.select(".cmg_follow_link[data-event-id]");
-        int numberOfGamesThisWeek = did.size();
-        weekDataEventIDs = new String[numberOfGamesThisWeek];
+        Elements matchUpIDs = thisWeekElements.select(".cmg_follow_link[data-event-id]");
+        int numberOfGamesThisWeek = matchUpIDs.size();
+        matchUpIDsString = new String[numberOfGamesThisWeek];
         int i = 0;
-        for (Element e : did)//Build week game data event IDs array
+        System.out.println("..........Number of games this week =>" + numberOfGamesThisWeek);
+
+        for (Element e : matchUpIDs)//Build week matchup IDs array
         {
-            gameID = e.attr("data-event-id").toString();
-            weekDataEventIDs[i] = gameID;
+            matchUpID = e.attr("data-event-id");
+            matchUpIDsString[i] = matchUpID;
             i++;
         }
+        infoPrinter.printInfo("%-11s", "Matchup ", matchUpIDsString.length);
+        infoPrinter.printInfo("%-11s", matchUpIDsString);
     }
-    public String[] getSeasonDates(){return seasonDates;}
-    public String[] getWeekEventIDs() {return weekDataEventIDs;}
+    public String[] getSeasonDates()
+    {
+        return seasonDates;
+    }
+    public String[] getMatchUpIDsString()
+    {
+        return matchUpIDsString;
+    }
 }
