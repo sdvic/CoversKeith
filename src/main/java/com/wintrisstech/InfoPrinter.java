@@ -2,8 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210430
- * Launch with Covers.command
+ * version 2100501
  *******************************************************************/
 public class InfoPrinter
 {

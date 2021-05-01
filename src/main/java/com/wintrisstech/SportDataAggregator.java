@@ -2,15 +2,18 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210430
+ // * version 210501
  *******************************************************************/
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
 import java.util.HashMap;
+
 import static java.lang.System.out;
 public class SportDataAggregator
 {
@@ -33,18 +36,22 @@ public class SportDataAggregator
     private final HashMap<String, String> weekList = new HashMap<>();
     private Sheet sportDataSheet;
     private Workbook sportDataWorkBook = new XSSFWorkbook();
-    public void aggregateSportsData(Elements thisWeekElements, String dataEventID) throws IOException//nflDocsAndElements has both nflDocument[0] and nflElements[1]
+    private WebSiteReader websiteReader;
+    public void aggregateSportsData(Elements thisWeekElements) throws IOException
     {
         this.sportDataWorkBook = sportDataWorkBook;
         //sportDataSheet = sportDataWorkBook.getSheetAt(0);
         out.println("(4) Aggregating Covers info");
-        out.println("dataEventID => " + dataEventID);
-        homeTeam = thisWeekElements.attr("data-home-team-fullname-search");
-        awayTeam = thisWeekElements.attr("data-away-team-fullname-search");
-        out.println("home-team => " + homeTeam);
-        out.println("away-team => " + awayTeam);
-//        Document silver = connect("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventID).get();
-//        Elements rightConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright");
+        //for (Element e : thisWeekElements)
+        for (int i = 0; i < 1; i++)//thisWeekElements.size()
+        {
+            Element thisMatchup = thisWeekElements.get(i);
+            homeTeam = thisMatchup.attr("data-home-team-fullname-search");
+            awayTeam = thisMatchup.attr("data-away-team-fullname-search");
+            out.println("home-team => " + homeTeam);
+            out.println("away-team => " + awayTeam);
+        }
+//        Elements rightConsensus = th.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright");
 //        Elements leftConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft");
 //        away = leftConsensus.get(0).text();
 //        over = leftConsensus.get(1).text();
@@ -100,5 +107,9 @@ public class SportDataAggregator
     public void setSportDataWorkBook(Workbook sportDataWorkBook)
     {
         this.sportDataWorkBook = sportDataWorkBook;
+    }
+    public void setWebsiteReader(WebSiteReader websiteReader)
+    {
+        this.websiteReader = websiteReader;
     }
 }
