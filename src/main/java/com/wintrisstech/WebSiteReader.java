@@ -11,7 +11,7 @@ import static org.jsoup.Jsoup.connect;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 2100508
+ * version 2100508A
  * Reads/cleans input URL and returns all Elements and Document
  *******************************************************************/
 public class WebSiteReader
@@ -20,7 +20,6 @@ public class WebSiteReader
     private Elements nflRandomMatchupsElements;
     public Elements readCleanWebsite(String urlToRead) throws IOException
     {
-        System.out.println("(2) Reading " + urlToRead);
         Document dirtyDoc = Jsoup.parse(String.valueOf(connect(urlToRead).get()));
         boolean isValidDocument = Jsoup.isValid(String.valueOf(dirtyDoc), Whitelist.basic());
         if (isValidDocument)

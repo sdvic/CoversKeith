@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210508
+ // * version 210508A
  *******************************************************************/
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -40,9 +40,8 @@ public class Aggregator
     public void aggregateSportsData(Elements thisMatchupConsensus) throws IOException
     {
         this.sportDataWorkBook = sportDataWorkBook;
-        //sportDataSheet = sportDataWorkBook.getSheetAt(0);
+        sportDataSheet = sportDataWorkBook.getSheetAt(0);
         out.println("(4) Aggregating Covers info");
-        //for (Element e : thisMatchupConsensus)
         for (int i = 0; i < 1; i++)//thisMatchupConsensus.size()
         {
             Element thisMatchup = thisMatchupConsensus.get(i);

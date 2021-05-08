@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 2100508
+ * version 2100508A
  * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -13,12 +13,10 @@ import java.text.ParseException;
 import java.util.HashMap;
 public class Main
 {
-    private static String version = "210508";
+    private static String version = "210508A";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkBook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
-    private Object[] nflRandomDocumentsAndElements;
-    private Object[] thisWeekDocsAndElements;
     private HashMap<String, String> weekList = new HashMap<>();
     private InfoPrinter infoPrinter = new InfoPrinter();
     public DataCollector dataCollector = new DataCollector(infoPrinter);
@@ -28,7 +26,6 @@ public class Main
     SportDataWriter sportDataWriter = new SportDataWriter();
     private Elements thisWeekElements;
     private Elements nflRandomElements;
-    private int matchupIndex;
     public static void main(String[] args) throws IOException, ParseException
     {
         System.out.println("(1) Starting SharpMarkets, version " + version + ", Copyright 2021 Dan Farris");
@@ -37,7 +34,7 @@ public class Main
     }
     private void getGoing() throws IOException
     {
-        System.out.println("Get all NFL season week start dates");
+        System.out.println("Getting all NFL season week dates");
         nflRandomElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=");//Get all season beginning dates https://www.covers.com/sports/nfl/matchups
         dataCollector.collectSeasonDates(nflRandomElements);//Builds array of all NFL season dates
         System.out.println("(2) Read sportDataWorkbook");
@@ -46,13 +43,12 @@ public class Main
         aggregator.setSportDataWorkBook(sportDataWorkBook);//Send SportData.xlsx to sportDataAggregator() for aggregation with Covers.com website data
         for (int nflWeek = 0; nflWeek < 1; nflWeek++)//Iterate through all NFL season weeks
         {
-            System.out.println("Get week #" + (nflWeek + 1) + ", NFL week beginning " + dataCollector.getSeasonDates()[nflWeek]);
             thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + dataCollector.getSeasonDates()[nflWeek]);//Get all of this week's NFL games
             dataCollector.collectMatchupIDs(thisWeekElements);
-            //for (String thisMatchupID : dataCollector.getMatchUpIDsString())//This matchup's data-event-id
+            System.out.println("Getting NFL week #" + (nflWeek + 1) + " ,week beginning " + dataCollector.getSeasonDates()[nflWeek] + ", number of matchups " + dataCollector.getMatchUpIDs().length);
             for (int matchupIndex = 0; matchupIndex < 1; matchupIndex++)//Iterate through consensus for all matchups this NFL week
             {
-                String thisMatchupID = dataCollector.getMatchUpIDsString()[matchupIndex];
+                String thisMatchupID = dataCollector.getMatchUpIDs()[matchupIndex];
                 System.out.println("Reading consensus data for matchup #" + (matchupIndex + 1) + ", matchupID => " + thisMatchupID);
                 Elements thisMatchupConsensus = webSiteReader.readCleanWebsite("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
                 aggregator.aggregateSportsData(thisMatchupConsensus);

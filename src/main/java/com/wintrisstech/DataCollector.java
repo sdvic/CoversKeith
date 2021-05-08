@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 2100508
+ * version 2100508A
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -12,12 +12,11 @@ public class DataCollector
     private Elements nflRandomElements;
     private Elements optionElements;
     private int numberOfWeeksThisSeason;
-    private String gameWeek;
     private String seasonDate;
     private String[] seasonDates;
     private String matchUpID;
     private InfoPrinter infoPrinter;
-    private String[] matchUpIDsString;
+    private String[] matchUpIDs;
     public DataCollector(InfoPrinter infoPrinter)
     {
         this.infoPrinter = infoPrinter;
@@ -39,25 +38,23 @@ public class DataCollector
     {
         Elements matchUpIDs = thisWeekElements.select(".cmg_follow_link[data-event-id]");
         int numberOfGamesThisWeek = matchUpIDs.size();
-        matchUpIDsString = new String[numberOfGamesThisWeek];
+        this.matchUpIDs = new String[numberOfGamesThisWeek];
         int i = 0;
-        System.out.println("..........Number of games this week =>" + numberOfGamesThisWeek);
-
         for (Element e : matchUpIDs)//Build week matchup IDs array
         {
             matchUpID = e.attr("data-event-id");
-            matchUpIDsString[i] = matchUpID;
+            this.matchUpIDs[i] = matchUpID;
             i++;
         }
-        infoPrinter.printInfo("%-11s", "Matchup ", matchUpIDsString.length);
-        infoPrinter.printInfo("%-11s", matchUpIDsString);
+        infoPrinter.printInfo("%-11s", "Matchup ", this.matchUpIDs.length);
+        infoPrinter.printInfo("%-11s", this.matchUpIDs);
     }
     public String[] getSeasonDates()
     {
         return seasonDates;
     }
-    public String[] getMatchUpIDsString()
+    public String[] getMatchUpIDs()
     {
-        return matchUpIDsString;
+        return matchUpIDs;
     }
 }
