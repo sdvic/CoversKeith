@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- // * version 210501
+ // * version 210508
  *******************************************************************/
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import static java.lang.System.out;
-public class SportDataAggregator
+public class Aggregator
 {
     private String under;
     private String home;
@@ -37,26 +37,32 @@ public class SportDataAggregator
     private Sheet sportDataSheet;
     private Workbook sportDataWorkBook = new XSSFWorkbook();
     private WebSiteReader websiteReader;
-    public void aggregateSportsData(Elements thisWeekElements) throws IOException
+    public void aggregateSportsData(Elements thisMatchupConsensus) throws IOException
     {
         this.sportDataWorkBook = sportDataWorkBook;
         //sportDataSheet = sportDataWorkBook.getSheetAt(0);
         out.println("(4) Aggregating Covers info");
-        //for (Element e : thisWeekElements)
-        for (int i = 0; i < 1; i++)//thisWeekElements.size()
+        //for (Element e : thisMatchupConsensus)
+        for (int i = 0; i < 1; i++)//thisMatchupConsensus.size()
         {
-            Element thisMatchup = thisWeekElements.get(i);
-            homeTeam = thisMatchup.attr("data-home-team-fullname-search");
-            awayTeam = thisMatchup.attr("data-away-team-fullname-search");
-            out.println("home-team => " + homeTeam);
-            out.println("away-team => " + awayTeam);
+            Element thisMatchup = thisMatchupConsensus.get(i);
+            awayTeam = thisMatchup.select(".covers-CoversConsensusDetailsTable-sideHeadLeft").get(0).text();
+            awayTeam = awayTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
+            homeTeam = thisMatchup.select(".covers-CoversConsensusDetailsTable-sideHeadRight").get(0).text();
+            homeTeam = homeTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
+            Elements rightConsensus = thisMatchup.select(".covers-CoversConsensusDetailsTable-finalWagersright");
+            Elements leftConsensus = thisMatchup.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
+            away = leftConsensus.get(0).text();
+            over = leftConsensus.get(1).text();
+            under = rightConsensus.get(1).text();
+            home = rightConsensus.get(0).text();
+            out.println("away team => " + awayTeam);
+            out.println("home team => " + homeTeam);
+            out.println("away = > " + away);
+            out.println("over = > " + over);
+            out.println("under = > " + under);
+            out.println("home = > " + home);
         }
-//        Elements rightConsensus = th.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersright");
-//        Elements leftConsensus = silver.getElementsByClass("covers-CoversConsensusDetailsTable-finalWagersleft");
-//        away = leftConsensus.get(0).text();
-//        over = leftConsensus.get(1).text();
-//        under = rightConsensus.get(1).text();
-//        home = rightConsensus.get(0).text();
 //        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
 //        CellStyle myStyle = sportDataWorkBook.createCellStyle();
 //        Font myFont = sportDataWorkBook.createFont();
