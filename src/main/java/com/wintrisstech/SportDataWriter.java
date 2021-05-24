@@ -1,36 +1,32 @@
 package com.wintrisstech;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 2100501
+ * version 210523
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 public class SportDataWriter
 {
-    private int i;//week counter
-    private int j;//game counter
-    private int rowOffset = 2;
-    public SportDataWriter()
+    private File updatedSportDataFile;
+    private XSSFWorkbook updatedSportDataWorkbook;
+    public void writeSportData(String updatedSportDataPath)
     {
-        //XSSFWorkbook updatedSportWorkbook = sportDataWorkbook;
-        //File sportDataFile = new File(desktopPath + "/SportData.xlsx");
-        //System.out.println("(8) Writing " + sportDataFile);
-//        System.out.println("(9) Writing covers workbook xlsx");// to File: " + coversOutputFile);
+        System.out.println("(8) *NOT* Writing updatedSportData File to: " + updatedSportDataPath);
+        System.out.println("In SportDataWriter, updatedSportDataFilePath => " + updatedSportDataPath);
         try
         {
-           // FileOutputStream coversUpdatedFOS = new FileOutputStream(sportDataFile);
-            //updatedSportWorkbook.write(coversUpdatedFOS);
-            //coversUpdatedFOS.close();
+            //FileOutputStream updatedSportDataFOS = new FileOutputStream(updatedSportDataPath);
+            //updatedSportDataWorkbook.write(updatedSportDataFOS);
+            //updatedSportDataFOS.close();
         }
         catch (Exception e)
         {
             System.out.println("Sports Data xlsx file writing problem");
             e.printStackTrace();
         }
-        //System.out.println("(10) Finished writing updated SportData.xlsx");// workbook to File: " + sportDataFile);
-    }
-    public void setI(int i)
-    {
-        this.i = i;
+        System.out.println("(10) Finished writing updated SportData.xlsx");// workbook to File: " + sportDataFile);
     }
 }
