@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210523
+ * version 210525
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -120,5 +120,15 @@ public class Aggregator
 //        {
 //
 //        }
+    }
+    public void setHomeTeam(String homeTeam)
+    {
+        this.homeTeam = homeTeam;
+        out.println("setting home team in aggregator => " + homeTeam);
+    }
+    public void setAwayTeam(String awayTeam)
+    {
+        this.awayTeam = awayTeam;
+        out.println("setting away team in aggregator => " + awayTeam);
     }
 }

@@ -2,68 +2,80 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210523
+ * version 210525
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.util.HashMap;
 public class DataCollector
 {
     private Elements nflRandomElements;
     private String seasonOptions;
     private String seasonDate;
-    private String matchUpID;
+    private String matchUpIDvalue;
     private InfoPrinter infoPrinter;
-    private String[] matchUpIDs;
     private String[] allSeasonDates;
     private String[] values;
+    private HashMap<String, String> thisSeasonWeeks;
+    private HashMap<String, String> allNFLseasons;
+    private Element thisWeekElements;
+    private String homeTeam;
+    private String awayTeam;
     public DataCollector(InfoPrinter infoPrinter)
     {
         this.infoPrinter = infoPrinter;
     }
-    public void collectThisSeasonDates(Elements nflRandomElements, String thisSeasonYear)
+    public void collectAllSeasonDates(Elements nflRandomElements)
     {
-//        seasonOptions = nflRandomElements.select("option");
-//        seasonElements = seasonOptions.select("option:contains(Week )").size();
-//        seasonDates = new String[seasonElements];
-//        for (int i = 0; i < seasonElements; i++)
-//        {
-//            seasonDate = seasonOptions.select("option:contains(Week )").get(i).val();//Season date
-//            seasonDates[i] = seasonDate;
-//        }
-//        infoPrinter.printInfo("%-12s", "Week ", seasonDates.length);//Print season week dates
-//        infoPrinter.printInfo("%-12s", seasonDates);
-    }
-    public void collectMatchupIDs(Elements thisWeekElements)
-    {
-        Elements matchUpIDs = thisWeekElements.select(".cmg_follow_link[data-event-id]");
-        int numberOfGamesThisWeek = matchUpIDs.size();
-        this.matchUpIDs = new String[numberOfGamesThisWeek];
-        int i = 0;
-        for (Element e : matchUpIDs)//Build week matchup IDs array
-        {
-            matchUpID = e.attr("data-event-id");
-            this.matchUpIDs[i] = matchUpID;
-            i++;
-        }
-        infoPrinter.printInfo("%-11s", "Matchup ", this.matchUpIDs.length);
-        infoPrinter.printInfo("%-11s", this.matchUpIDs);
-    }
-    public void collectAllNFLSeasonDates(Elements nflRandomElements)
-    {
+        allNFLseasons = new HashMap<String, String>();
         Elements cmg_season_dropdown = nflRandomElements.select("#cmg_season_dropdown");
         Elements options = cmg_season_dropdown.select("Option");
         values = new String[options.size()];
-        int i = 0;
         for (Element e : options)
         {
-            values[i] = e.val();
-            System.out.println("values[" + i + "] => " + e.val());
-            i++;
+            allNFLseasons.put(e.text(), e.val());
+            System.out.println("*" + e.text() + " *" + e.val());
         }
     }
-    public String[] getValues()
+    public void collectThisSeasonWeeks(Elements nflRandomElements)
     {
-        return values;
+        HashMap<String, String> matchups = new HashMap<String, String>();
+        Elements cmg_week_filter_dropdown = nflRandomElements.select("#cmg_week_filter_dropdown");
+        Elements options = cmg_week_filter_dropdown.select("Option");
+        for (Element e : options)
+        {
+            matchups.put(e.text(), e.val());
+            System.out.println("=" + e.text() + " =" + e.val());
+        }
     }
+    public void collectThisWeekMatchups(Elements thisWeekElements)
+    {
+        HashMap<String, String> matchups = new HashMap<>();
+        Elements matchupIDs = thisWeekElements.select(".cmg_matchup_game_box");
+        for (Element e : matchupIDs)//Build week matchup IDs array
+        {
+            homeTeam = e.attr("data-home-team-fullname-search");
+            awayTeam = e.attr("data-away-team-fullname-search");
+            matchups.put(homeTeam, awayTeam);
+            System.out.println( homeTeam + "   " + awayTeam);
+        }
+    }
+//        HashMap<String, String> matchups = new HashMap<>();
+//        Elements matchUpIDs = thisWeekElements.select("#cmg_week_filter_dropdown");
+//        for (Element e : matchUpIDs)//Build week matchup IDs array
+//        {
+//            String matchUpIDvalue = e.select("option").val();
+//            String matchupIDtext = e.select("option").text();
+//            matchups.put(matchupIDtext, matchUpIDvalue);
+//            System.out.println(" thisWeekText => " + matchupIDtext);
+//        }
+//    }
+    public String getThisSeasonWeeks(String thisWeek)
+    {
+        return thisSeasonWeeks.get(thisWeek);
+    }
+    public String getHomeTeam(){return homeTeam;}
+    public String getAwayTeam() {return awayTeam;}
 }
