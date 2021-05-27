@@ -2,10 +2,10 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210525
- * Launch with Covers.command
+ * version 210527
+ * * Launch with Covers.command
  *******************************************************************/
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.select.Elements;
 
 import javax.swing.*;
@@ -16,15 +16,15 @@ public class Main extends JComponent
 {
     private static String version = "210525";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
-    private XSSFSheet sportDataWorkBook;
+    private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private HashMap<String, String> weekList = new HashMap<>();
     private InfoPrinter infoPrinter = new InfoPrinter();
     public DataCollector dataCollector = new DataCollector(infoPrinter);
     public WebSiteReader webSiteReader = new WebSiteReader();
-    com.wintrisstech.SportDataReader sportDataReader = new com.wintrisstech.SportDataReader();
-    Aggregator aggregator = new Aggregator();
-    SportDataWriter sportDataWriter = new SportDataWriter();
+    public SportDataReader sportDataReader = new SportDataReader();
+    public Aggregator aggregator = new Aggregator();
+    public SportDataWriter sportDataWriter = new SportDataWriter();
     private Elements thisWeekElements;
     private Elements nflHistoryElements;
     private Elements thisSeasonElements;
@@ -53,12 +53,13 @@ public class Main extends JComponent
         dataCollector.collectThisWeekMatchups(thisWeekElements);
         aggregator.setAwayTeam( dataCollector.getAwayTeam());
         aggregator.setHomeTeam(dataCollector.getHomeTeam());
-//        System.out.println("(2) Read sportDataWorkbook");
-//        sportDataWorkBook = sportDataReader.readSportData(deskTopPath);//Read in SportData.xlsx, the main SharpMarkets database, from user'thisNFLseasonDateCode desktop
+        System.out.println("(2) Read sportDataWorkbook");
+        sportDataWorkbook = sportDataReader.readSportData();
+        sportDataWorkbook = aggregator.aggregateSportData(sportDataWorkbook);
+        sportDataWriter.writeSportData(sportDataWorkbook);
         //  thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + dataCollector.getAllNFLseasons().get(thisSeason));//Has all NFL weeks for this year
 //        System.out.println("(3) Send sportDataWorkbook to aggregator()");
-//        aggregator.setSportDataWorkBook(sportDataWorkBook);//Send SportData.xlsx to sportDataAggregator() for aggregation with Covers.com website data
-        System.out.println("Iterating through all of this NFL season weeks");
+//        System.out.println("Iterating through all of this NFL season weeks");
 //        for (Element e : dataCollector.thisWeekElements)//Iterate through all this NFL season weeks
 //        {
 //            System.out.println("Iterating through all of this NFL week matchups");

@@ -2,20 +2,14 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210525
+ * version 210527
  *******************************************************************/
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFColor;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.util.Date;
 import java.util.HashMap;
 
 import static java.lang.System.out;
@@ -39,41 +33,41 @@ public class Aggregator
     private String gameDate;
     private HashMap<String, String> weekList = new HashMap<>();
     private Sheet sportDataSheet;
-    private Workbook sportDataWorkBook = new XSSFWorkbook();
+    private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
     private WebSiteReader websiteReader;
-    public void aggregateSportData(Elements thisMatchupConsensus, Sheet sportDataSheet)
+    public XSSFWorkbook aggregateSportData(XSSFWorkbook sportDataWorkbook)
     {
-        this.sportDataSheet = sportDataSheet;
+        this.sportDataWorkBook = sportDataWorkbook;
+        this.sportDataSheet = sportDataWorkbook.getSheetAt(0);
         out.println("(4) Aggregating Covers info");
         //for (int i = 0; i < 1; i++)//thisMatchupConsensus.size()
         {
-            out.println("In aggregateSportData(), thisMatchupConsensus.size => " + thisMatchupConsensus.size());
-            awayTeam = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-sideHeadLeft").text();
-            awayTeam = awayTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
-            homeTeam = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-sideHeadRight").text();
-            homeTeam = homeTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
-            Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
-            Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
-            away = leftConsensus.text();
-            over = leftConsensus.text();
-            under = rightConsensus.text();
-            home = rightConsensus.text();
-            out.println("away team => " + awayTeam);
-            out.println("home team => " + homeTeam);
-            out.println("away = > " + away);
-            out.println("over = > " + over);
-            out.println("under = > " + under);
-            out.println("home = > " + home);
+            //out.println("In aggregateSportData(), thisMatchupConsensus.size => " + thisMatchupConsensus.size());
+//            awayTeam = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-sideHeadLeft").text();
+//            awayTeam = awayTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
+//            homeTeam = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-sideHeadRight").text();
+//            homeTeam = homeTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
+//            Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
+//            Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
+//            away = leftConsensus.text();
+//            over = leftConsensus.text();
+//            under = rightConsensus.text();
+//            home = rightConsensus.text();
+//            out.println("away team => " + awayTeam);
+//            out.println("home team => " + homeTeam);
+//            out.println("away = > " + away);
+//            out.println("over = > " + over);
+//            out.println("under = > " + under);
+//            out.println("home = > " + home);
         }
-        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
-        CellStyle myStyle = sportDataWorkBook.createCellStyle();
-        Font myFont = sportDataWorkBook.createFont();
-        myFont.setBold(true);
-        myStyle.setFont(myFont);
-        XSSFFont xssfFont = (XSSFFont) myFont;
-        xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
+//        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
+//        CellStyle myStyle = sportDataWorkbook.createCellStyle();
+//        Font myFont = sportDataWorkbook.createFont();
+//        myFont.setBold(true);
+//        myStyle.setFont(myFont);
+//        XSSFFont xssfFont = (XSSFFont) myFont;
+//        xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
         //sportDataSheet.getRow(0).getCell(0).setCellStyle(myStyle);
-        sportDataSheet.getRow(0).getCell(0).setCellValue("Updated " + new Date().toString());
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellStyle(myStyle);
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellStyle(myStyle);
@@ -93,6 +87,10 @@ public class Aggregator
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellValue(under);//BO67
         //JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsCalendarDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
 //        gameCount++;
+        XSSFSheet sheet = sportDataWorkbook.getSheetAt(0);
+        sheet.getRow(4).getCell(4).setCellValue("row 4, column 4");
+        out.println("sportdataworkbook cell 0, 0, 0 => " + sportDataWorkbook.getSheetAt(0).getRow(0).getCell(0));
+        return sportDataWorkbook;
     }
     public String getUnder()
     {
@@ -110,17 +108,6 @@ public class Aggregator
     {
         return awayTeam;
     }
-    public void setSportDataWorkBook(XSSFSheet sportDataWorkBook)
-    {
-//        try
-//        {
-//            this.sportDataWorkBook = sportDataWorkBook;
-//        }
-//        catch (Exception e)
-//        {
-//
-//        }
-    }
     public void setHomeTeam(String homeTeam)
     {
         this.homeTeam = homeTeam;
@@ -130,5 +117,13 @@ public class Aggregator
     {
         this.awayTeam = awayTeam;
         out.println("setting away team in aggregator => " + awayTeam);
+    }
+    public XSSFWorkbook getSportDataWorkBook()
+    {
+        return sportDataWorkBook;
+    }
+    public void setThisWeekElements(Elements thisWeekElements)
+    {
+        this.thisWeekElements = thisWeekElements;
     }
 }

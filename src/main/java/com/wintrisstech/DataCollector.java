@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210525
+ * version 210527
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -53,8 +53,8 @@ public class DataCollector
     public void collectThisWeekMatchups(Elements thisWeekElements)
     {
         HashMap<String, String> matchups = new HashMap<>();
-        Elements matchupIDs = thisWeekElements.select(".cmg_matchup_game_box");
-        for (Element e : matchupIDs)//Build week matchup IDs array
+        Elements thisWeekMatchupIDs = thisWeekElements.select(".cmg_matchup_game_box");
+        for (Element e : thisWeekMatchupIDs)//Build week matchup IDs array
         {
             homeTeam = e.attr("data-home-team-fullname-search");
             awayTeam = e.attr("data-away-team-fullname-search");
