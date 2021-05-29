@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210527
+ * version 210528
  *******************************************************************/
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -40,27 +40,7 @@ public class Aggregator
         this.sportDataWorkBook = sportDataWorkbook;
         this.sportDataSheet = sportDataWorkbook.getSheetAt(0);
         out.println("(4) Aggregating Covers info");
-        //for (int i = 0; i < 1; i++)//thisMatchupConsensus.size()
-        {
-            //out.println("In aggregateSportData(), thisMatchupConsensus.size => " + thisMatchupConsensus.size());
-//            awayTeam = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-sideHeadLeft").text();
-//            awayTeam = awayTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
-//            homeTeam = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-sideHeadRight").text();
-//            homeTeam = homeTeam.replaceAll("[^\\sa-zA-Z]", "").trim();
-//            Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
-//            Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
-//            away = leftConsensus.text();
-//            over = leftConsensus.text();
-//            under = rightConsensus.text();
-//            home = rightConsensus.text();
-//            out.println("away team => " + awayTeam);
-//            out.println("home team => " + homeTeam);
-//            out.println("away = > " + away);
-//            out.println("over = > " + over);
-//            out.println("under = > " + under);
-//            out.println("home = > " + home);
-        }
-//        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
+       //        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
 //        CellStyle myStyle = sportDataWorkbook.createCellStyle();
 //        Font myFont = sportDataWorkbook.createFont();
 //        myFont.setBold(true);
