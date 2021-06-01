@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210528
+ * version 210601
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -24,6 +24,11 @@ public class DataCollector
     private WebSiteReader webSiteReader;
     private String matchupID;
     private String awayTeamID;
+    private ArrayList<String> gameWeekDates;
+    private ArrayList<String> matchupIDs;
+    private ArrayList<String> gameWeekNumbers;
+    private String thisWeek;
+    private ArrayList<String> weekDataEventIDs;
     public void collectAllSeasonDates(Elements nflRandomElements)
     {
         ArrayList<String> seasonDates = new ArrayList<String>();
@@ -36,12 +41,13 @@ public class DataCollector
             seasonDates.add(e.text());
             seasonCodes.add(e.val());
             System.out.println("seasonDate => " + seasonDates.get(i) + ", seasonCode => " + seasonCodes.get(i));
+            i++;
         }
     }
     public void collectThisSeasonWeeks(Elements nflRandomElements)
     {
-        ArrayList<String> gameWeekNumbers = new ArrayList<String>();
-        ArrayList<String> gameWeekDates = new ArrayList<String>();
+        gameWeekNumbers = new ArrayList<String>();
+        gameWeekDates = new ArrayList<String>();
         Elements cmg_week_filter_dropdown = nflRandomElements.select("#cmg_week_filter_dropdown");
         Elements options = cmg_week_filter_dropdown.select("Option");
         int i = 0;
@@ -57,23 +63,24 @@ public class DataCollector
     {
         ArrayList<String> homeTeams = new ArrayList<String>();
         ArrayList<String> awayTeams = new ArrayList<String>();
-        ArrayList<String> matchupIDs = new ArrayList<>();
+        matchupIDs = new ArrayList<>();
         Elements thisWeekMatchupIDs = thisWeekElements.select(".cmg_matchup_game_box");
         int i = 0;
         for (Element e : thisWeekMatchupIDs)//Build week matchup IDs array
         {
             homeTeam = e.attr("data-home-team-fullname-search");
             awayTeam = e.attr("data-away-team-fullname-search");
+            matchupID = e.attr("data-event-ID");
             homeTeams.add(homeTeam);
             awayTeams.add(awayTeam);
-            matchupID = e.attr("data-event-ID");
             matchupIDs.add(matchupID);
-            System.out.println("homeTeam => " + homeTeams.get(i) + "   awayTeam => " + awayTeams.get(i) + "  data-event-ID => " + matchupID);
+            System.out.println("This week (" + thisWeek + "): homeTeam => " + homeTeams.get(i) + "   awayTeam => " + awayTeams.get(i) + "  data-event-ID => " + matchupID);
             i++;
         }
     }
     public void collectConsensusData(Elements thisMatchupConsensus)
     {
+        Elements matchUpIDs = thisMatchupConsensus.select("#cmg_week_filter_dropdown");
         ArrayList<String> atsHomes = new ArrayList<String>();
         ArrayList<String> atsAways = new ArrayList<String>();
         ArrayList<String> ouOvers = new ArrayList<String>();
@@ -88,22 +95,22 @@ public class DataCollector
         atsHomes.add(atsHome);
         ouOvers.add(ouOver);
         ouUnders.add(ouUnder);
+        System.out.println("..................... home " + homeTeam + " vs " + awayTeam + " away...................");
         System.out.println("atsAway => " + atsAway);
         System.out.println("ouUnder => " + atsHome);
         System.out.println("ouOver => " + ouOver);
         System.out.println("atsHome => " + ouUnder);
-        Elements matchUpIDs = thisMatchupConsensus.select("#cmg_week_filter_dropdown");
     }
     public void collectWeekEventIDs(Elements weekDocument)
     {
         System.out.println("Collecting gameIDs");
-        ArrayList<String> weekDataEventIDs = new ArrayList<String>();
+         weekDataEventIDs = new ArrayList<String>();
         Elements did = weekDocument.select(".cmg_follow_link[data-event-id]");
         for (Element e : did)//Build week game data event IDs array
         {
             String gameID = e.attr("data-event-id").toString();
             weekDataEventIDs.add(gameID);
-            System.out.println("gameID => " + gameID);
+            System.out.println("this week gameID => " + gameID);
         }
     }
     public String getHomeTeam()
@@ -118,8 +125,20 @@ public class DataCollector
     {
         this.thisMatchupID = thisMatchupID;
     }
-    public void setWebsiteReader(WebSiteReader webSiteReader)
+    public ArrayList<String> getGameWeekDates()
     {
-        this.webSiteReader = webSiteReader;
+        return gameWeekDates;
+    }
+    public ArrayList<String> getMatchupIDs()
+    {
+        return matchupIDs;
+    }
+    public ArrayList<String> getGameWeekNumbers()
+    {
+        return gameWeekNumbers;
+    }
+    public ArrayList<String> getWeekDataEventIDs()
+    {
+        return weekDataEventIDs;
     }
 }

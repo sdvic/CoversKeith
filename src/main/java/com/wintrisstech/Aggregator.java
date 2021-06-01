@@ -2,14 +2,17 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210528
+ * version 210601
  *******************************************************************/
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import java.awt.*;
 import java.util.HashMap;
 
 import static java.lang.System.out;
@@ -22,7 +25,7 @@ public class Aggregator
     private String dataEventID;
     private String homeTeam;
     private String awayTeam;
-    private int gameCount;
+    private int gameCount = 7;
     private final int rowOffset = 3;
     private String thisGameDate;
     private int numberOfGamesThisWeek;
@@ -34,13 +37,37 @@ public class Aggregator
     private HashMap<String, String> weekList = new HashMap<>();
     private Sheet sportDataSheet;
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
+    private XSSFWorkbook updatedSportDataWorkBook;
     private WebSiteReader websiteReader;
-    public XSSFWorkbook aggregateSportData(XSSFWorkbook sportDataWorkbook)
+    private SportDataReader sportDataReader;
+    private XSSFSheet sportDataUpdateSheet = null;
+    public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook)
     {
-        this.sportDataWorkBook = sportDataWorkbook;
-        this.sportDataSheet = sportDataWorkbook.getSheetAt(0);
-        out.println("(4) Aggregating Covers info");
-       //        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
+        //sportDataWorkbook.createSheet("Update");
+        sportDataSheet = sportDataWorkbook.getSheet("Update");
+        CellStyle myStyle = sportDataWorkbook.createCellStyle();
+        Font myFont = sportDataWorkbook.createFont();
+        myFont.setBold(true);
+        myStyle.setFont(myFont);
+        XSSFFont xssfFont = (XSSFFont) myFont;
+        Color rgb = new Color(100, 100, 100);
+        xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
+        Row r = sportDataSheet.createRow(0);
+        r.createCell(0);
+        XSSFRow row = (XSSFRow) sportDataSheet.createRow(1);
+        sportDataSheet.getRow(0).getCell(0).setCellStyle(myStyle);
+        row.createCell(0);
+        row.getCell(0).setCellValue("HI THERE--------");
+        Row rr = sportDataSheet.createRow(rowOffset + gameCount);
+        rr.createCell(2);
+        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue("worry");
+
+
+
+        return sportDataWorkbook;
+    }
+
+//        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
 //        CellStyle myStyle = sportDataWorkbook.createCellStyle();
 //        Font myFont = sportDataWorkbook.createFont();
 //        myFont.setBold(true);
@@ -54,6 +81,8 @@ public class Aggregator
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellValue(thisGameDate);
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellStyle(myStyle);
 //        //nflSeasonYear = matchupsCalendarDate.substring(0,4);
+//        Row rr = sportDataSheet.createRow(rowOffset + gameCount);
+//        rr.createCell(2);
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(nflSeasonYear);
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellStyle(myStyle);
 //        //sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellValue("week" + weekNumberString);
@@ -67,11 +96,17 @@ public class Aggregator
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellValue(under);//BO67
         //JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsCalendarDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
 //        gameCount++;
-        XSSFSheet sheet = sportDataWorkbook.getSheetAt(0);
-        sheet.getRow(4).getCell(4).setCellValue("row 4, column 4");
-        out.println("sportdataworkbook cell 0, 0, 0 => " + sportDataWorkbook.getSheetAt(0).getRow(0).getCell(0));
-        return sportDataWorkbook;
-    }
+//        XSSFSheet sheet = sportDataWorkbook.getSheet("Update");
+//        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
+//        CellStyle myStyle = sportDataWorkbook.createCellStyle();
+//        Font myFont = sportDataWorkbook.createFont();
+//        myFont.setBold(true);
+//        myStyle.setFont(myFont);
+//        XSSFFont xssfFont = (XSSFFont) myFont;
+//        xssfFont.setColor(new XSSFColor(rgb, null));
+        //sheet.getRow(0).getCell(0).setCellStyle(myStyle);
+//        sheet.getRow(0).getCell(0).setCellValue("Hoorah");
+
     public String getUnder()
     {
         return under;
@@ -105,5 +140,17 @@ public class Aggregator
     public void setThisWeekElements(Elements thisWeekElements)
     {
         this.thisWeekElements = thisWeekElements;
+    }
+    public void setUpdatedSportDataWorkBook(XSSFWorkbook updatedSportDataWorkBook)
+    {
+        this.updatedSportDataWorkBook = updatedSportDataWorkBook;
+    }
+    public void setSportDataReader(SportDataReader sportDataReader)
+    {
+        this.sportDataReader = sportDataReader;
+    }
+    public XSSFSheet getSportDataUpdateSheet()
+    {
+        return sportDataUpdateSheet;
     }
 }

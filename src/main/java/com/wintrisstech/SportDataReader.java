@@ -2,12 +2,11 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210528
+ * version 210601
  * Read large SportData excel work book (SportData.xlsx) on user's desktop and return workBook
  *******************************************************************/
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
 public class SportDataReader
 {
