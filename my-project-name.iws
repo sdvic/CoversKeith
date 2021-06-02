@@ -10,12 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/VentilatorProject/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/VentilatorProject/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/VentilatorProject/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/VentilatorProject/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/VentilatorProject/VentilatorProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/wintrisstech.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" afterDir="false" />
@@ -23,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +335,10 @@
       <workItem from="1622474962477" duration="7089000" />
       <workItem from="1622492193118" duration="4489000" />
       <workItem from="1622509800396" duration="2942000" />
-      <workItem from="1622563664973" duration="1383000" />
+      <workItem from="1622563664973" duration="1553000" />
+      <workItem from="1622584416529" duration="3145000" />
+      <workItem from="1622590157011" duration="11511000" />
+      <workItem from="1622648881292" duration="3248000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -545,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622262287057</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="version 210601...Reading partial whole week">
+      <created>1622566203058</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1622566203058</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +572,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210307...Trying to get executable jar working." />
     <MESSAGE value="version 210318...CleanUp working...no executable jar" />
     <MESSAGE value="version 210319...Adding date info correctly...no executable jar" />
     <MESSAGE value="version 210320...CleanUp...no executable jar" />
@@ -592,6 +596,7 @@
     <MESSAGE value="version 210525...getting home and away team" />
     <MESSAGE value="version 210527...Reading/writing SportData.xlsx" />
     <MESSAGE value="version 210528...Reading ATS,OU,ID,Home,Away,Dates" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210528...Reading ATS,OU,ID,Home,Away,Dates" />
+    <MESSAGE value="version 210601...Reading partial whole week" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210601...Reading partial whole week" />
   </component>
 </project>
