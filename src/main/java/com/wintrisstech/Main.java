@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210602
+ * version 210603
  * * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -11,11 +11,10 @@ import org.jsoup.select.Elements;
 import javax.swing.*;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static String version = "210602";
+    private static String version = "210603";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -50,45 +49,29 @@ public class Main extends JComponent
         dataCollector.collectAllSeasonDates(nflHistoryElements);//Builds a String array of all past and current NFL season year dates available from Covers.com
         System.out.println("(3) Reading Elements for this week: " + thisWeek + " from https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisWeek);
         thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisWeek);//Get all of this week's games info
-        //System.out.println("............................... " + thisWeekElements);
         System.out.println("(4) Collecting nflHistory Elements");
         dataCollector.collectThisSeasonWeeks(nflHistoryElements);
         System.out.println("(5) Collecting this week matchups");
         dataCollector.collectThisWeekMatchups(thisWeekElements);
-        System.out.println("(6) Collecting this week eventIDs");
-        ArrayList<String> gameWeekNumbers = dataCollector.getThisGameWeekNumbers();
-        ArrayList<String> matchupIDs = dataCollector.getThisWeekMatchupIDs();
-        System.out.println("(7) Aggregating AwayTeam");
+        System.out.println("+++++++++++++++++++++++ number of matchups this week is " + dataCollector.getThisWeekMatchupIDs().size());
+        for (int i = 0; i < 3; i++)
+        {
+            System.out.println("Getting consensus data for week " +  dataCollector.getThisWeekMatchupIDs().get(i));
+            thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(i);
+            Elements thisMatchupConsensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
+            dataCollector.collectConsensusData(thisMatchupConsensusElements, i);
+        }
+        System.out.println("(6) Aggregating AwayTeam");
         aggregator.setAwayTeam(dataCollector.getAwayTeam());
-        System.out.println("(8) Aggregating HomeTeam");
+        System.out.println("(6) Aggregating HomeTeam");
         aggregator.setHomeTeam(dataCollector.getHomeTeam());
-        System.out.println("(9) Collecting consensus data from https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a*thisMatchupID*");
-//        for (String s : dataCollector.getThisWeekMatchupIDs())
-//        {
-//            Elements thisMatchupConsensus = webSiteReader.readCleanWebsite("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + s);
-//            dataCollector.collectConsensusData(thisMatchupConsensus);
-//        }
-        System.out.println("(10) Read sportDataWorkbook");
+        System.out.println("(8) Read sportDataWorkbook");
         sportDataWorkbook = sportDataReader.readSportData();
         System.out.println("Add update sheet to SportData.xlsx");
-        System.out.println("(11) Aggregate sportDataWorkbook");
+        System.out.println("(9) Aggregate sportDataWorkbook");
         aggregator.buildSportDataUpdate(sportDataWorkbook);
-        System.out.println("(12) Write updatedSportDataWorkbook");
+        System.out.println("(10) Write updatedSportDataWorkbook");
         sportDataWriter.writeSportData(sportDataWorkbook);
-        //  thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + dataCollector.getAllNFLseasons().get(thisSeason));//Has all NFL weeks for this year
-//        System.out.println("(3) Send sportDataWorkbook to aggregator()");
-//        System.out.println("Iterating through all of this NFL season weeks");
-//        for (Element e : dataCollector.thisWeekElements)//Iterate through all this NFL season weeks
-//        {
-//            System.out.println("Iterating through all of this NFL week matchups");
-//            for (int matchupIndex = 0; matchupIndex < 1; matchupIndex++)//Iterate through consensus for all matchups this NFL week
-////            {
-//            dataCollector.collectThisNFLWeekMatchupIDs(thisSeasonElements);
-////                String thisMatchupID = dataCollector.getMatchUpIDs()[matchupIndex];
-////                System.out.println("Reading consensus data for matchup #" + (matchupIndex + 1) + ", matchupID => " + thisMatchupID);
-////                Elements thisMatchupConsensus = webSiteReader.readCleanWebsite("https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
-////            }
-//        }
         System.out.print("(11)  Proper Finish...hooray!");
 
     }

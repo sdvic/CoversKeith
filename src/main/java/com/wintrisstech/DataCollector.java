@@ -2,13 +2,13 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210602
+ * version 210603
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 public class DataCollector
 {
     private Elements nflRandomElements;
@@ -25,20 +25,26 @@ public class DataCollector
     private String homeTeamScore;
     private WebSiteReader webSiteReader;
     private String gameDate;
-    private ArrayList<String> thisWeekGameDates = new ArrayList<String>();;
-    private ArrayList<String> thisWeekMatchupIDs = new ArrayList<String>();;
-    private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();;
-    private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();;
-    private ArrayList<String> thisWeekAwayTeamScores = new ArrayList<String>();;
+    private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
+    private ArrayList<String> thisWeekMatchupIDs = new ArrayList<String>();
+    private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
+    private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();
+    private ArrayList<String> thisWeekAwayTeamScores = new ArrayList<String>();
     private ArrayList<String> thisWeekHomeTeams = new ArrayList<String>();
+    private HashMap<String, String> thisWeekHomeTeamsMap = new HashMap<>();
     private ArrayList<String> thisWeekAwayTeams = new ArrayList<String>();
+    private HashMap<String, String> thisWeekAwayTeamsMap = new HashMap<>();
+    ArrayList<String> atsHomes = new ArrayList<String>();
+    ArrayList<String> atsAways = new ArrayList<String>();
+    ArrayList<String> ouOvers = new ArrayList<String>();
+    ArrayList<String> ouUnders = new ArrayList<String>();
     private String thisWeek;
     private String awayTeamID;
+    private Elements thisWeekMatchupIdElements;
     public void collectThisWeekMatchups(Elements thisWeekElements)
     {
-        Elements thisWeekMatchupIDs = thisWeekElements.select(".cmg_matchup_game_box");
-        int i = 0;
-        for (Element e : thisWeekMatchupIDs)//Build week matchup IDs array
+        thisWeekMatchupIdElements = thisWeekElements.select(".cmg_matchup_game_box");
+        for (Element e : thisWeekMatchupIdElements)//Build week matchup IDs array
         {
             awayTeam = e.attr("data-away-team-fullname-search");
             homeTeam = e.attr("data-home-team-fullname-search");
@@ -49,20 +55,20 @@ public class DataCollector
             thisWeek = e.attr("data-competition-type");
             thisWeekGameDates.add(gameDate);
             thisWeekHomeTeams.add(homeTeam);
+            thisWeekHomeTeamsMap.put(thisMatchupID, homeTeam);
             thisWeekAwayTeams.add(awayTeam);
+            thisWeekAwayTeamsMap.put(thisMatchupID, homeTeam);
             thisWeekHomeTeamScores.add(homeTeamScore);
             thisWeekAwayTeamScores.add((awayTeamScore));
             thisGameWeekNumbers.add(thisWeek);
-            //thisWeekMatchupIDs.add(thisMatchupID);
-            System.out.println("........................... ");
-            System.out.println("homeTeam => " + homeTeam);
+            thisWeekMatchupIDs.add(thisMatchupID);
+            System.out.println("homeTeam => " + thisWeekHomeTeamsMap.get(thisMatchupID));
             System.out.println("awayTeam => " + awayTeam);
             System.out.println("gameDate => " + gameDate);
             System.out.println("thisMatchupID => " + thisMatchupID);
             System.out.println("homeTeamScore => " + homeTeamScore);
             System.out.println("awayTeamScore => " + awayTeamScore);
             System.out.println("thisWeek => " + thisWeek);
-            i++;
         }
     }
     public void collectAllSeasonDates(Elements nflRandomElements)
@@ -76,9 +82,9 @@ public class DataCollector
         {
             seasonDates.add(e.text());
             seasonCodes.add(e.val());
-            System.out.println("seasonDate => " + seasonDates.get(i) + ", seasonCode => " + seasonCodes.get(i));
             i++;
         }
+        System.out.println("Collected + " + options.size() + " season week dates for this NFL year ");
     }
     public void collectThisSeasonWeeks(Elements nflRandomElements)
     {
@@ -91,17 +97,13 @@ public class DataCollector
         {
             thisGameWeekNumbers.add(e.text());
             thisWeekGameDates.add(e.val());
-            System.out.println("gameWeekNumber => " + thisGameWeekNumbers.get(i) + ", gameWeekDate => " + thisWeekGameDates.get(i));
             i++;
         }
+        System.out.println("Collected " + options.size() + " season weeks.");
     }
-    public void collectConsensusData(Elements thisMatchupConsensus)
+    public void collectConsensusData(Elements thisMatchupConsensus, int matchupIndex)
     {
-        Elements matchUpIDs = thisMatchupConsensus.select("#cmg_week_filter_dropdown");
-        ArrayList<String> atsHomes = new ArrayList<String>();
-        ArrayList<String> atsAways = new ArrayList<String>();
-        ArrayList<String> ouOvers = new ArrayList<String>();
-        ArrayList<String> ouUnders = new ArrayList<String>();
+        System.out.println("(9) Collecting consensus data from https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
         Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
         Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
         String ouOver = leftConsensus.select("div").get(1).text();
@@ -112,11 +114,12 @@ public class DataCollector
         atsHomes.add(atsHome);
         ouOvers.add(ouOver);
         ouUnders.add(ouUnder);
-        System.out.println("..................... home " + homeTeam + " vs " + awayTeam + " away...................");
+        System.out.println("..................... home " + thisWeekHomeTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex)) + " vs " + thisWeekAwayTeamsMap.get(thisWeekMatchupIDs)+ " away...................");
         System.out.println("atsAway => " + atsAway);
         System.out.println("ouUnder => " + atsHome);
         System.out.println("ouOver => " + ouOver);
         System.out.println("atsHome => " + ouUnder);
+        System.out.println("homeTeam =>" + thisWeekHomeTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex)));
     }
     public String getHomeTeam()
     {
