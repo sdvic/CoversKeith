@@ -2,17 +2,18 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210603
+ * version 210603A
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFFont;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import java.awt.*;
 import java.util.HashMap;
 
 import static java.lang.System.out;
@@ -35,50 +36,39 @@ public class Aggregator
     private Document nflRandomDoc;
     private String gameDate;
     private HashMap<String, String> weekList = new HashMap<>();
+    private HashMap<String, String> thisWeekHomeTeamsMap = new HashMap<>();
+    private HashMap<String, String> thisWeekAwayTeamsMap = new HashMap<>();
+    private HashMap<String, String> thisWeekGameDatesMap = new HashMap<>();
     private Sheet sportDataSheet;
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
     private XSSFWorkbook updatedSportDataWorkBook;
     private WebSiteReader websiteReader;
     private SportDataReader sportDataReader;
     private XSSFSheet sportDataUpdateSheet = null;
-    public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook)
+    byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
+    public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex)
     {
         //sportDataWorkbook.createSheet("Update");
         sportDataSheet = sportDataWorkbook.getSheet("Update");
+        sportDataSheet.createRow(eventIndex);
+        sportDataSheet.getRow(eventIndex).createCell(0);
+        sportDataSheet.getRow(eventIndex).createCell(1);
         CellStyle myStyle = sportDataWorkbook.createCellStyle();
+        sportDataSheet.getRow(eventIndex).getCell(0).setCellStyle(myStyle);
         Font myFont = sportDataWorkbook.createFont();
         myFont.setBold(true);
         myStyle.setFont(myFont);
         XSSFFont xssfFont = (XSSFFont) myFont;
-        Color rgb = new Color(100, 100, 100);
         xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
-        Row r = sportDataSheet.createRow(0);
-        r.createCell(0);
-        XSSFRow row = (XSSFRow) sportDataSheet.createRow(1);
-        sportDataSheet.getRow(0).getCell(0).setCellStyle(myStyle);
-        row.createCell(0);
-        row.getCell(0).setCellValue("HI THERE--------");
-        Row rr = sportDataSheet.createRow(rowOffset + gameCount);
-        rr.createCell(2);
-        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue("worry");
-
-
-
+        homeTeam = thisWeekHomeTeamsMap.get(dataEventID);
+        awayTeam = thisWeekAwayTeamsMap.get(dataEventID);
+        thisGameDate = thisWeekGameDatesMap.get(dataEventID);
+        out.println("************************** eventIndex => "+ eventIndex + " dataEventID => " + dataEventID + " homeTeam => " + homeTeam + " awayTeam => " + awayTeam);
+        sportDataSheet.getRow(eventIndex).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
+        sportDataSheet.getRow(eventIndex).getCell(1).setCellValue(thisGameDate);
         return sportDataWorkbook;
     }
 
-//        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
-//        CellStyle myStyle = sportDataWorkbook.createCellStyle();
-//        Font myFont = sportDataWorkbook.createFont();
-//        myFont.setBold(true);
-//        myStyle.setFont(myFont);
-//        XSSFFont xssfFont = (XSSFFont) myFont;
-//        xssfFont.setColor(new XSSFColor(rgb, null));//Load new values into SportData.xlsx sheet
-        //sportDataSheet.getRow(0).getCell(0).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(1).setCellValue(thisGameDate);
 //        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellStyle(myStyle);
 //        //nflSeasonYear = matchupsCalendarDate.substring(0,4);
 //        Row rr = sportDataSheet.createRow(rowOffset + gameCount);
@@ -152,5 +142,17 @@ public class Aggregator
     public XSSFSheet getSportDataUpdateSheet()
     {
         return sportDataUpdateSheet;
+    }
+    public void setThisWeekHomeTeamsMap(HashMap<String, String> thisWeekHomeTeamsMap)
+    {
+        this.thisWeekHomeTeamsMap = thisWeekHomeTeamsMap;
+    }
+    public void setThisWeekAwayTeamsMap(HashMap<String, String> thisWeekAwayTeamsMap)
+    {
+        this.thisWeekAwayTeamsMap = thisWeekAwayTeamsMap;
+    }
+    public void setThisWeekGameDatesMap(HashMap<String, String> thisWeekGameDatesMap)
+    {
+        this.thisWeekGameDatesMap = thisWeekGameDatesMap;
     }
 }

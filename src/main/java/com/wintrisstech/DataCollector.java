@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210603
+ * version 210603A
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -26,6 +26,7 @@ public class DataCollector
     private WebSiteReader webSiteReader;
     private String gameDate;
     private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
+    private HashMap<String, String> thisWeekGameDatesMap= new HashMap<>();
     private ArrayList<String> thisWeekMatchupIDs = new ArrayList<String>();
     private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
     private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();
@@ -54,17 +55,18 @@ public class DataCollector
             awayTeamScore = e.attr("data-away-score");
             thisWeek = e.attr("data-competition-type");
             thisWeekGameDates.add(gameDate);
+            thisWeekGameDatesMap.put(thisMatchupID, gameDate);
             thisWeekHomeTeams.add(homeTeam);
-            thisWeekHomeTeamsMap.put(thisMatchupID, homeTeam);
             thisWeekAwayTeams.add(awayTeam);
-            thisWeekAwayTeamsMap.put(thisMatchupID, homeTeam);
+            thisWeekHomeTeamsMap.put(thisMatchupID, homeTeam);
+            thisWeekAwayTeamsMap.put(thisMatchupID, awayTeam);
             thisWeekHomeTeamScores.add(homeTeamScore);
             thisWeekAwayTeamScores.add((awayTeamScore));
             thisGameWeekNumbers.add(thisWeek);
             thisWeekMatchupIDs.add(thisMatchupID);
             System.out.println("homeTeam => " + thisWeekHomeTeamsMap.get(thisMatchupID));
-            System.out.println("awayTeam => " + awayTeam);
-            System.out.println("gameDate => " + gameDate);
+            System.out.println("awayTeam => " + thisWeekAwayTeamsMap.get(thisMatchupID));
+            System.out.println("gameDate => " + thisWeekGameDatesMap.get(thisMatchupID));
             System.out.println("thisMatchupID => " + thisMatchupID);
             System.out.println("homeTeamScore => " + homeTeamScore);
             System.out.println("awayTeamScore => " + awayTeamScore);
@@ -101,7 +103,7 @@ public class DataCollector
         }
         System.out.println("Collected " + options.size() + " season weeks.");
     }
-    public void collectConsensusData(Elements thisMatchupConsensus, int matchupIndex)
+    public void collectConsensusData(Elements thisMatchupConsensus, int matchupIndex, String thisMatchupID)
     {
         System.out.println("(9) Collecting consensus data from https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
         Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
@@ -114,7 +116,7 @@ public class DataCollector
         atsHomes.add(atsHome);
         ouOvers.add(ouOver);
         ouUnders.add(ouUnder);
-        System.out.println("..................... home " + thisWeekHomeTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex)) + " vs " + thisWeekAwayTeamsMap.get(thisWeekMatchupIDs)+ " away...................");
+        System.out.println("..................... home " + thisWeekHomeTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex)) + " vs " + thisWeekAwayTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex))+ " away...................");
         System.out.println("atsAway => " + atsAway);
         System.out.println("ouUnder => " + atsHome);
         System.out.println("ouOver => " + ouOver);
@@ -129,20 +131,20 @@ public class DataCollector
     {
         return awayTeam;
     }
-    public void setThisMatchupID(String thisMatchupID)
-    {
-        this.thisMatchupID = thisMatchupID;
-    }
-    public ArrayList<String> getThisWeekGameDates()
-    {
-        return thisWeekGameDates;
-    }
     public ArrayList<String> getThisWeekMatchupIDs()
     {
         return thisWeekMatchupIDs;
     }
-    public ArrayList<String> getThisGameWeekNumbers()
+    public HashMap<String, String> getThisWeekHomeTeamsMap()
     {
-        return thisGameWeekNumbers;
+        return thisWeekHomeTeamsMap;
+    }
+    public HashMap<String, String> getThisWeekAwayTeamsMap()
+    {
+        return thisWeekAwayTeamsMap;
+    }
+    public HashMap<String, String> getThisWeekGameDatesMap()
+    {
+        return thisWeekGameDatesMap;
     }
 }

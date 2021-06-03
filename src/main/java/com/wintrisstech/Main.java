@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210603
+ * version 210603A
  * * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,7 +14,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static String version = "210603";
+    private static String version = "210603A";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -54,25 +54,29 @@ public class Main extends JComponent
         System.out.println("(5) Collecting this week matchups");
         dataCollector.collectThisWeekMatchups(thisWeekElements);
         System.out.println("+++++++++++++++++++++++ number of matchups this week is " + dataCollector.getThisWeekMatchupIDs().size());
-        for (int i = 0; i < 3; i++)
+        System.out.println("(8) Read sportDataWorkbook");
+        sportDataWorkbook = sportDataReader.readSportData();
+        for (int i = 0; i < 8; i++)
         {
-            System.out.println("Getting consensus data for week " +  dataCollector.getThisWeekMatchupIDs().get(i));
-            thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(i);
+            String thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(i);
+            System.out.println("Getting consensus data for matchup " +  thisMatchupID);
             Elements thisMatchupConsensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
-            dataCollector.collectConsensusData(thisMatchupConsensusElements, i);
+            dataCollector.collectConsensusData(thisMatchupConsensusElements, i, thisMatchupID);
+            aggregator.setThisWeekAwayTeamsMap(dataCollector.getThisWeekAwayTeamsMap());
+            aggregator.setThisWeekHomeTeamsMap(dataCollector.getThisWeekHomeTeamsMap());
+            aggregator.setThisWeekGameDatesMap(dataCollector.getThisWeekGameDatesMap());
+            aggregator.buildSportDataUpdate(sportDataWorkbook, thisMatchupID, i);
+            sportDataWriter.writeSportData(sportDataWorkbook);
         }
         System.out.println("(6) Aggregating AwayTeam");
         aggregator.setAwayTeam(dataCollector.getAwayTeam());
         System.out.println("(6) Aggregating HomeTeam");
         aggregator.setHomeTeam(dataCollector.getHomeTeam());
-        System.out.println("(8) Read sportDataWorkbook");
-        sportDataWorkbook = sportDataReader.readSportData();
+
         System.out.println("Add update sheet to SportData.xlsx");
         System.out.println("(9) Aggregate sportDataWorkbook");
-        aggregator.buildSportDataUpdate(sportDataWorkbook);
         System.out.println("(10) Write updatedSportDataWorkbook");
         sportDataWriter.writeSportData(sportDataWorkbook);
         System.out.print("(11)  Proper Finish...hooray!");
-
     }
 }

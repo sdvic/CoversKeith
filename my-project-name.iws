@@ -14,10 +14,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +352,11 @@
       <workItem from="1622673255104" duration="2416000" />
       <workItem from="1622687661884" duration="4233000" />
       <workItem from="1622733016404" duration="6297000" />
-      <workItem from="1622742046950" duration="2491000" />
+      <workItem from="1622742046950" duration="4032000" />
+      <workItem from="1622746125833" duration="1241000" />
+      <workItem from="1622747377034" duration="1358000" />
+      <workItem from="1622749162840" duration="6035000" />
+      <workItem from="1622759474196" duration="3497000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -575,7 +575,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622652363322</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="version 210603...Trying to use HashMaps...">
+      <created>1622744586845</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1622744586845</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +604,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210319...Adding date info correctly...no executable jar" />
     <MESSAGE value="version 210320...CleanUp...no executable jar" />
     <MESSAGE value="version 210322...Launch with Covers.command" />
     <MESSAGE value="version 210324&#10;Major refactor...remove ArrayList...read Excel working" />
@@ -622,6 +628,7 @@
     <MESSAGE value="version 210528...Reading ATS,OU,ID,Home,Away,Dates" />
     <MESSAGE value="version 210601...Reading partial whole week" />
     <MESSAGE value="version 210602...Reading home/away team, gameDte, matchupID, home/awayTeamScore, thisWeek" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210602...Reading home/away team, gameDte, matchupID, home/awayTeamScore, thisWeek" />
+    <MESSAGE value="version 210603...Trying to use HashMaps..." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210603...Trying to use HashMaps..." />
   </component>
 </project>
