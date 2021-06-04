@@ -362,7 +362,7 @@
       <workItem from="1622749162840" duration="6035000" />
       <workItem from="1622759474196" duration="13847000" />
       <workItem from="1622820870359" duration="1760000" />
-      <workItem from="1622823078631" duration="4592000" />
+      <workItem from="1622823078631" duration="7532000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -595,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622763422288</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="version 210604...Loading SportData update sheet with teams/dates/OU/ATS">
+      <created>1622828019315</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1622828019315</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,7 +624,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210322...Launch with Covers.command" />
     <MESSAGE value="version 210324&#10;Major refactor...remove ArrayList...read Excel working" />
     <MESSAGE value="version 210401&#10;Major refactor...have GameWeek and GameDate HashMap&#10;Working on getting eventID" />
     <MESSAGE value="version 210405&#10;Both NFL week dates and event IDs in arrays!" />
@@ -642,6 +648,7 @@
     <MESSAGE value="version 210602...Reading home/away team, gameDte, matchupID, home/awayTeamScore, thisWeek" />
     <MESSAGE value="version 210603...Trying to use HashMaps..." />
     <MESSAGE value="version 210603A...Loading SportData update sheet with teams/dates" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210603A...Loading SportData update sheet with teams/dates" />
+    <MESSAGE value="version 210604...Loading SportData update sheet with teams/dates/OU/ATS" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210604...Loading SportData update sheet with teams/dates/OU/ATS" />
   </component>
 </project>

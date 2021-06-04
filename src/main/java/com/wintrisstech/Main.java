@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210604
+ * version 210604A
  * * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -13,7 +13,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static String version = "210604";
+    private static String version = "210604A";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -45,7 +45,8 @@ public class Main extends JComponent
         dataCollector.collectThisSeasonWeeks(nflHistoryElements);
         dataCollector.collectThisWeekMatchups(thisWeekElements);
         sportDataWorkbook = sportDataReader.readSportData();
-        for (int i = 0; i < 3; i++)
+        int i =0;
+        for (String s : dataCollector.getThisWeekMatchupIDs())
         {
             String thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(i);//Get this matchup ID...used as key for all data retrieval
             thisMatchupConsensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
@@ -59,6 +60,7 @@ public class Main extends JComponent
             aggregator.setOuUndersMap(dataCollector.getOuUndersMap());
             aggregator.buildSportDataUpdate(sportDataWorkbook, thisMatchupID, i);
             sportDataWriter.writeSportData(sportDataWorkbook);
+            i++;
         }
         sportDataWriter.writeSportData(sportDataWorkbook);
         System.out.print("(11)  Proper Finish...hooray!");
