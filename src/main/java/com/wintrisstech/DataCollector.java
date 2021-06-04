@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210603A
+ * version 210604
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -11,20 +11,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class DataCollector
 {
-    private Elements nflRandomElements;
-    private String seasonOptions;
-    private String seasonDate;
+
     private String thisMatchupID;
-    private InfoPrinter infoPrinter;
-    private String[] allSeasonDates;
-    private String[] values;
-    private Element thisWeekElements;
     private String homeTeam;
     private String awayTeam;
     private String awayTeamScore;
     private String homeTeamScore;
-    private WebSiteReader webSiteReader;
     private String gameDate;
+    private String ouOver;
+    private String ouUnder;
     private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
     private HashMap<String, String> thisWeekGameDatesMap= new HashMap<>();
     private ArrayList<String> thisWeekMatchupIDs = new ArrayList<String>();
@@ -35,12 +30,12 @@ public class DataCollector
     private HashMap<String, String> thisWeekHomeTeamsMap = new HashMap<>();
     private ArrayList<String> thisWeekAwayTeams = new ArrayList<String>();
     private HashMap<String, String> thisWeekAwayTeamsMap = new HashMap<>();
-    ArrayList<String> atsHomes = new ArrayList<String>();
-    ArrayList<String> atsAways = new ArrayList<String>();
-    ArrayList<String> ouOvers = new ArrayList<String>();
-    ArrayList<String> ouUnders = new ArrayList<String>();
+    private ArrayList<String> atsHomes = new ArrayList<String>();
+    private HashMap<String, String> atsHomesMap = new HashMap<>();
+    private HashMap<String, String> atsAwaysMap = new HashMap<>();
+    private HashMap<String, String> ouUndersMap = new HashMap<>();
+    private HashMap<String, String> ouOversMap = new HashMap<>();
     private String thisWeek;
-    private String awayTeamID;
     private Elements thisWeekMatchupIdElements;
     public void collectThisWeekMatchups(Elements thisWeekElements)
     {
@@ -64,14 +59,20 @@ public class DataCollector
             thisWeekAwayTeamScores.add((awayTeamScore));
             thisGameWeekNumbers.add(thisWeek);
             thisWeekMatchupIDs.add(thisMatchupID);
-            System.out.println("homeTeam => " + thisWeekHomeTeamsMap.get(thisMatchupID));
-            System.out.println("awayTeam => " + thisWeekAwayTeamsMap.get(thisMatchupID));
-            System.out.println("gameDate => " + thisWeekGameDatesMap.get(thisMatchupID));
-            System.out.println("thisMatchupID => " + thisMatchupID);
-            System.out.println("homeTeamScore => " + homeTeamScore);
-            System.out.println("awayTeamScore => " + awayTeamScore);
-            System.out.println("thisWeek => " + thisWeek);
         }
+    }
+    public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
+    {
+        Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
+        Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
+        String ouOver = leftConsensus.select("div").get(1).text();
+        String ouUnder = rightConsensus.select("div").get(1).text();
+        String atsAway = leftConsensus.select("div").get(0).text();
+        String atsHome = rightConsensus.select("div").get(0).text();
+        atsHomesMap.put(thisMatchupID, atsAway);
+        atsAwaysMap.put(thisMatchupID, atsHome);
+        ouOversMap.put(thisMatchupID,ouOver);
+        ouUndersMap.put(thisMatchupID, ouUnder);
     }
     public void collectAllSeasonDates(Elements nflRandomElements)
     {
@@ -86,7 +87,6 @@ public class DataCollector
             seasonCodes.add(e.val());
             i++;
         }
-        System.out.println("Collected + " + options.size() + " season week dates for this NFL year ");
     }
     public void collectThisSeasonWeeks(Elements nflRandomElements)
     {
@@ -101,36 +101,8 @@ public class DataCollector
             thisWeekGameDates.add(e.val());
             i++;
         }
-        System.out.println("Collected " + options.size() + " season weeks.");
     }
-    public void collectConsensusData(Elements thisMatchupConsensus, int matchupIndex, String thisMatchupID)
-    {
-        System.out.println("(9) Collecting consensus data from https://contests.covers.com/Consensus/MatchupConsensusDetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
-        Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
-        Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
-        String ouOver = leftConsensus.select("div").get(1).text();
-        String atsHome = rightConsensus.select("div").get(1).text();
-        String atsAway = leftConsensus.select("div").get(0).text();
-        String ouUnder = rightConsensus.select("div").get(0).text();
-        atsAways.add(atsAway);
-        atsHomes.add(atsHome);
-        ouOvers.add(ouOver);
-        ouUnders.add(ouUnder);
-        System.out.println("..................... home " + thisWeekHomeTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex)) + " vs " + thisWeekAwayTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex))+ " away...................");
-        System.out.println("atsAway => " + atsAway);
-        System.out.println("ouUnder => " + atsHome);
-        System.out.println("ouOver => " + ouOver);
-        System.out.println("atsHome => " + ouUnder);
-        System.out.println("homeTeam =>" + thisWeekHomeTeamsMap.get(thisWeekMatchupIDs.get(matchupIndex)));
-    }
-    public String getHomeTeam()
-    {
-        return homeTeam;
-    }
-    public String getAwayTeam()
-    {
-        return awayTeam;
-    }
+
     public ArrayList<String> getThisWeekMatchupIDs()
     {
         return thisWeekMatchupIDs;
@@ -146,5 +118,21 @@ public class DataCollector
     public HashMap<String, String> getThisWeekGameDatesMap()
     {
         return thisWeekGameDatesMap;
+    }
+    public HashMap<String, String> getAtsHomesMap()
+    {
+        return atsHomesMap;
+    }
+    public HashMap<String, String> getAtsAwaysMap()
+    {
+        return atsAwaysMap;
+    }
+    public HashMap<String, String> getOuOversMap()
+    {
+        return ouOversMap;
+    }
+    public HashMap<String, String> getOuUndersMap()
+    {
+        return ouUndersMap;
     }
 }
