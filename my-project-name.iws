@@ -97,15 +97,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -363,6 +361,7 @@
       <workItem from="1622759474196" duration="13847000" />
       <workItem from="1622820870359" duration="1760000" />
       <workItem from="1622823078631" duration="7532000" />
+      <workItem from="1622865656370" duration="905000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>

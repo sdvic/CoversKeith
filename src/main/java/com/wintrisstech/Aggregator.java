@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210604A
+ * version 210605
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -13,9 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
 import java.util.HashMap;
-
 import static java.lang.System.out;
 public class Aggregator
 {
@@ -92,35 +90,6 @@ public class Aggregator
         sportDataSheet.getRow(eventIndex).getCell(66).setCellValue(ouUnder);
         return sportDataWorkbook;
     }
-
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellStyle(myStyle);
-//        //nflSeasonYear = matchupsCalendarDate.substring(0,4);
-//        Row rr = sportDataSheet.createRow(rowOffset + gameCount);
-//        rr.createCell(2);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(2).setCellValue(nflSeasonYear);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellStyle(myStyle);
-//        //sportDataSheet.getRow(rowOffset + gameCount).getCell(3).setCellValue("week" + weekNumberString);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(59).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(59).setCellValue(home);//BH60
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(61).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(61).setCellValue(away);//BJ62
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(64).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(64).setCellValue(over);//BM65
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellStyle(myStyle);
-//        sportDataSheet.getRow(rowOffset + gameCount).getCell(66).setCellValue(under);//BO67
-        //JOptionPane.showMessageDialog(null, "Week " + weekNumberString + "\n" + "Week Date " + matchupsCalendarDate + "\n" + "Game Date " + thisGameDate + "\n" + awayTeam + " at " + homeTeam + "\nOver " + getOver() + "\nUnder " + getUnder() + "\nHome " + getHome() + "\nAway " + getAway(), "Sharp Markets version " + version, JOptionPane.INFORMATION_MESSAGE);
-//        gameCount++;
-//        XSSFSheet sheet = sportDataWorkbook.getSheet("Update");
-//        byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
-//        CellStyle myStyle = sportDataWorkbook.createCellStyle();
-//        Font myFont = sportDataWorkbook.createFont();
-//        myFont.setBold(true);
-//        myStyle.setFont(myFont);
-//        XSSFFont xssfFont = (XSSFFont) myFont;
-//        xssfFont.setColor(new XSSFColor(rgb, null));
-        //sheet.getRow(0).getCell(0).setCellStyle(myStyle);
-//        sheet.getRow(0).getCell(0).setCellValue("Hoorah");
-
     public void setThisWeekHomeTeamsMap(HashMap<String, String> thisWeekHomeTeamsMap){this.thisWeekHomeTeamsMap = thisWeekHomeTeamsMap;}
     public void setThisWeekAwayTeamsMap(HashMap<String, String> thisWeekAwayTeamsMap){this.thisWeekAwayTeamsMap = thisWeekAwayTeamsMap;}
     public void setThisWeekGameDatesMap(HashMap<String, String> thisWeekGameDatesMap) {this.thisWeekGameDatesMap = thisWeekGameDatesMap;}
