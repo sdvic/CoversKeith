@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210605
+ * version 210612
  * * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -10,10 +10,12 @@ import org.jsoup.select.Elements;
 import javax.swing.*;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static String version = "210605";
+    String s;
+    private static String version = "210612";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -32,13 +34,46 @@ public class Main extends JComponent
     {
         System.out.println("(1) Starting SharpMarkets, version " + version + ", Copyright 2021 Dan Farris");
         Main main = new Main();
-        main.getGoing();
+        main.getStarted();
     }
-    private void getGoing() throws IOException
+    private void getStarted() throws IOException
     {
-        String thisSeason;// = JOptionPane.showInputDialog("NFL Season (2yyy)?");
-        thisSeason = "2020";
-        thisWeek = "2020-09-10";
+        ArrayList<String> thisSeasonDates = new ArrayList<>();
+        thisSeasonDates.add("2019-09-05");
+        thisSeasonDates.add("2019-09-12");
+        thisSeasonDates.add("2019-09-19");
+        thisSeasonDates.add("2019-09-26");
+        thisSeasonDates.add("2019-10-03");
+        thisSeasonDates.add("2019-10-10");
+        thisSeasonDates.add("2019-10-17");
+        thisSeasonDates.add("2019-10-24");
+        thisSeasonDates.add("2019-10-31");
+        thisSeasonDates.add("2019-11-07");
+        thisSeasonDates.add("2019-11-14");
+        thisSeasonDates.add("2019-11-21");
+        thisSeasonDates.add("2019-11-28");
+        thisSeasonDates.add("2019-12-05");
+        thisSeasonDates.add("2019-12-12");
+        thisSeasonDates.add("2019-12-21");
+        thisSeasonDates.add("2019-12-29");
+        thisSeasonDates.add("2020-01-04");
+        thisSeasonDates.add("2020-01-11");
+        thisSeasonDates.add("2020-01-19");
+        thisSeasonDates.add("2020-01-26");
+        thisSeasonDates.add("2020-02-02");
+        for (String thisWeek : thisSeasonDates)
+        {
+            this.thisWeek = thisWeek;
+            getGoing(thisWeek);
+            //sportDataWriter.writeSportData(sportDataWorkbook);
+            System.out.println("Proper Finish...HOORAY!");
+
+        }
+    }
+    private void getGoing(String thisWeek) throws IOException
+    {
+        String thisSeason = "2019";
+        System.out.println("************************************** NEW WEEK => " + thisWeek + ", NFL SEASON => " + thisSeason + " ***************************************");
         nflHistoryElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisSeason);//Has all NFL season beginning date history and this season year info from https://www.covers.com/sports/nfl/matchups?selectedDate=thisSeasonYear
         dataCollector.collectAllSeasonDates(nflHistoryElements);//Builds a String array of all past and current NFL season year dates available from Covers.com
         thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisWeek);//Get all of this week's games info
@@ -62,7 +97,5 @@ public class Main extends JComponent
             sportDataWriter.writeSportData(sportDataWorkbook);
             i++;
         }
-        sportDataWriter.writeSportData(sportDataWorkbook);
-        System.out.print("(11)  Proper Finish...hooray!");
     }
 }
