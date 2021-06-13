@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210612
+ * version 210612A
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class DataCollector
 {
-
     private String thisMatchupID;
     private String homeTeam;
     private String awayTeam;
@@ -22,7 +21,7 @@ public class DataCollector
     private String ouUnder;
     private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
     private HashMap<String, String> thisWeekGameDatesMap= new HashMap<>();
-    private ArrayList<String> thisWeekMatchupIDs = new ArrayList<String>();
+    private ArrayList<String> thisWeekMatchupIDs = new ArrayList<>();
     private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
     private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();
     private ArrayList<String> thisWeekAwayTeamScores = new ArrayList<String>();
@@ -45,7 +44,9 @@ public class DataCollector
             awayTeam = e.attr("data-away-team-fullname-search");
             homeTeam = e.attr("data-home-team-fullname-search");
             thisMatchupID = e.attr("data-event-id");
-            gameDate = e.attr("data-game-date");
+            String[] gameDateTime = e.attr("data-game-date").split(" ");
+            gameDate = gameDateTime[0];
+            String gameTime = gameDateTime[1];
             homeTeamScore = e.attr("data-home-score");
             awayTeamScore = e.attr("data-away-score");
             thisWeek = e.attr("data-competition-type");
@@ -60,6 +61,7 @@ public class DataCollector
             thisGameWeekNumbers.add(thisWeek);
             thisWeekMatchupIDs.add(thisMatchupID);
         }
+        System.out.println("ThisWeekMatchupIDs.size => " + thisWeekMatchupIDs.size());
     }
     public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
     {
@@ -102,11 +104,7 @@ public class DataCollector
             i++;
         }
     }
-
-    public ArrayList<String> getThisWeekMatchupIDs()
-    {
-        return thisWeekMatchupIDs;
-    }
+    public ArrayList<String> getThisWeekMatchupIDs(){return thisWeekMatchupIDs;}
     public HashMap<String, String> getThisWeekHomeTeamsMap()
     {
         return thisWeekHomeTeamsMap;

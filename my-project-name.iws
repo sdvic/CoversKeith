@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
+    <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="version 210612A...Working for 32 matchups...then quits...out of array index">
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" afterDir="false" />
@@ -35,6 +35,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="4136915833670c183dd87317f1b31938bdf13fd3" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -93,17 +98,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -362,6 +356,10 @@
       <workItem from="1622820870359" duration="1760000" />
       <workItem from="1622823078631" duration="7532000" />
       <workItem from="1622865656370" duration="905000" />
+      <workItem from="1623523699856" duration="4895000" />
+      <workItem from="1623542725860" duration="3382000" />
+      <workItem from="1623550417438" duration="3166000" />
+      <workItem from="1623554141519" duration="299000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -601,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622828019315</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="version 210612...Reworked version 210605. Trying to cycle through all weeks.">
+      <created>1623523240528</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1623523240528</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -623,8 +628,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210324&#10;Major refactor...remove ArrayList...read Excel working" />
-    <MESSAGE value="version 210401&#10;Major refactor...have GameWeek and GameDate HashMap&#10;Working on getting eventID" />
     <MESSAGE value="version 210405&#10;Both NFL week dates and event IDs in arrays!" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Weeks Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Array" />
@@ -648,6 +651,8 @@
     <MESSAGE value="version 210603...Trying to use HashMaps..." />
     <MESSAGE value="version 210603A...Loading SportData update sheet with teams/dates" />
     <MESSAGE value="version 210604...Loading SportData update sheet with teams/dates/OU/ATS" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210604...Loading SportData update sheet with teams/dates/OU/ATS" />
+    <MESSAGE value="version 210612...Reworked version 210605. Trying to cycle through all weeks." />
+    <MESSAGE value="version 210612A...Working for 32 matchups...then quits...out of array index" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210612A...Working for 32 matchups...then quits...out of array index" />
   </component>
 </project>
