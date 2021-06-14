@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210612A
+ * version 210613A
  * * Launch with Covers.command
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static String version = "210612";
+    private static String version = "210613A";
     private String nflRandomWeekURL = "https://www.covers.com/sports/nfl/matchups";
     private XSSFWorkbook sportDataWorkbook;
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -27,54 +27,60 @@ public class Main extends JComponent
     public SportDataWriter sportDataWriter = new SportDataWriter();
     private Elements thisWeekElements;
     private Elements nflHistoryElements;
-    private String thisWeek;
     private Elements thisMatchupConsensusElements;
-    private int globalMatchupIndex;
+    private int globalMatchupIndex = 3;
+    private String thisSeason = "2019";
     public static void main(String[] args) throws IOException, ParseException
     {
         System.out.println("(1) Starting SharpMarkets, version " + version + ", Copyright 2021 Dan Farris");
         Main main = new Main();
-        main.getStarted();
+        main.initialize();//Get out of static context
     }
-    private void getStarted() throws IOException
+    private void initialize() throws IOException
     {
         ArrayList<String> thisSeasonDates = new ArrayList<>();
-        fill2019SeasonDates(thisSeasonDates);
-        for (String thisWeek : thisSeasonDates)
+        fill2019SeasonDates(thisSeasonDates);//Puts all 2019 week dates into thisSeasonDates
+        nflHistoryElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisSeason);//Gets all NFL season beginning date history and this season year info.
+        dataCollector.collectAllSeasonDates(nflHistoryElements);//Builds a String array of all past and current NFL season year dates available from Covers.com
+        for (String thisWeekDate : thisSeasonDates)//Process all matchups in this season
         {
-            this.thisWeek = thisWeek;
-            getGoing(thisWeek);
+            System.out.println("************************************** NEW NFL WEEK => " + thisWeekDate + ", NFL SEASON => " + thisSeason + " ***************************************");
+            processAllWeeks(thisWeekDate);
         }
         System.out.println("Proper Finish...HOORAY!");
     }
-
-    private void getGoing(String thisWeek) throws IOException
+    private void processAllWeeks(String thisWeek) throws IOException
     {
-        String thisSeason = "2019";
-        System.out.println("************************************** NEW WEEK => " + thisWeek + ", NFL SEASON => " + thisSeason + " ***************************************");
-        nflHistoryElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisSeason);//Has all NFL season beginning date history and this season year info from https://www.covers.com/sports/nfl/matchups?selectedDate=thisSeasonYear
-        dataCollector.collectAllSeasonDates(nflHistoryElements);//Builds a String array of all past and current NFL season year dates available from Covers.com
         thisWeekElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + thisWeek);//Get all of this week's games info
         dataCollector.collectThisSeasonWeeks(nflHistoryElements);
         dataCollector.collectThisWeekMatchups(thisWeekElements);
         sportDataWorkbook = sportDataReader.readSportData();
         for (String s : dataCollector.getThisWeekMatchupIDs())
         {
-            String thisMatchupID = dataCollector.getThisWeekMatchupIDs().get(globalMatchupIndex);//Get this matchup ID...used as key for all data retrieval
-            thisMatchupConsensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
-            dataCollector.collectConsensusData(thisMatchupConsensusElements, thisMatchupID);
-            aggregator.setThisWeekAwayTeamsMap(dataCollector.getThisWeekAwayTeamsMap());
-            aggregator.setThisWeekHomeTeamsMap(dataCollector.getThisWeekHomeTeamsMap());
-            aggregator.setThisWeekGameDatesMap(dataCollector.getThisWeekGameDatesMap());
-            aggregator.setAtsHomesMap(dataCollector.getAtsHomesMap());
-            aggregator.setAtsAwaysMap(dataCollector.getAtsAwaysMap());
-            aggregator.setOuOversMap(dataCollector.getOuOversMap());
-            aggregator.setOuUndersMap(dataCollector.getOuUndersMap());
-            aggregator.buildSportDataUpdate(sportDataWorkbook, thisMatchupID, globalMatchupIndex);
-            sportDataWriter.writeSportData(sportDataWorkbook);
-            globalMatchupIndex++;
+            String thisMatchupID = s;
+            processAllMatchups(thisMatchupID);
         }
         sportDataWriter.writeSportData(sportDataWorkbook);
+    }
+    private void processAllMatchups(String thisMatchupID) throws IOException
+    {
+        thisMatchupConsensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + thisMatchupID);
+        dataCollector.collectConsensusData(thisMatchupConsensusElements, thisMatchupID);
+        aggregator.setThisWeekAwayTeamsMap(dataCollector.getThisWeekAwayTeamsMap());
+        aggregator.setThisWeekHomeTeamsMap(dataCollector.getThisWeekHomeTeamsMap());
+        aggregator.setThisWeekGameDatesMap(dataCollector.getThisWeekGameDatesMap());
+        aggregator.setAtsHomesMap(dataCollector.getAtsHomesMap());
+        aggregator.setAtsAwaysMap(dataCollector.getAtsAwaysMap());
+        aggregator.setOuOversMap(dataCollector.getOuOversMap());
+        aggregator.setOuUndersMap(dataCollector.getOuUndersMap());
+        aggregator.buildSportDataUpdate(sportDataWorkbook, thisMatchupID, globalMatchupIndex);
+        globalMatchupIndex++;
+//        if (globalMatchupIndex > 17)
+//        {
+//            sportDataWriter.writeSportData(sportDataWorkbook);//temporary limit...
+//            System.out.println("GlobalMatchupIndex > " + globalMatchupIndex + ", writing to SportData.xlsx amd System.exit(0)");
+//            System.exit(0);
+//        }
     }
     private void fill2019SeasonDates(ArrayList<String> thisSeasonDates)
     {

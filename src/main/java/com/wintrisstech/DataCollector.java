@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210612A
+ * version 210613A
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -21,7 +21,6 @@ public class DataCollector
     private String ouUnder;
     private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
     private HashMap<String, String> thisWeekGameDatesMap= new HashMap<>();
-    private ArrayList<String> thisWeekMatchupIDs = new ArrayList<>();
     private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
     private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();
     private ArrayList<String> thisWeekAwayTeamScores = new ArrayList<String>();
@@ -36,8 +35,10 @@ public class DataCollector
     private HashMap<String, String> ouOversMap = new HashMap<>();
     private String thisWeek;
     private Elements thisWeekMatchupIdElements;
+    private ArrayList<String> thisWeekMatchupIDs;
     public void collectThisWeekMatchups(Elements thisWeekElements)
     {
+        thisWeekMatchupIDs = new ArrayList<>();
         thisWeekMatchupIdElements = thisWeekElements.select(".cmg_matchup_game_box");
         for (Element e : thisWeekMatchupIdElements)//Build week matchup IDs array
         {
@@ -61,16 +62,15 @@ public class DataCollector
             thisGameWeekNumbers.add(thisWeek);
             thisWeekMatchupIDs.add(thisMatchupID);
         }
-        System.out.println("ThisWeekMatchupIDs.size => " + thisWeekMatchupIDs.size());
     }
     public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
     {
-        Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");
-        Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");
+        Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");//Home/Under
+        Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");//Away/Over
         String ouOver = leftConsensus.select("div").get(1).text();
         String ouUnder = rightConsensus.select("div").get(1).text();
-        String atsAway = leftConsensus.select("div").get(0).text();
-        String atsHome = rightConsensus.select("div").get(0).text();
+        String atsHome = leftConsensus.select("div").get(0).text();
+        String atsAway = rightConsensus.select("div").get(0).text();
         atsHomesMap.put(thisMatchupID, atsAway);
         atsAwaysMap.put(thisMatchupID, atsHome);
         ouOversMap.put(thisMatchupID,ouOver);
@@ -82,12 +82,10 @@ public class DataCollector
         ArrayList<String> seasonCodes = new ArrayList<String>();
         Elements cmg_season_dropdown = nflRandomElements.select("#cmg_season_dropdown");
         Elements options = cmg_season_dropdown.select("Option");
-        int i = 0;
         for (Element e : options)
         {
             seasonDates.add(e.text());
             seasonCodes.add(e.val());
-            i++;
         }
     }
     public void collectThisSeasonWeeks(Elements nflRandomElements)
@@ -104,7 +102,6 @@ public class DataCollector
             i++;
         }
     }
-    public ArrayList<String> getThisWeekMatchupIDs(){return thisWeekMatchupIDs;}
     public HashMap<String, String> getThisWeekHomeTeamsMap()
     {
         return thisWeekHomeTeamsMap;
@@ -132,5 +129,9 @@ public class DataCollector
     public HashMap<String, String> getOuUndersMap()
     {
         return ouUndersMap;
+    }
+    public ArrayList<String> getThisWeekMatchupIDs()
+    {
+        return thisWeekMatchupIDs;
     }
 }

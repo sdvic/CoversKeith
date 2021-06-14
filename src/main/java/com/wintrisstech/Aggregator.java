@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210612A
+ * version 210613A
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -52,7 +52,6 @@ public class Aggregator
     private HashMap<String, String> ouUndersMap;
     public XSSFWorkbook buildSportDataUpdate(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex)
     {
-        //sportDataWorkbook.createSheet("Update");
         sportDataSheet = sportDataWorkbook.getSheet("Data");
         sportDataSheet.createRow(eventIndex);
         sportDataSheet.setColumnWidth(1, 25 * 256);
