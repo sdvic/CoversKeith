@@ -12,8 +12,6 @@ public class SportDataReader
 {
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private XSSFWorkbook sportDataWorkbook;
-    private XSSFWorkbook workbook;
-    private OutputStream os;
     private InputStream is;
     public XSSFWorkbook readSportData()
     {

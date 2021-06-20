@@ -17,8 +17,6 @@ public class DataCollector
     private String awayTeamScore;
     private String homeTeamScore;
     private String gameDate;
-    private String ouOver;
-    private String ouUnder;
     private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
     private HashMap<String, String> thisWeekGameDatesMap= new HashMap<>();
     private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
@@ -45,9 +43,14 @@ public class DataCollector
             awayTeam = e.attr("data-away-team-fullname-search");
             homeTeam = e.attr("data-home-team-fullname-search");
             thisMatchupID = e.attr("data-event-id");
+//            String weekNumber = e.select("a").text();
+//            System.out.println("*********************** " + weekNumber);
             String[] gameDateTime = e.attr("data-game-date").split(" ");
             gameDate = gameDateTime[0];
-            String gameTime = gameDateTime[1];
+//            String gameTime = gameDateTime[1];
+//            Elements eee = thisWeekElements.select("#cmg_week_filter_dropdown");
+//            String week = eee.select("[value~=2019-09-05").text();
+//            System.out.println(week);//trying to find week #
             homeTeamScore = e.attr("data-home-score");
             awayTeamScore = e.attr("data-away-score");
             thisWeek = e.attr("data-competition-type");

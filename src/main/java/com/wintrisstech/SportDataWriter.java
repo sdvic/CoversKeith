@@ -12,8 +12,6 @@ import java.io.OutputStream;
 public class SportDataWriter
 {
     private String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
-    private XSSFWorkbook sportDataWorkbook;
-    private XSSFWorkbook workbook;
     private OutputStream os;
     public void writeSportData(XSSFWorkbook sportDataWorkbook)
     {

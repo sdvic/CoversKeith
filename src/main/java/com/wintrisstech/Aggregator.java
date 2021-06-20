@@ -11,9 +11,9 @@ import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+
 import java.util.HashMap;
+
 import static java.lang.System.out;
 public class Aggregator
 {
@@ -27,13 +27,6 @@ public class Aggregator
     private int gameCount = 7;
     private final int rowOffset = 3;
     private String thisMatchupDate;
-    private int numberOfGamesThisWeek;
-    private String nflSeasonYear;
-    private Document thisWeekGameDoc;
-    private Elements thisWeekElements;
-    private Document nflRandomDoc;
-    private String gameDate;
-    private HashMap<String, String> weekList = new HashMap<>();
     private HashMap<String, String> thisWeekHomeTeamsMap = new HashMap<>();
     private HashMap<String, String> thisWeekAwayTeamsMap = new HashMap<>();
     private HashMap<String, String> thisWeekGameDatesMap = new HashMap<>();
@@ -41,9 +34,6 @@ public class Aggregator
     private HashMap<String, String> atsAwaysMap = new HashMap<>();
     private Sheet sportDataSheet;
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
-    private XSSFWorkbook updatedSportDataWorkBook;
-    private WebSiteReader websiteReader;
-    private SportDataReader sportDataReader;
     private XSSFSheet sportDataUpdateSheet = null;
     byte[] rgb = new byte[]{(byte) 255, (byte) 0, (byte) 0};
     private String atsHome;

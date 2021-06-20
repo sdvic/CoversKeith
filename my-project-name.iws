@@ -10,14 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/NeurophStudy/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/NeurophStudy/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,17 +105,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -374,7 +370,15 @@
       <workItem from="1623557698562" duration="1506000" />
       <workItem from="1623604423704" duration="683000" />
       <workItem from="1623612637287" duration="1538000" />
-      <workItem from="1623625655623" duration="8675000" />
+      <workItem from="1623625655623" duration="9188000" />
+      <workItem from="1623639979850" duration="1560000" />
+      <workItem from="1623642502335" duration="1423000" />
+      <workItem from="1623731058293" duration="445000" />
+      <workItem from="1623767633708" duration="1026000" />
+      <workItem from="1623780704645" duration="176000" />
+      <workItem from="1624126272548" duration="181000" />
+      <workItem from="1624126462410" duration="2347000" />
+      <workItem from="1624145618598" duration="944000" />
     </task>
     <task id="LOCAL-00001" summary="Keith fix version 210208A">
       <created>1612851099413</created>
@@ -628,7 +632,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623556922830</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="version 210613A...Working for all weeks, all matchups of 2019-2020 season.  Delivered to Dan for comments.">
+      <created>1623639247187</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1623639247187</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -639,7 +650,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -650,7 +673,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210405&#10;Both NFL week dates and event IDs in arrays!" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Weeks Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Arrays" />
@@ -675,6 +697,7 @@
     <MESSAGE value="version 210604...Loading SportData update sheet with teams/dates/OU/ATS" />
     <MESSAGE value="version 210612...Reworked version 210605. Trying to cycle through all weeks." />
     <MESSAGE value="version 210612A...Working for 32 matchups...then quits...out of array index" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210612A...Working for 32 matchups...then quits...out of array index" />
+    <MESSAGE value="version 210613A...Working for all weeks, all matchups of 2019-2020 season.  Delivered to Dan for comments." />
+    <option name="LAST_COMMIT_MESSAGE" value="version 210613A...Working for all weeks, all matchups of 2019-2020 season.  Delivered to Dan for comments." />
   </component>
 </project>
