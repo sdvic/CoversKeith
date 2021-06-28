@@ -10,12 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2c3da40-7b61-4401-afb6-59cd422b2e8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/src/main/java/org/example/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/target/classes/org/example/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/LambdaStudy/target/test-classes/org/example/AppTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/NeurophStudy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-project-name.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-project-name.iws" beforeDir="false" afterPath="$PROJECT_DIR$/my-project-name.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Aggregator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/DataCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/SportDataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wintrisstech/WebSiteReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,13 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="InvalidFacetManager">
+    <ignored-facets>
+      <facet id="Covers/invalid/Spring" />
+      <facet id="Covers/invalid/Web" />
+      <facet id="Covers/invalid/Web2" />
+    </ignored-facets>
   </component>
   <component name="ProjectId" id="1oEKDmJKKxcNOU2hLFBaFUpVZMx" />
   <component name="ProjectLevelVcsManager">
@@ -638,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624149457988</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Keith demo">
+      <created>1624220485994</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1624220485994</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -672,7 +687,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="version 210409&#10;Succssfully building NFL Weeks Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Array" />
     <MESSAGE value="version 210409&#10;Succssfully building NFL Week Array/Data Event ID Arrays" />
     <MESSAGE value="version 210409&#10;Succssfully building both NFL Week Array/Data Event ID Arrays" />
@@ -697,6 +711,7 @@
     <MESSAGE value="version 210612...Reworked version 210605. Trying to cycle through all weeks." />
     <MESSAGE value="version 210612A...Working for 32 matchups...then quits...out of array index" />
     <MESSAGE value="version 210613A...Working for all weeks, all matchups of 2019-2020 season.  Delivered to Dan for comments." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 210613A...Working for all weeks, all matchups of 2019-2020 season.  Delivered to Dan for comments." />
+    <MESSAGE value="Keith demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Keith demo" />
   </component>
 </project>

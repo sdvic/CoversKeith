@@ -2,8 +2,8 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210613A
  * Read large SportData excel work book (SportData.xlsx) on user's desktop and return workBook
+ * version 210628
  *******************************************************************/
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;

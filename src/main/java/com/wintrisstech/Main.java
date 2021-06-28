@@ -2,8 +2,8 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2021 Dan Farris
- * version 210613A
- * * Launch with Covers.command
+ * Launch with Covers.command
+ * version 210628
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.select.Elements;
@@ -84,26 +84,6 @@ public class Main extends JComponent
     }
     private void fill2019SeasonDates(ArrayList<String> thisSeasonDates)
     {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         thisSeasonDates.add("2020-09-10");
         thisSeasonDates.add("2020-09-17");
         thisSeasonDates.add("2020-09-24");

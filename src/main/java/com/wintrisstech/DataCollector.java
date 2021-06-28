@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210613A
+ * version 210628
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -43,8 +43,6 @@ public class DataCollector
             awayTeam = e.attr("data-away-team-fullname-search");
             homeTeam = e.attr("data-home-team-fullname-search");
             thisMatchupID = e.attr("data-event-id");
-//            String weekNumber = e.select("a").text();
-//            System.out.println("*********************** " + weekNumber);
             String[] gameDateTime = e.attr("data-game-date").split(" ");
             gameDate = gameDateTime[0];
 //            String gameTime = gameDateTime[1];
@@ -68,15 +66,29 @@ public class DataCollector
     }
     public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
     {
-        Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");//Home/Under
-        Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");//Away/Over
-        String ouOver = leftConsensus.select("div").get(1).text();
-        String ouUnder = rightConsensus.select("div").get(1).text();
-        String atsHome = leftConsensus.select("div").get(0).text();
-        String atsAway = rightConsensus.select("div").get(0).text();
+        String ouOver = "invalid";
+        String ouUnder = "invalid";
+        String atsHome = "invalid";
+        String atsAway = "invalid";
+        Elements rightConsensus = null;
+        Elements leftConsensus = null;
+        try//Game delayed/cancelled...no consensus data
+{
+    rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");//Home/Under
+    leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");//Away/Over
+    ouOver = leftConsensus.select("div").get(1).text();
+    ouUnder = rightConsensus.select("div").get(1).text();
+    atsHome = leftConsensus.select("div").get(0).text();
+    atsAway = rightConsensus.select("div").get(0).text();
+}
+catch (Exception e)
+{
+    System.out.println("========================> Missing Consensus Data");
+    return;
+}
         atsHomesMap.put(thisMatchupID, atsAway);
         atsAwaysMap.put(thisMatchupID, atsHome);
-        ouOversMap.put(thisMatchupID,ouOver);
+        ouOversMap.put(thisMatchupID, ouOver);
         ouUndersMap.put(thisMatchupID, ouUnder);
     }
     public void collectAllSeasonDates(Elements nflRandomElements)

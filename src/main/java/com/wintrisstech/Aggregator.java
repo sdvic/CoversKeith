@@ -2,7 +2,7 @@ package com.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 210613A
+ * version 210628
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -62,6 +62,12 @@ public class Aggregator
         sportDataSheet.getRow(eventIndex).createCell(0);
         sportDataSheet.getRow(eventIndex).getCell(0).setCellStyle(myStyle);
         sportDataSheet.getRow(eventIndex).getCell(0).setCellValue(awayTeam + " @ " + homeTeam);
+        sportDataSheet.getRow(eventIndex).createCell(10);
+        sportDataSheet.getRow(eventIndex).getCell(10).setCellStyle(myStyle);
+        sportDataSheet.getRow(eventIndex).getCell(10).setCellValue(homeTeam);
+        sportDataSheet.getRow(eventIndex).createCell(24);
+        sportDataSheet.getRow(eventIndex).getCell(24).setCellStyle(myStyle);
+        sportDataSheet.getRow(eventIndex).getCell(24).setCellValue(awayTeam);
         sportDataSheet.getRow(eventIndex).createCell(1);
         sportDataSheet.getRow(eventIndex).getCell(1).setCellStyle(myStyle);
         sportDataSheet.getRow(eventIndex).getCell(1).setCellValue(thisMatchupDate);
